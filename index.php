@@ -1,3 +1,6 @@
+<?php
+  require "config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,6 +16,10 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
   </head>
 
   <body id="top">
@@ -20,17 +27,17 @@
       <div class="overlay" data-overlay></div>
       <div class="header-top">
         <div class="container">
-          <a href="tel:+01123456790" class="helpline-box">
+          <a href="tel:+6281269146575" class="helpline-box">
             <div class="icon-box">
               <ion-icon name="call-outline"></ion-icon>
             </div>
             <div class="wrapper">
               <p class="helpline-title">For Further Inquires :</p>
-              <p class="helpline-number">+01 (123) 4567 90</p>
+              <p class="helpline-number">+62 (812) 6914 6575</p>
             </div>
           </a>
-          <a href="#" class="logo">
-            <img src="./assets/images/logo.svg" alt="Tourly logo" />
+          <a href="index.php" class="logo">
+            <img src="./assets/images/doctrip-white.png" alt="DocTrip logo"/>
           </a>
           <div class="header-btn-group">
             <button class="search-btn" aria-label="Search">
@@ -52,17 +59,17 @@
           <ul class="social-list">
             <li>
               <a href="#" class="social-link">
-                <ion-icon name="logo-facebook"></ion-icon>
+                <ion-icon name="logo-whatsapp"></ion-icon>
               </a>
             </li>
             <li>
               <a href="#" class="social-link">
-                <ion-icon name="logo-twitter"></ion-icon>
+                <ion-icon name="logo-tiktok"></ion-icon>
               </a>
             </li>
             <li>
               <a href="#" class="social-link">
-                <ion-icon name="logo-youtube"></ion-icon>
+                <ion-icon name="logo-instagram"></ion-icon>
               </a>
             </li>
           </ul>
@@ -70,7 +77,7 @@
           <nav class="navbar" data-navbar>
             <div class="navbar-top">
               <a href="#" class="logo">
-                <img src="./assets/images/logo-blue.svg" alt="Tourly logo" />
+                <img src="./assets/images/doctrip-gray.png" alt="DocTrip logo" />
               </a>
               <button
                 class="nav-close-btn"
@@ -86,30 +93,27 @@
                 <a href="#home" class="navbar-link" data-nav-link>home</a>
               </li>
               <li>
-                <a href="#" class="navbar-link" data-nav-link>about us</a>
+                <a href="#about" class="navbar-link" data-nav-link>about us</a>
               </li>
               <li>
-                <a href="#destination" class="navbar-link" data-nav-link
-                  >destination</a
-                >
+                <a href="#trip" class="navbar-link" data-nav-link>trip</a>
               </li>
               <li>
-                <a href="#package" class="navbar-link" data-nav-link
-                  >packages</a
-                >
+                <a href="#promo" class="navbar-link" data-nav-link>promo</a>
               </li>
               <li>
                 <a href="#gallery" class="navbar-link" data-nav-link>gallery</a>
               </li>
               <li>
-                <a href="#contact" class="navbar-link" data-nav-link
-                  >contact us</a
-                >
+                <a href="#mitra" class="navbar-link" data-nav-link>mitra</a>
+              </li>
+              <li>
+                <a href="#contact" class="navbar-link" data-nav-link>contact us</a>
               </li>
             </ul>
           </nav>
 
-          <button class="btn btn-primary">Book Now</button>
+          <button class="btn btn-light">Book Now</button>
         </div>
       </div>
     </header>
@@ -118,81 +122,130 @@
       <article>
         <section class="hero" id="home">
           <div class="container">
-            <h2 class="h1 hero-title">Journey to explore world</h2>
+            <h2 class="h1 hero-title">Travel to<br>the unknown</h2>
             <p class="hero-text">
-              Ac mi duis mollis. Sapiente? Scelerisque quae, penatibus? Suscipit
-              class corporis nostra rem quos voluptatibus habitant? Fames,
-              vivamus minim nemo enim, gravida lobortis quasi, eum.
+              Doctor Trip Indonesia berharap dapat menjadi teman perjalanan terbaik bagi kamu Travellers.
+              #HealingWithDoctorTrip
             </p>
             <div class="btn-group">
-              <button class="btn btn-primary">Learn more</button>
+              <button class="btn btn-light">Learn more</button>
               <button class="btn btn-secondary">Book now</button>
             </div>
           </div>
         </section>
 
-        <section class="tour-search">
+        <section class="tour-search" id="about">
           <div class="container">
-            <form action="" class="tour-search-form">
-              <div class="input-wrapper">
-                <label for="destination" class="input-label"
-                  >Search Destination*</label
-                >
-                <input
-                  type="text"
-                  name="destination"
-                  id="destination"
-                  required
-                  placeholder="Enter Destination"
-                  class="input-field"
-                />
-              </div>
-
-              <div class="input-wrapper">
-                <label for="people" class="input-label">Pax Number*</label>
-                <input
-                  type="number"
-                  name="people"
-                  id="people"
-                  required
-                  placeholder="No.of People"
-                  class="input-field"
-                />
-              </div>
-
-              <div class="input-wrapper">
-                <label for="checkin" class="input-label">Checkin Date**</label>
-                <input
-                  type="date"
-                  name="checkin"
-                  id="checkin"
-                  required
-                  class="input-field"
-                />
-              </div>
-
-              <div class="input-wrapper">
-                <label for="checkout" class="input-label">Checkout Date*</label>
-                <input
-                  type="date"
-                  name="checkout"
-                  id="checkout"
-                  required
-                  class="input-field"
-                />
-              </div>
-
-              <button type="submit" class="btn btn-secondary">
-                Inquire now
-              </button>
-            </form>
+            <a href="index.php" class="logo">
+              <img src="./assets/images/doctrip-white.png" alt="DocTrip logo"/>
+            </a>
+            <p class="tour-text">
+            Doctor Trip Indonesia merupakan badan usaha yang bergerak dibidang tour and travel
+            yang menyediakan layanan open trip maupun private trip yang semakin mudah, hemat dan menyenangkan
+            ke berbagai destinasi menarik.
+            Doctor Trip Indonesia kini sudah menjalin kerjasama dengan berbagai
+            penyedia jasa pendukung perjalanan dan menjamin kenyamanan Travellers mulai dari penginapan,
+            transportasi, destinasi wisata, serta Travelmate yang sudah berpengalaman untuk menemani liburan kamu agar lebih berkesan.
+            </p>
           </div>
         </section>
 
-        <section class="popular" id="destination">
+        <section class="popular" id="trip">
           <div class="container">
             <p class="section-subtitle">Uncover place</p>
-            <h2 class="h2 section-title">Popular destination</h2>
+            <h2 class="h2 section-title">SPECIAL TRIP</h2>
+            <p class="section-text">
+              Fusce hic augue velit wisi quibusdam pariatur, iusto primis, nec
+              nemo, rutrum. Vestibulum cumque laudantium. Sit ornare mollitia
+              tenetur, aptent.
+            </p>
+            <ul class="popular-list">
+              <li>
+                <div class="popular-card">
+                  <figure class="card-img">
+                    <a class="popular-link" href="#">
+                      <img
+                        src="./assets/images/popular-1.jpg"
+                        alt="San miguel, italy"
+                        loading="lazy"
+                      />
+                    </a>
+                  </figure>
+                  <div class="card-content">
+                    <div class="card-rating">
+                      <p>Rp 2.700.000 / orang</p>
+                    </div>
+                    <p class="card-subtitle">
+                      <a href="#">05/11/2024 ~ 06/11/2024</a>
+                    </p>
+                    <h3 class="h3 card-title">
+                      <a href="#">SPECIAL TRIP GENTING KL</a>
+                    </h3>
+                    <p class="card-text">
+                      GENTING + KUALA LUMPUR
+                    </p>
+                    <button class="btn-mini">Book now</button>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div class="popular-card">
+                  <figure class="card-img">
+                    <img
+                      src="./assets/images/popular-2.jpg"
+                      alt="Burj khalifa, dubai"
+                      loading="lazy"
+                    />
+                  </figure>
+                  <div class="card-content">
+                    <div class="card-rating">
+                      <p>Rp 2.700.000 / orang</p>
+                    </div>
+                    <p class="card-subtitle">
+                      <a href="#">05/11/2024 ~ 06/11/2024</a>
+                    </p>
+                    <h3 class="h3 card-title">
+                      <a href="#">SPECIAL TRIP GENTING KL</a>
+                    </h3>
+                    <p class="card-text">
+                      GENTING + KUALA LUMPUR
+                    </p>
+                    <button class="btn-mini">Book now</button>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div class="popular-card">
+                  <figure class="card-img">
+                    <img
+                      src="./assets/images/popular-3.jpg"
+                      alt="Kyoto temple, japan"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <div class="card-content">
+                    <div class="card-rating">
+                      <p>Rp 2.700.000 / orang</p>
+                    </div>
+                    <p class="card-subtitle">
+                      <a href="#">05/11/2024 ~ 06/11/2024</a>
+                    </p>
+                    <h3 class="h3 card-title">
+                      <a href="#">SPECIAL TRIP GENTING KL</a>
+                    </h3>
+                    <p class="card-text">
+                      GENTING + KUALA LUMPUR
+                    </p>
+                    <button class="btn-mini">Book now</button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            
+            <h2 class="h2 section-title">OPEN TRIP</h2>
             <p class="section-text">
               Fusce hic augue velit wisi quibusdam pariatur, iusto primis, nec
               nemo, rutrum. Vestibulum cumque laudantium. Sit ornare mollitia
@@ -210,21 +263,18 @@
                   </figure>
                   <div class="card-content">
                     <div class="card-rating">
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
+                      <p>Rp 2.700.000 / orang</p>
                     </div>
                     <p class="card-subtitle">
-                      <a href="#">Italy</a>
+                      <a href="#">05/11/2024 ~ 06/11/2024</a>
                     </p>
                     <h3 class="h3 card-title">
-                      <a href="#">San miguel</a>
+                      <a href="#">SPECIAL TRIP GENTING KL</a>
                     </h3>
                     <p class="card-text">
-                      Fusce hic augue velit wisi ips quibusdam pariatur, iusto.
+                      GENTING + KUALA LUMPUR
                     </p>
+                    <button class="btn-mini">Book now</button>
                   </div>
                 </div>
               </li>
@@ -240,24 +290,18 @@
                   </figure>
                   <div class="card-content">
                     <div class="card-rating">
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
+                      <p>Rp 2.700.000 / orang</p>
                     </div>
-
                     <p class="card-subtitle">
-                      <a href="#">Dubai</a>
+                      <a href="#">05/11/2024 ~ 06/11/2024</a>
                     </p>
-
                     <h3 class="h3 card-title">
-                      <a href="#">Burj khalifa</a>
+                      <a href="#">SPECIAL TRIP GENTING KL</a>
                     </h3>
-
                     <p class="card-text">
-                      Fusce hic augue velit wisi ips quibusdam pariatur, iusto.
+                      GENTING + KUALA LUMPUR
                     </p>
+                    <button class="btn-mini">Book now</button>
                   </div>
                 </div>
               </li>
@@ -274,38 +318,124 @@
 
                   <div class="card-content">
                     <div class="card-rating">
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
+                      <p>Rp 2.700.000 / orang</p>
                     </div>
-
                     <p class="card-subtitle">
-                      <a href="#">Japan</a>
+                      <a href="#">05/11/2024 ~ 06/11/2024</a>
                     </p>
-
                     <h3 class="h3 card-title">
-                      <a href="#">Kyoto temple</a>
+                      <a href="#">SPECIAL TRIP GENTING KL</a>
                     </h3>
-
                     <p class="card-text">
-                      Fusce hic augue velit wisi ips quibusdam pariatur, iusto.
+                      GENTING + KUALA LUMPUR
                     </p>
+                    <button class="btn-mini">Book now</button>
                   </div>
                 </div>
               </li>
             </ul>
 
-            <button class="btn btn-primary">More destintion</button>
+            <button class="btn btn-light">More Trip</button>
+            <br>
+            <h2 class="h2 section-title">PRIVATE TRIP</h2>
+            <p class="section-text">
+              Fusce hic augue velit wisi quibusdam pariatur, iusto primis, nec
+              nemo, rutrum. Vestibulum cumque laudantium. Sit ornare mollitia
+              tenetur, aptent.
+            </p>
+            <ul class="popular-list">
+              <li>
+                <div class="popular-card">
+                  <figure class="card-img">
+                    <a class="popular-link" href="#">
+                      <img
+                        src="./assets/images/popular-1.jpg"
+                        alt="San miguel, italy"
+                        loading="lazy"
+                      />
+                    </a>
+                  </figure>
+                  <div class="card-content">
+                    <div class="card-rating">
+                      <p>Rp 2.700.000 / orang</p>
+                    </div>
+                    <p class="card-subtitle">
+                      <a href="#">05/11/2024 ~ 06/11/2024</a>
+                    </p>
+                    <h3 class="h3 card-title">
+                      <a href="#">SPECIAL TRIP GENTING KL</a>
+                    </h3>
+                    <p class="card-text">
+                      GENTING + KUALA LUMPUR
+                    </p>
+                    <button class="btn-mini">Book now</button>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div class="popular-card">
+                  <figure class="card-img">
+                    <img
+                      src="./assets/images/popular-2.jpg"
+                      alt="Burj khalifa, dubai"
+                      loading="lazy"
+                    />
+                  </figure>
+                  <div class="card-content">
+                    <div class="card-rating">
+                      <p>Rp 2.700.000 / orang</p>
+                    </div>
+                    <p class="card-subtitle">
+                      <a href="#">05/11/2024 ~ 06/11/2024</a>
+                    </p>
+                    <h3 class="h3 card-title">
+                      <a href="#">SPECIAL TRIP GENTING KL</a>
+                    </h3>
+                    <p class="card-text">
+                      GENTING + KUALA LUMPUR
+                    </p>
+                    <button class="btn-mini">Book now</button>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div class="popular-card">
+                  <figure class="card-img">
+                    <img
+                      src="./assets/images/popular-3.jpg"
+                      alt="Kyoto temple, japan"
+                      loading="lazy"
+                    />
+                  </figure>
+
+                  <div class="card-content">
+                    <div class="card-rating">
+                      <p>Rp 2.700.000 / orang</p>
+                    </div>
+                    <p class="card-subtitle">
+                      <a href="#">05/11/2024 ~ 06/11/2024</a>
+                    </p>
+                    <h3 class="h3 card-title">
+                      <a href="#">SPECIAL TRIP GENTING KL</a>
+                    </h3>
+                    <p class="card-text">
+                      GENTING + KUALA LUMPUR
+                    </p>
+                    <button class="btn-mini">Book now</button>
+                  </div>
+                </div>
+              </li>
+            </ul>
           </div>
         </section>
 
-        <section class="package" id="package">
+        <section class="package" id="promo">
           <div class="container">
-            <p class="section-subtitle">Popular Packeges</p>
+            <p class="section-subtitle">Popular Promo</p>
 
-            <h2 class="h2 section-title">Checkout Our Packeges</h2>
+            <h2 class="h2 section-title">Checkout Our Promo</h2>
 
             <p class="section-text">
               Fusce hic augue velit wisi quibusdam pariatur, iusto primis, nec
@@ -528,7 +658,7 @@
               </li>
             </ul>
 
-            <button class="btn btn-primary">View All Packages</button>
+            <button class="btn btn-light">View All Promo</button>
           </div>
         </section>
 
@@ -590,6 +720,45 @@
                 </figure>
               </li>
             </ul>
+            <br>
+            <button class="btn btn-light">View More Image</button>
+          </div>
+        </section>
+
+        <section class="banner" id="mitra">
+          <div class="banner__wrapper">
+            <div class="banner__card">
+              <img src="assets/images/mitra/indako.png" width="270" height="400" alt="banner" />
+              <div class="banner__content">indako</div>
+            </div>
+            <div class="banner__card">
+              <img src="assets/images/mitra/ace.png" width="270" height="400" alt="banner" />
+              <div class="banner__content">ace ware</div>
+            </div>
+            <div class="banner__card">
+              <img src="assets/images/mitra/kim.png" width="270" height="400" alt="banner" />
+              <div class="banner__content">kim</div>
+            </div>
+            <div class="banner__card">
+              <img src="assets/images/mitra/telkomsel.png" width="270" height="400" alt="banner" />
+              <div class="banner__content">telkomsel</div>
+            </div>
+            <div class="banner__card">
+              <img src="assets/images/mitra/informa.png" width="270" height="400" alt="banner" />
+              <div class="banner__content">informa</div>
+            </div>
+            <div class="banner__card">
+              <img src="assets/images/mitra/permata.png" width="270" height="400" alt="banner" />
+              <div class="banner__content">bank permata</div>
+            </div>
+            <div class="banner__card">
+              <img src="assets/images/mitra/pln.png" width="270" height="400" alt="banner" />
+              <div class="banner__content">pln</div>
+            </div>
+            <div class="banner__card">
+              <img src="assets/images/mitra/pertamina.png" width="270" height="400" alt="banner" />
+              <div class="banner__content">pertamina</div>
+            </div>
           </div>
         </section>
 
@@ -612,6 +781,10 @@
             <button class="btn btn-secondary">Contact Us !</button>
           </div>
         </section>
+
+        <section class="maps" id="maps">
+          <iframe class="maps-loc" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.049748527886!2d98.64835081479283!3d3.576038251377126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30312f1439f52777%3A0x5727ce374aa67660!2sDoctor%20Trip%20Indonesia!5e0!3m2!1sen!2sid!4v1676436638774!5m2!1sen!2sid" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
       </article>
     </main>
 
@@ -620,7 +793,7 @@
         <div class="container">
           <div class="footer-brand">
             <a href="#" class="logo">
-              <img src="./assets/images/logo.svg" alt="Tourly logo" />
+              <img src="./assets/images/doctrip-white.png" alt="DocTrip logo" />
             </a>
 
             <p class="footer-text">
@@ -640,15 +813,15 @@
                 <ion-icon name="call-outline"></ion-icon>
 
                 <a href="tel:+01123456790" class="contact-link"
-                  >+01 (123) 4567 90</a
+                  >+62 (812) 6914 6575</a
                 >
               </li>
 
               <li class="contact-item">
                 <ion-icon name="mail-outline"></ion-icon>
 
-                <a href="mailto:info.tourly.com" class="contact-link"
-                  >info.tourly.com</a
+                <a href="mailto:info.DocTrip.com" class="contact-link"
+                  >info.DocTrip.com</a
                 >
               </li>
 
@@ -683,7 +856,7 @@
       <div class="footer-bottom">
         <div class="container">
           <p class="copyright">
-            &copy; 2022 <a href="">codewithsadee</a>. All rights reserved
+            &copy; 2024 <a href="">DocTrip</a>. All rights reserved
           </p>
 
           <ul class="footer-bottom-list">
@@ -707,6 +880,9 @@
       <ion-icon name="chevron-up-outline"></ion-icon>
     </a>
 
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./assets/js/main.js"></script>
     <script src="./assets/js/script.js"></script>
     <script
       type="module"
