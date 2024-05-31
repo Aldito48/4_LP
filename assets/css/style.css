@@ -709,6 +709,7 @@ body { background: var(--white); }
   align-items: center;
   gap: 1rem;
   animation: scroll 45s linear infinite;
+  height: auto;
 }
 
 @keyframes scroll {
@@ -727,6 +728,16 @@ body { background: var(--white); }
   isolation: isolate;
   overflow: hidden;
   border-radius: 5px;
+  background: var(--white);
+  border: 2px solid var(--light-blue);
+  height: 200px;
+}
+
+.banner__card img {
+  width: 100%;
+  margin: auto;
+  height: 100%;
+  padding: 5px;
 }
 
 .banner__content {
@@ -766,6 +777,28 @@ body { background: var(--white); }
 .banner__content p {
   color: var(--extra-light);
 }
+
+
+
+
+
+/*-----------------------------------*\
+ * #PRIVATE
+\*-----------------------------------*/
+
+.private {
+  background-image: url("../images/hero-banner.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: hsla(0, 0%, 0%, 0.7);
+  background-blend-mode: overlay;
+  padding-block: var(--section-padding);
+}
+
+.private :is(.section-subtitle, .section-title, .section-text) { color: var(--white); }
+
+.private .section-text { font-size: var(--fs-5); }
 
 
 
@@ -1006,7 +1039,7 @@ address {
     --padding: 12px 30px;
   }
 
-  section:not(.cta) :is(.section-subtitle, .section-title, .section-text) {
+  section:not(.cta):not(.private) :is(.section-subtitle, .section-title, .section-text) {
     text-align: center;
   }
 
@@ -1221,6 +1254,22 @@ address {
 
 
   /**
+   * PRIVATE
+   */
+
+   .private .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .private-content { width: calc(100% - 225px); }
+
+  .private .section-text { margin-inline: 0; }
+
+
+
+  /**
    * CTA
    */
 
@@ -1368,6 +1417,12 @@ address {
 
   .meta-box > ion-icon { font-size: 15px; }
 
+
+  /**
+   * PRIVATE 
+   */
+
+   .private .section-title { max-width: 25ch; }
 
 
   /**
