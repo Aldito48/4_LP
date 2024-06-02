@@ -178,6 +178,7 @@ body { background: var(--white); }
   background: var(--onyx);
   border-color: var(--onyx);
   width: 100%;
+  text-align: center;
 }
 
 .btn-mini:is(:hover, :focus) {
@@ -450,14 +451,21 @@ body { background: var(--white); }
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+.tour-search .container .box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 20px;
 }
 
-.tour-search .container .logo {
+.tour-search .container .box .logo {
   width: 100%;
 }
 
-.tour-search .container .logo img {
+.tour-search .container .box .logo img {
   width: 100%;
   background: var(--onyx);
   border-radius: 10px;
@@ -465,7 +473,7 @@ body { background: var(--white); }
   border: 2px solid var(--light-blue);
 }
 
-.tour-search .container .tour-text {
+.tour-search .container .box .tour-text {
   color: var(--jet);
 }
 
@@ -647,7 +655,7 @@ body { background: var(--white); }
 .package-card .card-rating ion-icon:last-child { color: hsl(0, 0%, 80%); }
 
 .package-card .price {
-  font-size: var(--fs-2);
+  font-size: 25pt;
   font-family: var(--ff-montserrat);
   font-weight: var(--fw-800);
   margin-bottom: 20px;
@@ -831,7 +839,7 @@ body { background: var(--white); }
 .maps .maps-loc{
   margin: 20px 20px 20px 20px;
   height: 450px;
-  width: 1300px;
+  width: 1150px;
 }
 
 
