@@ -1,16 +1,4 @@
 /*-----------------------------------*\
- * #style.css
-\*-----------------------------------*/
-
-/**
- * copyright 2022 codewithsadee
- */
-
-
-
-
-
-/*-----------------------------------*\
  * #CUSTOM PROPERTY
 \*-----------------------------------*/
 
@@ -813,6 +801,28 @@ body { background: var(--white); }
 
 
 /*-----------------------------------*\
+ * #SEWA
+\*-----------------------------------*/
+
+.sewa {
+  background-image: url("../images/hiace.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: hsla(0, 0%, 0%, 0.7);
+  background-blend-mode: overlay;
+  padding-block: var(--section-padding);
+}
+
+.sewa :is(.section-subtitle, .section-title, .section-text) { color: var(--white); }
+
+.sewa .section-text { font-size: var(--fs-5); }
+
+
+
+
+
+/*-----------------------------------*\
  * #CTA
 \*-----------------------------------*/
 
@@ -1047,7 +1057,7 @@ address {
     --padding: 12px 30px;
   }
 
-  section:not(.cta):not(.private) :is(.section-subtitle, .section-title, .section-text) {
+  section:not(.cta):not(.private):not(.sewa) :is(.section-subtitle, .section-title, .section-text) {
     text-align: center;
   }
 
@@ -1278,6 +1288,22 @@ address {
 
 
   /**
+   * SEWA
+   */
+
+   .sewa .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .sewa-content { width: calc(100% - 225px); }
+
+  .sewa .section-text { margin-inline: 0; }
+
+
+
+  /**
    * CTA
    */
 
@@ -1431,6 +1457,13 @@ address {
    */
 
    .private .section-title { max-width: 25ch; }
+
+  
+  /**
+   * SEWA
+   */
+
+   .sewa .section-title { max-width: 25ch; }
 
 
   /**

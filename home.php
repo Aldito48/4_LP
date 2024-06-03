@@ -1,65 +1,5 @@
 <?php
-  require "./config.php";
-
-  $queryProfile = "SELECT * FROM tbl_profile WHERE id = 1 LIMIT 1";
-  $queryMitra = "SELECT * FROM tbl_mitra";
-  $querySpecialTrip = "SELECT * FROM tbl_trip WHERE type = 'SPECIAL' LIMIT 3";
-  $queryPromoTrip = "SELECT * FROM tbl_trip WHERE type = 'PROMO' LIMIT 3";
-  $querySosmed = "SELECT * FROM tbl_sosmed";
-  $queryGalery = "SELECT * FROM tbl_galery LIMIT 5";
-
-  $resultProfile = mysqli_query($con, $queryProfile) or die (mysqli_error($con));
-  $resultMitra = mysqli_query($con, $queryMitra) or die (mysqli_error($con));
-  $resultSpecialTrip = mysqli_query($con, $querySpecialTrip) or die (mysqli_error($con));
-  $resultPromoTrip = mysqli_query($con, $queryPromoTrip) or die (mysqli_error($con));
-  $resultSosmed = mysqli_query($con, $querySosmed) or die (mysqli_error($con));
-  $resultGalery = mysqli_query($con, $queryGalery) or die (mysqli_error($con));
-
-  $dataProfile = mysqli_fetch_array($resultProfile);
-  while ($dataSosmed = mysqli_fetch_array($resultSosmed)) {
-    if ($dataSosmed['id'] == 1) {
-      $tiktok = $dataSosmed['account'];
-      $name1 = $dataSosmed['name'];
-    } else if ($dataSosmed['id'] == 2) {
-      $instagram = $dataSosmed['account'];
-      $name2 = $dataSosmed['name'];
-    } else if ($dataSosmed['id'] == 3) {
-      $wa = $dataSosmed['account'];
-      $name3 = $dataSosmed['name'];
-    } else if ($dataSosmed['id'] == 4) {
-      $wa_private = $dataSosmed['account'];
-      $name4 = $dataSosmed['name'];
-    }
-  }
-
-  function waFormat($a) {
-    $b = str_replace('08', '628', $a);
-    $b = str_replace(' ', '', $b);
-
-    return $b;
-  }
-
-  function telpFormat($c) {
-    $d = str_replace('08', '628', $c);
-    $d = substr($d, 0, 2) . ' ' . substr($d, 2, 4) . ' ' . substr($d, 6, 4) . ' ' . substr($d, 10);
-
-    return $d;
-  }
-
-  function numberFormat($e) {
-    $f = preg_replace('/(\d{4})(?=\d)/', '$1 ', $e);
-
-    return $f;
-  }
-
-  function footerFormat($g) {
-    $h = strpos($g, '.');
-    if ($h !== false) {
-      $g = substr($g, 0, $h + 1);
-    }
-
-    return $g;
-  }
+  require "./handler.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Doctor Trip Indonesia - Travel Agency</title>
     <link rel="shortcut icon" href="./favicon.png" type="image/svg+xml" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/home.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -150,25 +90,25 @@
 
             <ul class="navbar-list">
               <li>
-                <a href="#home" class="navbar-link" data-nav-link>home</a>
+                <a href="home.php" class="navbar-link" data-nav-link>home</a>
               </li>
               <li>
-                <a href="#about" class="navbar-link" data-nav-link>about us</a>
+                <a href="about.php" class="navbar-link" data-nav-link>about us</a>
               </li>
               <li>
-                <a href="#trip" class="navbar-link" data-nav-link>open trip</a>
+                <a href="trip.php" class="navbar-link" data-nav-link>open trip</a>
               </li>
               <!-- <li>
                 <a href="#promo" class="navbar-link" data-nav-link>promo</a>
               </li> -->
               <li>
-                <a href="#gallery" class="navbar-link" data-nav-link>gallery</a>
+                <a href="home.php#gallery" class="navbar-link" data-nav-link>gallery</a>
               </li>
               <li>
-                <a href="#client" class="navbar-link" data-nav-link>client</a>
+                <a href="home.php#client" class="navbar-link" data-nav-link>client</a>
               </li>
               <li>
-                <a href="#contact" class="navbar-link" data-nav-link>contact us</a>
+                <a href="home.php#contact" class="navbar-link" data-nav-link>contact us</a>
               </li>
             </ul>
           </nav>
@@ -403,7 +343,7 @@
               </li>
             </ul> -->
 
-            <button class="btn btn-light">More Trip</button>
+            <a href="trip.php" style="width: fit-content;" class="btn btn-light">More Trip</a>
           </div>
         </section>
 
@@ -633,6 +573,24 @@
             </ul>
             <br>
             <button class="btn btn-light" style="margin: auto;">View More Image</button>
+          </div>
+        </section>
+
+        <section class="sewa" id="sewa">
+          <div class="container">
+            <div class="private-content">
+              <p class="section-subtitle">MAU SEWA HIACE/ELF?</p>
+
+              <h2 class="h2 section-title">
+                LIBURAN BARENG BESTIE/KELUARGA/<br>SATU KANTOR
+              </h2>
+
+              <p class="section-text">
+                Yuk, Hubungi kami sekarang !!
+              </p>
+            </div>
+
+            <a href="https://wa.me/<?=waFormat($wa_private)?>" target="_blank" class="btn btn-secondary">Contact Us !</a>
           </div>
         </section>
 
