@@ -27,22 +27,22 @@
       <div class="overlay" data-overlay></div>
       <div class="header-top">
         <div class="container">
-          <a href="tel:+<?=$dataProfile['telp']?>" class="helpline-box">
-            <div class="icon-box">
+          <a href="" class="helpline-box">
+            <!-- <div class="icon-box">
               <ion-icon name="call-outline"></ion-icon>
             </div>
             <div class="wrapper">
               <p class="helpline-title">For Further Inquires :</p>
-              <p class="helpline-number">+<?=telpFormat($dataProfile['telp'])?></p>
-            </div>
+              <p class="helpline-number">+</p>
+            </div> -->
           </a>
-          <a href="home.php" class="logo">
+          <a href="about.php" class="logo">
             <img src="./assets/images/doctrip-white.png" alt="DocTrip logo"/>
           </a>
           <div class="header-btn-group">
-            <button class="search-btn" aria-label="Search">
+            <!-- <button class="search-btn" aria-label="Search">
               <ion-icon name="search"></ion-icon>
-            </button>
+            </button> -->
             <button
               class="nav-open-btn"
               aria-label="Open Menu"
@@ -93,22 +93,13 @@
                 <a href="home.php" class="navbar-link" data-nav-link>home</a>
               </li>
               <li>
-                <a href="about.php" class="navbar-link" data-nav-link>about us</a>
-              </li>
-              <li>
                 <a href="trip.php" class="navbar-link" data-nav-link>open trip</a>
               </li>
-              <!-- <li>
-                <a href="#promo" class="navbar-link" data-nav-link>promo</a>
-              </li> -->
               <li>
-                <a href="home.php#gallery" class="navbar-link" data-nav-link>gallery</a>
+                <a href="asia.php" class="navbar-link" data-nav-link>@doctrip.asia</a>
               </li>
               <li>
-                <a href="home.php#client" class="navbar-link" data-nav-link>client</a>
-              </li>
-              <li>
-                <a href="home.php#contact" class="navbar-link" data-nav-link>contact us</a>
+                <a href="trans.php" class="navbar-link" data-nav-link>@doctrans</a>
               </li>
             </ul>
           </nav>
@@ -125,7 +116,7 @@
           <div class="container">
             <p class="section-subtitle">Detail Paket Tour</p>
             <?php
-                if (mysqli_num_rows($resultDetailTrip) > 0) {
+              if (mysqli_num_rows($resultDetailTrip) > 0) {
             ?>
                 <h2 class="h2 section-title"><?=$dataDetailTrip['name']?></h2>
 
@@ -145,7 +136,7 @@
 
                 <h3>SCHEDULE <?=date("Y")?></h3>
                 <?php
-                    if (mysqli_num_rows($resultSchedule) > 0) {
+                  if (mysqli_num_rows($resultSchedule) > 0) {
                 ?>
                     <table>
                         <tr>
@@ -198,9 +189,9 @@
                         </tr>
                     </table>
                 <?php
-                    } else {
-                        echo "No Schedule In This Trip Yet";
-                    }
+                  } else {
+                      echo "No Schedule In This Trip Yet";
+                  }
                 ?>
 
                 <div class="box">
@@ -210,7 +201,7 @@
                 </div>
 
                 <h3>MEETING POINT</h3>
-                <p><?=$dataDetailTrip['meet']?></p>
+                <a href="<?=$dataDetailTrip['location']?>" target="_blank"><p><?=$dataDetailTrip['meet']?></p></a>
                 <br>
 
                 <h3>INCLUDE</h3>
@@ -232,9 +223,9 @@
                 <a href="https://wa.me/<?=waFormat($wa)?>" target="_blank" style="width: fit-content;" class="btn btn-light">BOOK NOW</a>
                 <br>
             <?php
-                } else {
-                    echo "No Data Available";
-                }
+              } else {
+                  echo "No Data Available";
+              }
             ?>
           </div>
         </section>
@@ -278,7 +269,7 @@
 
           <div class="footer-form">
             <h4 class="contact-title">Alamat Kami</h4>
-            <?=$dataProfile['location']?>
+            <a href="<?=$dataProfile['location']?>" target="_blank"><?=$dataProfile['address']?></a>
           </div>
         </div>
       </div>

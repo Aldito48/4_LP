@@ -463,76 +463,74 @@
   
   
   /*-----------------------------------*\
- * #POPULAR
-\*-----------------------------------*/
-
-.popular { padding-block: var(--section-padding); margin-top: 100px; }
-
-.popular-list,
-.popular-list > li:not(:last-child) { margin-bottom: 30px; }
-
-.popular-link {
-  width: 100%;
-  height: 100%;
-}
-
-.popular-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: hidden;
-  height: auto;
-  border-radius: var(--radius-25);
-  background: var(--white);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.popular-card .card-img { height: 100%; }
-
-.popular-card .card-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.popular-card .card-content {
-  padding: 20px;
-}
-
-
-.popular-card .card-rating {
-  background: var(--onyx);
-  color: var(--white);
-  display: flex;
-  align-items: center;
-  gap: 1px;
-  width: fit-content;
-  padding: 6px 10px;
-  border-radius: 20px;
-  font-size: 14px;
-  border: 2px solid var(--light-blue);
-}
-
-.popular-card .harga{
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.popular-card .card-subtitle {
-  color: var(--blue-ncs);
-  font-size: var(--fs-6);
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-
-.popular-card .card-title { margin-bottom: 5px; }
-
-.popular-card :is(.card-subtitle, .card-title) > a { color: inherit; }
-
-.popular .btn { margin-inline: auto; }
-
+   * #POPULAR
+  \*-----------------------------------*/
+  
+  .popular { padding-top: 180px; }
+  
+  .popular-list,
+  .popular-list > li:not(:last-child) { margin-bottom: 30px; }
+  
+  .popular-link {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .popular-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-25);
+    height: 430px;
+  }
+  
+  .popular-card .card-img { height: 100%; }
+  
+  .popular-card .card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .popular-card .card-content {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: var(--white);
+    border-radius: var(--radius-25);
+    padding: 20px;
+  }
+  
+  
+  .popular-card .card-rating {
+    background: var(--onyx);
+    color: var(--white);
+    position: absolute;
+    top: 0;
+    right: 25px;
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    transform: translateY(-50%);
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    border: 2px solid var(--light-blue);
+  }
+  
+  .popular-card .card-subtitle {
+    color: var(--blue-ncs);
+    font-size: var(--fs-6);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  
+  .popular-card .card-title { margin-bottom: 5px; }
+  
+  .popular-card :is(.card-subtitle, .card-title) > a { color: inherit; }
+  
+  .popular .btn { margin-inline: auto; }
+  
   
   
   
@@ -713,6 +711,30 @@
   .private .section-text { font-size: var(--fs-5); }
   
   
+
+
+
+  /*-----------------------------------*\
+   * #SEWA
+  \*-----------------------------------*/
+
+  .sewa {
+    background-image: url("../images/hiace.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: hsla(0, 0%, 0%, 0.7);
+    background-blend-mode: overlay;
+    padding-block: var(--section-padding);
+    margin-top: 200px;
+    margin-bottom: 40px;
+  }
+  
+  .sewa :is(.section-subtitle, .section-title, .section-text) { color: var(--white); }
+  
+  .sewa .section-text { font-size: var(--fs-5); }
+
+
   
   
   
@@ -956,7 +978,7 @@
       --padding: 12px 30px;
     }
   
-    section:not(.cta):not(.private) :is(.section-subtitle, .section-title, .section-text) {
+    section:not(.cta):not(.private):not(.sewa) :is(.section-subtitle, .section-title, .section-text) {
       text-align: center;
     }
   
@@ -1183,6 +1205,22 @@
     .private-content { width: calc(100% - 225px); }
   
     .private .section-text { margin-inline: 0; }
+
+
+
+    /**
+     * SEWA
+     */
+
+    .sewa .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .sewa-content { width: calc(100% - 225px); }
+
+    .sewa .section-text { margin-inline: 0; }
   
   
   
@@ -1340,6 +1378,13 @@
      */
   
      .private .section-title { max-width: 25ch; }
+
+
+     /**
+      * SEWA
+      */
+
+    .sewa .section-title { max-width: 25ch; }
   
   
     /**

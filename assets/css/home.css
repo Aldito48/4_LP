@@ -484,10 +484,14 @@ body { background: var(--white); }
 }
 
 .popular-card {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   overflow: hidden;
+  height: auto;
   border-radius: var(--radius-25);
-  height: 430px;
+  background: var(--white);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .popular-card .card-img { height: 100%; }
@@ -499,12 +503,6 @@ body { background: var(--white); }
 }
 
 .popular-card .card-content {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
-  background: var(--white);
-  border-radius: var(--radius-25);
   padding: 20px;
 }
 
@@ -512,17 +510,21 @@ body { background: var(--white); }
 .popular-card .card-rating {
   background: var(--onyx);
   color: var(--white);
-  position: absolute;
-  top: 0;
-  right: 25px;
   display: flex;
   align-items: center;
   gap: 1px;
-  transform: translateY(-50%);
+  width: fit-content;
   padding: 6px 10px;
   border-radius: 20px;
   font-size: 14px;
   border: 2px solid var(--light-blue);
+}
+
+.popular-card .harga{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .popular-card .card-subtitle {
@@ -783,7 +785,7 @@ body { background: var(--white); }
 \*-----------------------------------*/
 
 .private {
-  background-image: url("../images/hero-banner.jpg");
+  background-image: url("../images/toba.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -935,6 +937,11 @@ address {
 }
 
 .footer-form .btn { width: 100%; }
+
+.footer-form a {
+  color: var(--white);
+  text-decoration: none;
+}
 
 .footer-bottom {
   --gunmetal: hsl(205, 36%, 17%);
@@ -1417,7 +1424,7 @@ address {
    * HERO
    */
 
-  .hero .container { max-width: 740px; }
+  .hero .container { max-width: 1000px; }
 
 
 

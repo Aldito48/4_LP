@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Doctor Trip Indonesia - Travel Agency</title>
     <link rel="shortcut icon" href="./favicon.png" type="image/svg+xml" />
-    <link rel="stylesheet" href="./assets/css/trip.css" />
+    <link rel="stylesheet" href="./assets/css/asia.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -114,39 +114,41 @@
         <section class="popular" id="trip">
           <div class="container">
             <?php
-              if (mysqli_num_rows($resultSpecialTrip) > 0) {
+              if (mysqli_num_rows($resultAsiaTrip) > 0) {
             ?>
+                <h2 class="h2 section-title">ASIA TRIP</h2>
                 <ul class="popular-list">
                   <?php
-                    while ($dataSpecialTrip = mysqli_fetch_array($resultSpecialTrip)) {
+                    while ($dataAsiaTrip = mysqli_fetch_array($resultAsiaTrip)) {
                   ?>
                       <li>
                         <div class="popular-card">
                           <figure class="card-img">
-                            <a class="popular-link" href="detailTrip.php?id=<?=$dataSpecialTrip['id']?>">
+                            <a class="popular-link" href="detailTrip.php?id=<?=$dataAsiaTrip['id']?>">
                               <img
-                                src="./storage/trip/<?=$dataSpecialTrip['file']?>"
+                                src="./storage/trip/<?=$dataAsiaTrip['file']?>"
                                 alt="gambar"
                                 loading="lazy"
                               />
                             </a>
                           </figure>
-                          <div class="card-content">
-                            <div class="harga">
-                              <div class="card-rating">
-                                <p>Rp <?=number_format($dataSpecialTrip['price'], 0, ',', '.')?> / orang</p>
-                              </div>
+                        <div class="card-content">
+                          <div class="harga">
+                            <!-- <small><del>Rp 2.000.000</del></small> -->
+                            <div class="card-rating">
+                              <p>Rp <?=number_format($dataAsiaTrip['price'], 0, ',', '.')?> / orang</p>
                             </div>
-                            <p class="card-subtitle">
-                              <a>sisa seat : <b><?=$dataSpecialTrip['seat']?></b></a>
-                            </p>
-                            <h3 class="h3 card-title">
-                              <a><?=$dataSpecialTrip['name']?></a>
-                            </h3>
-                            <p class="card-text">
-                              <?=$dataSpecialTrip['keterangan']?>
-                            </p>
-                            <a href="https://wa.me/<?=waFormat($wa)?>" target="_blank" class="btn-mini">Book now</a>
+                          </div>
+                          <p class="card-subtitle">
+                            <a>sisa seat : <b><?=$dataAsiaTrip['seat']?></b></a>
+                          </p>
+                          <h3 class="h3 card-title">
+                            <a><?=$dataAsiaTrip['name']?></a>
+                          </h3>
+                          <p class="card-text">
+                            <?=$dataAsiaTrip['keterangan']?>
+                          </p>
+                          <a href="https://wa.me/<?=waFormat($wa)?>?text=Halo%20Admin%20DoctorTrip!%0ASaya%20mau%20pesan%20*<?=$dataAsiaTrip['name']?>*" target="_blank" class="btn-mini">Book now</a>
                           </div>
                         </div>
                       </li>
@@ -155,91 +157,8 @@
                   ?>
                 </ul>
             <?php
-              }
-              if (mysqli_num_rows($resultOpenTrip) > 0) {
-            ?>
-                <ul class="popular-list">
-                  <?php
-                    while ($dataOpenTrip = mysqli_fetch_array($resultOpenTrip)) {
-                  ?>
-                      <li>
-                        <div class="popular-card">
-                          <figure class="card-img">
-                            <a class="popular-link" href="detailTrip.php?id=<?=$dataOpenTrip['id']?>">
-                              <img
-                                src="./storage/trip/<?=$dataOpenTrip['file']?>"
-                                alt="gambar"
-                                loading="lazy"
-                              />
-                            </a>
-                          </figure>
-                          <div class="card-content">
-                            <div class="harga">
-                              <div class="card-rating">
-                                <p>Rp <?=number_format($dataOpenTrip['price'], 0, ',', '.')?> / orang</p>
-                              </div>
-                            </div>
-                            <p class="card-subtitle">
-                              <a>sisa seat : <b><?=$dataOpenTrip['seat']?></b></a>
-                            </p>
-                            <h3 class="h3 card-title">
-                              <a><?=$dataOpenTrip['name']?></a>
-                            </h3>
-                            <p class="card-text">
-                              <?=$dataOpenTrip['keterangan']?>
-                            </p>
-                            <a href="https://wa.me/<?=waFormat($wa)?>" target="_blank" class="btn-mini">Book now</a>
-                          </div>
-                        </div>
-                      </li>
-                  <?php
-                    }
-                  ?>
-                </ul>
-            <?php
-              }
-              if (mysqli_num_rows($resultPromoTrip) > 0) {
-            ?>
-                <ul class="popular-list">
-                  <?php
-                    while ($dataPromoTrip = mysqli_fetch_array($resultPromoTrip)) {
-                  ?>
-                      <li>
-                        <div class="popular-card">
-                          <figure class="card-img">
-                            <a class="popular-link" href="detailTrip.php?id=<?=$dataPromoTrip['id']?>">
-                              <img
-                                src="./storage/trip/<?=$dataPromoTrip['file']?>"
-                                alt="gambar"
-                                loading="lazy"
-                              />
-                            </a>
-                          </figure>
-                          <div class="card-content">
-                            <div class="harga">
-                              <small><del>Rp <?=$dataPromoTrip['aft_price']?></del></small>
-                              <div class="card-rating">
-                                <p>Rp <?=number_format($dataPromoTrip['price'], 0, ',', '.')?> / orang</p>
-                              </div>
-                            </div>
-                            <p class="card-subtitle">
-                              <a>sisa seat : <b><?=$dataPromoTrip['seat']?></b></a>
-                            </p>
-                            <h3 class="h3 card-title">
-                              <a><?=$dataPromoTrip['name']?></a>
-                            </h3>
-                            <p class="card-text">
-                              <?=$dataPromoTrip['keterangan']?>
-                            </p>
-                            <a href="https://wa.me/<?=waFormat($wa)?>" target="_blank" class="btn-mini">Book now</a>
-                          </div>
-                        </div>
-                      </li>
-                  <?php
-                    }
-                  ?>
-                </ul>
-            <?php
+              } else {
+                echo "No Data Available";
               }
             ?>
           </div>

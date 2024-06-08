@@ -828,6 +828,11 @@ address {
 
 .footer-form .btn { width: 100%; }
 
+.footer-form a {
+  color: var(--white);
+  text-decoration: none;
+}
+
 .footer-bottom {
   --gunmetal: hsl(205, 36%, 17%);
   background: var(--gunmetal);

@@ -27,22 +27,22 @@
       <div class="overlay" data-overlay></div>
       <div class="header-top">
         <div class="container">
-          <a href="tel:+<?=$dataProfile['telp']?>" class="helpline-box">
-            <div class="icon-box">
+          <a href="" class="helpline-box">
+            <!-- <div class="icon-box">
               <ion-icon name="call-outline"></ion-icon>
             </div>
             <div class="wrapper">
               <p class="helpline-title">For Further Inquires :</p>
-              <p class="helpline-number">+<?=telpFormat($dataProfile['telp'])?></p>
-            </div>
+              <p class="helpline-number">+</p>
+            </div> -->
           </a>
-          <a href="home.php" class="logo">
+          <a href="about.php" class="logo">
             <img src="./assets/images/doctrip-white.png" alt="DocTrip logo"/>
           </a>
           <div class="header-btn-group">
-            <button class="search-btn" aria-label="Search">
+            <!-- <button class="search-btn" aria-label="Search">
               <ion-icon name="search"></ion-icon>
-            </button>
+            </button> -->
             <button
               class="nav-open-btn"
               aria-label="Open Menu"
@@ -93,22 +93,13 @@
                 <a href="home.php" class="navbar-link" data-nav-link>home</a>
               </li>
               <li>
-                <a href="about.php" class="navbar-link" data-nav-link>about us</a>
-              </li>
-              <li>
                 <a href="trip.php" class="navbar-link" data-nav-link>open trip</a>
               </li>
-              <!-- <li>
-                <a href="#promo" class="navbar-link" data-nav-link>promo</a>
-              </li> -->
               <li>
-                <a href="home.php#gallery" class="navbar-link" data-nav-link>gallery</a>
+                <a href="asia.php" class="navbar-link" data-nav-link>@doctrip.asia</a>
               </li>
               <li>
-                <a href="home.php#client" class="navbar-link" data-nav-link>client</a>
-              </li>
-              <li>
-                <a href="home.php#contact" class="navbar-link" data-nav-link>contact us</a>
+                <a href="trans.php" class="navbar-link" data-nav-link>@doctrans</a>
               </li>
             </ul>
           </nav>
@@ -122,9 +113,10 @@
       <article>
         <section class="hero" id="home">
           <div class="container">
-            <h2 class="h1 hero-title">DI BAWA<br>HEALING AJA !!</h2>
+            <h2 class="h1 hero-title">OBAT PALING BAHAGIA<br>ADALAH LIBURAN</h2>
             <p class="hero-text">
-              Doctor Trip Indonesia bisa menjadi teman perjalanan terbaik bagi kamu Travellers.
+              OPEN TRIP TERBESAR DI SUMATERA. SUDAH RIBUAN ALUMNI PRIVATE DAN OPEN TRIP.
+              <br>
               #HealingWithDoctorTrip
             </p>
             <div class="btn-group">
@@ -134,115 +126,93 @@
           </div>
         </section>
 
-        <!-- <section class="tour-search" id="about">
-          <div class="container">
-            <p class="section-subtitle">usefull information</p>
-            <h2 class="h2 section-title">ABOUT US</h2>
-            <div class="box">
-              <a href="home.php" class="logo">
-                <img src="./assets/images/doctrip-white.png" alt="DocTrip logo"/>
-              </a>
-              <p class="tour-text">
-              Doctor Trip Indonesia merupakan badan usaha yang bergerak dibidang tour and travel
-              yang menyediakan layanan open trip maupun private trip yang semakin mudah, hemat dan menyenangkan
-              ke berbagai destinasi menarik.
-              Doctor Trip Indonesia kini sudah menjalin kerjasama dengan berbagai
-              penyedia jasa pendukung perjalanan dan menjamin kenyamanan Travellers mulai dari penginapan,
-              transportasi, destinasi wisata, serta Travelmate yang sudah berpengalaman untuk menemani liburan kamu agar lebih berkesan.
-              </p>
-            </div>
-          </div>
-        </section> -->
-
         <section class="popular" id="trip">
           <div class="container">
-            <p class="section-subtitle">Uncover place</p>
             <?php
               if (mysqli_num_rows($resultSpecialTrip) > 0) {
             ?>
-              <h2 class="h2 section-title">SPECIAL TRIP</h2>
-              <p class="section-text">
-                Paket Special Tour Doctor Trip
-              </p>
-              <ul class="popular-list">
-                <?php
-                  while ($dataSpecialTrip = mysqli_fetch_array($resultSpecialTrip)) {
-                ?>
-                  <li>
-                    <div class="popular-card">
-                      <figure class="card-img">
-                        <a class="popular-link" href="detailTrip.php?id=<?=$dataSpecialTrip['id']?>">
-                          <img
-                            src="./storage/trip/<?=$dataSpecialTrip['file']?>"
-                            alt="gambar"
-                            loading="lazy"
-                          />
-                        </a>
-                      </figure>
-                      <div class="card-content">
-                        <div class="card-rating">
-                          <p>Rp <?=number_format($dataSpecialTrip['price'], 0, ',', '.')?> / orang</p>
+                <h2 class="h2 section-title">SPECIAL TRIP</h2>
+                <ul class="popular-list">
+                  <?php
+                    while ($dataSpecialTrip = mysqli_fetch_array($resultSpecialTrip)) {
+                  ?>
+                    <li>
+                      <div class="popular-card">
+                        <figure class="card-img">
+                          <a class="popular-link" href="detailTrip.php?id=<?=$dataSpecialTrip['id']?>">
+                            <img
+                              src="./storage/trip/<?=$dataSpecialTrip['file']?>"
+                              alt="gambar"
+                              loading="lazy"
+                            />
+                          </a>
+                        </figure>
+                        <div class="card-content">
+                          <div class="harga">
+                            <div class="card-rating">
+                              <p>Rp <?=number_format($dataSpecialTrip['price'], 0, ',', '.')?> / orang</p>
+                            </div>
+                          </div>
+                          <p class="card-subtitle">
+                            <a>sisa seat : <b><?=$dataSpecialTrip['seat']?></b></a>
+                          </p>
+                          <h3 class="h3 card-title">
+                            <a><?=$dataSpecialTrip['name']?></a>
+                          </h3>
+                          <p class="card-text">
+                            <?=$dataSpecialTrip['keterangan']?>
+                          </p>
+                          <a href="https://wa.me/<?=waFormat($wa)?>?text=Halo%20Admin%20DoctorTrip!%0ASaya%20mau%20pesan%20*<?=$dataSpecialTrip['name']?>*" target="_blank" class="btn-mini">Book now</a>
                         </div>
-                        <p class="card-subtitle">
-                          <a><?=$dataSpecialTrip['period']?></a>
-                        </p>
-                        <h3 class="h3 card-title">
-                          <a><?=$dataSpecialTrip['name']?></a>
-                        </h3>
-                        <p class="card-text">
-                          <?=$dataSpecialTrip['keterangan']?>
-                        </p>
-                        <a href="https://wa.me/<?=waFormat($wa)?>" target="_blank" class="btn-mini">Book now</a>
                       </div>
-                    </div>
-                  </li>
-                <?php
-                  }
-                ?>
-              </ul>
+                    </li>
+                  <?php
+                    }
+                  ?>
+                </ul>
             <?php
               } else if (mysqli_num_rows($resultPromoTrip) > 0) {
             ?>
-              <h2 class="h2 section-title">PROMO</h2>
-              <p class="section-text">
-                Paket Promo Doctor Trip
-              </p>
-              <ul class="popular-list">
-                <?php
-                  while ($dataPromoTrip = mysqli_fetch_array($resultPromoTrip)) {
-                ?>
-                  <li>
-                    <div class="popular-card">
-                      <figure class="card-img">
-                        <a class="popular-link" href="detailTrip.php?id=<?=$dataPromoTrip['id']?>">
-                          <img
-                            src="./storage/trip/<?=$dataPromoTrip['file']?>"
-                            alt="gambar"
-                            loading="lazy"
-                          />
-                        </a>
-                      </figure>
-                      <div class="card-content">
-                        <div class="card-rating">
-                          <p>Rp <?=number_format($dataPromoTrip['price'], 0, ',', '.')?> / orang</p>
+                <h2 class="h2 section-title">PROMO</h2>
+                <ul class="popular-list">
+                  <?php
+                    while ($dataPromoTrip = mysqli_fetch_array($resultPromoTrip)) {
+                  ?>
+                    <li>
+                      <div class="popular-card">
+                        <figure class="card-img">
+                          <a class="popular-link" href="detailTrip.php?id=<?=$dataPromoTrip['id']?>">
+                            <img
+                              src="./storage/trip/<?=$dataPromoTrip['file']?>"
+                              alt="gambar"
+                              loading="lazy"
+                            />
+                          </a>
+                        </figure>
+                        <div class="card-content">
+                          <div class="harga">
+                            <small><del>Rp <?=$dataPromoTrip['aft_price']?></del></small>
+                            <div class="card-rating">
+                              <p>Rp <?=number_format($dataPromoTrip['price'], 0, ',', '.')?> / orang</p>
+                            </div>
+                          </div>
+                          <p class="card-subtitle">
+                            <a>sisa seat : <b><?=$dataPromoTrip['seat']?></b></a>
+                          </p>
+                          <h3 class="h3 card-title">
+                            <a><?=$dataPromoTrip['name']?></a>
+                          </h3>
+                          <p class="card-text">
+                            <?=$dataPromoTrip['keterangan']?>
+                          </p>
+                          <a href="https://wa.me/<?=waFormat($wa)?>" target="_blank" class="btn-mini">Book now</a>
                         </div>
-                        <p class="card-subtitle">
-                          <a><?=$dataPromoTrip['period']?></a>
-                        </p>
-                        <h3 class="h3 card-title">
-                          <a><?=$dataPromoTrip['name']?></a>
-                        </h3>
-                        <p class="card-text">
-                          <?=$dataPromoTrip['keterangan']?>
-                        </p>
-                        <a href="https://wa.me/<?=waFormat($wa)?>" target="_blank" class="btn-mini">Book now</a>
                       </div>
-                    </div>
-                  </li>
-                <?php
-                  }
-                ?>
-              </ul>
+                    </li>
+                  <?php
+                    }
+                  ?>
+                </ul>
             <?php
               } else {
                 echo "No Data Available";
@@ -365,208 +335,23 @@
           </div>
         </section>
 
-        <!-- <section class="package" id="promo">
-          <div class="container">
-            <p class="section-subtitle">Popular Promo</p>
-
-            <h2 class="h2 section-title">Checkout Our Promo</h2>
-
-            <p class="section-text">
-              liburan dengan budget kantong akhir bulan !!
-            </p>
-
-            <ul class="package-list">
-              <li>
-                <div class="package-card">
-                  <figure class="card-banner">
-                    <img
-                      src="./assets/images/packege-1.jpg"
-                      alt="Experience The Great Holiday On Beach"
-                      loading="lazy"
-                    />
-                  </figure>
-
-                  <div class="card-content">
-                    <h3 class="h3 card-title">
-                      Experience The Great Holiday On Beach
-                    </h3>
-
-                    <p class="card-text">
-                      nikmati potongan harga sebesar 200rb dan kamu bisa menjelajahi
-                      samosir sepuasnya !!
-                    </p>
-
-                    <ul class="card-meta-list">
-                      <li class="card-meta-item">
-                        <div class="meta-box">
-                          <ion-icon name="time"></ion-icon>
-
-                          <p class="text">2H/3M</p>
-                        </div>
-                      </li>
-
-                      <li class="card-meta-item">
-                        <div class="meta-box">
-                          <ion-icon name="location"></ion-icon>
-
-                          <p class="text">Malaysia</p>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div class="card-price">
-                    <div class="wrapper">
-                      <p class="reviews"><del>Rp 1.500.000</del></p>
-                    </div>
-
-                    <p class="price">
-                      Rp 1.300.000
-                      <span>/ Orang</span>
-                    </p>
-
-                    <button class="btn btn-secondary">Book Now</button>
-                  </div>
-                </div>
-              </li>
-
-              <li>
-                <div class="package-card">
-                  <figure class="card-banner">
-                    <img
-                      src="./assets/images/packege-2.jpg"
-                      alt="Summer Holiday To The Oxolotan River"
-                      loading="lazy"
-                    />
-                  </figure>
-
-                  <div class="card-content">
-                    <h3 class="h3 card-title">
-                      Summer Holiday To The Oxolotan River
-                    </h3>
-
-                    <p class="card-text">
-                      nikmati potongan harga sebesar 200rb dan kamu bisa menjelajahi
-                      samosir sepuasnya !!
-                    </p>
-
-                    <ul class="card-meta-list">
-                      <li class="card-meta-item">
-                        <div class="meta-box">
-                          <ion-icon name="time"></ion-icon>
-
-                          <p class="text">2H/3M</p>
-                        </div>
-                      </li>
-
-                      <li class="card-meta-item">
-                        <div class="meta-box">
-                          <ion-icon name="location"></ion-icon>
-
-                          <p class="text">Malaysia</p>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div class="card-price">
-                    <div class="wrapper">
-                      <p class="reviews"><del>Rp 1.500.000</del></p>
-                    </div>
-
-                    <p class="price">
-                      Rp 1.300.000
-                      <span>/ Orang</span>
-                    </p>
-
-                    <button class="btn btn-secondary">Book Now</button>
-                  </div>
-                </div>
-              </li>
-
-              <li>
-                <div class="package-card">
-                  <figure class="card-banner">
-                    <img
-                      src="./assets/images/packege-3.jpg"
-                      alt="Santorini Island's Weekend Vacation"
-                      loading="lazy"
-                    />
-                  </figure>
-
-                  <div class="card-content">
-                    <h3 class="h3 card-title">
-                      Santorini Island's Weekend Vacation
-                    </h3>
-
-                    <p class="card-text">
-                      nikmati potongan harga sebesar 200rb dan kamu bisa menjelajahi
-                      samosir sepuasnya !!
-                    </p>
-
-                    <ul class="card-meta-list">
-                      <li class="card-meta-item">
-                        <div class="meta-box">
-                          <ion-icon name="time"></ion-icon>
-
-                          <p class="text">2H/3M</p>
-                        </div>
-                      </li>
-
-                      <li class="card-meta-item">
-                        <div class="meta-box">
-                          <ion-icon name="location"></ion-icon>
-
-                          <p class="text">Malaysia</p>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div class="card-price">
-                    <div class="wrapper">
-                      <p class="reviews"><del>Rp 1.500.000</del></p>
-                    </div>
-
-                    <p class="price">
-                      Rp 1.300.000
-                      <span>/ Orang</span>
-                    </p>
-
-                    <button class="btn btn-secondary">Book Now</button>
-                  </div>
-                </div>
-              </li>
-            </ul>
-
-            <button class="btn btn-light">View All Promo</button>
-          </div>
-        </section> -->
-
         <section class="gallery" id="gallery">
           <div class="container">
-            <p class="section-subtitle">Photo Gallery</p>
 
-            <h2 class="h2 section-title">Photo's From Travellers</h2>
-
-            <p class="section-text">
-              Fusce hic augue velit wisi quibusdam pariatur, iusto primis, nec
-              nemo, rutrum. Vestibulum cumque laudantium. Sit ornare mollitia
-              tenetur, aptent.
-            </p>
+            <h2 class="h2 section-title">Photo's Gallery</h2>
 
             <ul class="gallery-list">
               <?php
                 while ($dataGalery = mysqli_fetch_array($resultGalery)) {
               ?>
-                <li class="gallery-item">
-                  <figure class="gallery-image">
-                    <img
-                      src="./storage/galery/<?=$dataGalery['file']?>"
-                      alt="Gallery image"
-                    />
-                  </figure>
-                </li>
+                  <li class="gallery-item">
+                    <figure class="gallery-image">
+                      <img
+                        src="./storage/galery/<?=$dataGalery['file']?>"
+                        alt="Gallery image"
+                      />
+                    </figure>
+                  </li>
               <?php
                 }
               ?>
@@ -576,41 +361,19 @@
           </div>
         </section>
 
-        <section class="sewa" id="sewa">
-          <div class="container">
-            <div class="private-content">
-              <p class="section-subtitle">MAU SEWA HIACE/ELF?</p>
-
-              <h2 class="h2 section-title">
-                LIBURAN BARENG BESTIE/KELUARGA/<br>SATU KANTOR
-              </h2>
-
-              <p class="section-text">
-                Yuk, Hubungi kami sekarang !!
-              </p>
-            </div>
-
-            <a href="https://wa.me/<?=waFormat($wa_private)?>" target="_blank" class="btn btn-secondary">Contact Us !</a>
-          </div>
-        </section>
-
         <section class="banner" id="client">
           <div class="container">
-            <p class="section-subtitle">famous client</p>
             <h2 class="h2 section-title">OUR CLIENT</h2>
-            <p class="section-text">
-              Perusahaan Ternama Yang Telah Menggunakan Product Kami
-            </p>
             <div class="banner__wrapper">
               <?php
                 while ($dataMitra = mysqli_fetch_array($resultMitra)) {
               ?>
-                <div class="banner__card">
-                  <img src="./storage/mitra/<?=$dataMitra['file']?>" alt="banner" />
-                  <div class="banner__content">
-                    <h4><?=$dataMitra['name']?></h4>
+                  <div class="banner__card">
+                    <img src="./storage/mitra/<?=$dataMitra['file']?>" alt="banner" />
+                    <div class="banner__content">
+                      <h4><?=$dataMitra['name']?></h4>
+                    </div>
                   </div>
-                </div>
               <?php
                 }
               ?>
@@ -678,7 +441,7 @@
 
           <div class="footer-form">
             <h4 class="contact-title">Alamat Kami</h4>
-            <?=$dataProfile['location']?>
+            <a href="<?=$dataProfile['location']?>" target="_blank"><?=$dataProfile['address']?></a>
           </div>
         </div>
       </div>
