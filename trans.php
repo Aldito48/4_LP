@@ -68,7 +68,7 @@
               </a>
             </li>
             <li>
-              <a href="https://www.instagram.com/<?=$instagram?>" target="_blank" class="social-link">
+              <a href="https://www.instagram.com/<?=$instagram_trans?>" target="_blank" class="social-link">
                 <ion-icon name="logo-instagram"></ion-icon>
               </a>
             </li>
@@ -135,7 +135,7 @@
       <div class="footer-top">
         <div class="container">
           <div class="footer-brand">
-            <a href="#" class="logo">
+            <a href="about.php" class="logo">
               <img src="./assets/images/doctrip-white.png" alt="DocTrip logo" />
             </a>
 
@@ -168,7 +168,7 @@
 
           <div class="footer-form">
             <h4 class="contact-title">Alamat Kami</h4>
-            <a href="<?=$dataProfile['location']?>" target="_blank"><?=$dataProfile['address']?></a>
+            <a href="<?=$dataProfile['location']?>" target="_blank" class="contact-link"><?=$dataProfile['address']?></a>
           </div>
         </div>
       </div>

@@ -44,3 +44,29 @@ window.addEventListener("scroll", function () {
   }
 
 });
+
+function openPopup() {
+  document.getElementById('sKPopup').style.display = "block";
+}
+
+function closePopup() {
+  document.getElementById('sKPopup').style.display = "none";
+}
+
+window.onclick = function(event) {
+  var popup = document.getElementById('sKPopup');
+  if (event.target == popup) {
+      popup.style.display = "none";
+  }
+}
+
+$(document).ready(function() {
+  $('.evaluate_wrapper').slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    nextArrow: $('.next'),
+    prevArrow: $('.prev'),
+  });
+});

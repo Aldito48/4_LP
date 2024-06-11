@@ -68,7 +68,7 @@
               </a>
             </li>
             <li>
-              <a href="https://www.instagram.com/<?=$instagram?>" target="_blank" class="social-link">
+              <a href="https://www.instagram.com/<?=$instagram_asia?>" target="_blank" class="social-link">
                 <ion-icon name="logo-instagram"></ion-icon>
               </a>
             </li>
@@ -134,19 +134,32 @@
                           </figure>
                         <div class="card-content">
                           <div class="harga">
-                            <!-- <small><del>Rp 2.000.000</del></small> -->
-                            <div class="card-rating">
-                              <p>Rp <?=number_format($dataAsiaTrip['price'], 0, ',', '.')?> / orang</p>
-                            </div>
+                            <?php
+                              if ($dataAsiaTrip['aft_price'] !== null && !empty($dataAsiaTrip['aft_price']) && $dataAsiaTrip['aft_price'] > 0) {
+                            ?>
+                                <h4><del>Rp <?=number_format($dataAsiaTrip['price'])?></del></h4>
+                                <div class="card-rating">
+                                  <h4>Rp <?=number_format($dataAsiaTrip['aft_price'], 0, ',', '.')?> / orang</h4>
+                                </div>
+                            <?php
+                              } else {
+                            ?>
+                                <div class="card-rating">
+                                  <h3>Rp <?=number_format($dataAsiaTrip['price'], 0, ',', '.')?> / orang</h3>
+                                </div>
+                            <?php
+                              }
+                            ?>
                           </div>
+                          <hr><br>
                           <p class="card-subtitle">
-                            <a>sisa seat : <b><?=$dataAsiaTrip['seat']?></b></a>
+                            <a>sisa seat : <b><?=$dataAsiaTrip['seat']?></b> (<?=$dataAsiaTrip['from_date']?> ~ <?=$dataAsiaTrip['to_date']?>)</a>
                           </p>
                           <h3 class="h3 card-title">
                             <a><?=$dataAsiaTrip['name']?></a>
                           </h3>
                           <p class="card-text">
-                            <?=$dataAsiaTrip['keterangan']?>
+                            <?=$dataAsiaTrip['sub']?>
                           </p>
                           <a href="https://wa.me/<?=waFormat($wa)?>?text=Halo%20Admin%20DoctorTrip!%0ASaya%20mau%20pesan%20*<?=$dataAsiaTrip['name']?>*" target="_blank" class="btn-mini">Book now</a>
                           </div>
@@ -170,7 +183,7 @@
       <div class="footer-top">
         <div class="container">
           <div class="footer-brand">
-            <a href="#" class="logo">
+            <a href="about.php" class="logo">
               <img src="./assets/images/doctrip-white.png" alt="DocTrip logo" />
             </a>
 
@@ -203,7 +216,7 @@
 
           <div class="footer-form">
             <h4 class="contact-title">Alamat Kami</h4>
-            <a href="<?=$dataProfile['location']?>" target="_blank"><?=$dataProfile['address']?></a>
+            <a href="<?=$dataProfile['location']?>" class="contact-link" target="_blank"><?=$dataProfile['address']?></a>
           </div>
         </div>
       </div>

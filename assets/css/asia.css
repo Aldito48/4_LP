@@ -501,8 +501,7 @@
 
 
 .popular-card .card-rating {
-  background: var(--onyx);
-  color: var(--white);
+  color: var(--black);
   display: flex;
   align-items: center;
   gap: 1px;
@@ -510,7 +509,7 @@
   padding: 6px 10px;
   border-radius: 20px;
   font-size: 14px;
-  border: 2px solid var(--light-blue);
+  font-weight: bold;
 }
 
 .popular-card .harga{
@@ -829,11 +828,6 @@
   }
   
   .footer-form .btn { width: 100%; }
-
-  .footer-form a {
-    color: var(--white);
-    text-decoration: none;
-  }
   
   .footer-bottom {
     --gunmetal: hsl(205, 36%, 17%);

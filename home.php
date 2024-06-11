@@ -20,6 +20,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
   </head>
 
   <body id="top">
@@ -128,10 +129,10 @@
 
         <section class="popular" id="trip">
           <div class="container">
+            <h2 class="h2 section-title">OPEN TRIP</h2>
             <?php
               if (mysqli_num_rows($resultSpecialTrip) > 0) {
             ?>
-                <h2 class="h2 section-title">SPECIAL TRIP</h2>
                 <ul class="popular-list">
                   <?php
                     while ($dataSpecialTrip = mysqli_fetch_array($resultSpecialTrip)) {
@@ -149,18 +150,32 @@
                         </figure>
                         <div class="card-content">
                           <div class="harga">
-                            <div class="card-rating">
-                              <p>Rp <?=number_format($dataSpecialTrip['price'], 0, ',', '.')?> / orang</p>
-                            </div>
+                            <?php
+                              if ($dataSpecialTrip['aft_price'] !== null && !empty($dataSpecialTrip['aft_price']) && $dataSpecialTrip['aft_price'] > 0) {
+                            ?>
+                                <p><del>Rp <?=number_format($dataSpecialTrip['price'])?></del></p>
+                                <div class="card-rating">
+                                  <h3>Rp <?=number_format($dataSpecialTrip['aft_price'], 0, ',', '.')?> / orang</h3>
+                                </div>
+                            <?php
+                              } else {
+                            ?>
+                                <div class="card-rating">
+                                  <h3>Rp <?=number_format($dataSpecialTrip['price'], 0, ',', '.')?> / orang</h3>
+                                </div>
+                            <?php
+                              }
+                            ?>
                           </div>
+                          <hr><br>
                           <p class="card-subtitle">
-                            <a>sisa seat : <b><?=$dataSpecialTrip['seat']?></b></a>
+                            <a>sisa seat : <b><?=$dataSpecialTrip['seat']?></b> (<?=$dataSpecialTrip['from_date']?> ~ <?=$dataSpecialTrip['to_date']?>)</a>
                           </p>
                           <h3 class="h3 card-title">
                             <a><?=$dataSpecialTrip['name']?></a>
                           </h3>
                           <p class="card-text">
-                            <?=$dataSpecialTrip['keterangan']?>
+                            <?=$dataSpecialTrip['sub']?>
                           </p>
                           <a href="https://wa.me/<?=waFormat($wa)?>?text=Halo%20Admin%20DoctorTrip!%0ASaya%20mau%20pesan%20*<?=$dataSpecialTrip['name']?>*" target="_blank" class="btn-mini">Book now</a>
                         </div>
@@ -173,7 +188,6 @@
             <?php
               } else if (mysqli_num_rows($resultPromoTrip) > 0) {
             ?>
-                <h2 class="h2 section-title">PROMO</h2>
                 <ul class="popular-list">
                   <?php
                     while ($dataPromoTrip = mysqli_fetch_array($resultPromoTrip)) {
@@ -191,19 +205,31 @@
                         </figure>
                         <div class="card-content">
                           <div class="harga">
-                            <small><del>Rp <?=$dataPromoTrip['aft_price']?></del></small>
-                            <div class="card-rating">
-                              <p>Rp <?=number_format($dataPromoTrip['price'], 0, ',', '.')?> / orang</p>
-                            </div>
+                            <?php
+                              if ($dataPromoTrip['aft_price'] !== null && !empty($dataPromoTrip['aft_price']) && $dataPromoTrip['aft_price'] > 0) {
+                            ?>
+                                <p><del>Rp <?=number_format($dataPromoTrip['price'])?></del></p>
+                                <div class="card-rating">
+                                  <h3>Rp <?=number_format($dataPromoTrip['aft_price'], 0, ',', '.')?> / orang</h3>
+                                </div>
+                            <?php
+                              } else {
+                            ?>
+                                <div class="card-rating">
+                                  <h3>Rp <?=number_format($dataPromoTrip['price'], 0, ',', '.')?> / orang</h3>
+                                </div>
+                            <?php
+                              }
+                            ?>
                           </div>
                           <p class="card-subtitle">
-                            <a>sisa seat : <b><?=$dataPromoTrip['seat']?></b></a>
+                            <a>sisa seat : <b><?=$dataPromoTrip['seat']?></b> (<?=$dataPromoTrip['from_date']?> ~ <?=$dataPromoTrip['to_date']?>)</a>
                           </p>
                           <h3 class="h3 card-title">
                             <a><?=$dataPromoTrip['name']?></a>
                           </h3>
                           <p class="card-text">
-                            <?=$dataPromoTrip['keterangan']?>
+                            <?=$dataPromoTrip['sub']?>
                           </p>
                           <a href="https://wa.me/<?=waFormat($wa)?>" target="_blank" class="btn-mini">Book now</a>
                         </div>
@@ -218,100 +244,6 @@
                 echo "No Data Available";
               }
             ?>
-            
-            <!-- <h2 class="h2 section-title">OPEN TRIP</h2>
-            <p class="section-text">
-              Paket Open Tour Doctor Trip
-            </p>
-            <ul class="popular-list">
-              <li>
-                <div class="popular-card">
-                  <figure class="card-img">
-                    <a class="popular-link" href="#">
-                      <img
-                        src="./assets/images/popular-1.jpg"
-                        alt="San miguel, italy"
-                        loading="lazy"
-                      />
-                    </a>
-                  </figure>
-                  <div class="card-content">
-                    <div class="card-rating">
-                      <p>Rp 2.700.000 / orang</p>
-                    </div>
-                    <p class="card-subtitle">
-                      <a href="#">05/11/2024 ~ 06/11/2024</a>
-                    </p>
-                    <h3 class="h3 card-title">
-                      <a href="#">SPECIAL TRIP GENTING KL</a>
-                    </h3>
-                    <p class="card-text">
-                      GENTING + KUALA LUMPUR
-                    </p>
-                    <button class="btn-mini">Book now</button>
-                  </div>
-                </div>
-              </li>
-
-              <li>
-                <div class="popular-card">
-                  <figure class="card-img">
-                    <a class="popular-link" href="#">
-                      <img
-                        src="./assets/images/popular-2.jpg"
-                        alt="Burj khalifa, dubai"
-                        loading="lazy"
-                      />
-                    </a>
-                  </figure>
-                  <div class="card-content">
-                    <div class="card-rating">
-                      <p>Rp 2.700.000 / orang</p>
-                    </div>
-                    <p class="card-subtitle">
-                      <a href="#">05/11/2024 ~ 06/11/2024</a>
-                    </p>
-                    <h3 class="h3 card-title">
-                      <a href="#">SPECIAL TRIP GENTING KL</a>
-                    </h3>
-                    <p class="card-text">
-                      GENTING + KUALA LUMPUR
-                    </p>
-                    <button class="btn-mini">Book now</button>
-                  </div>
-                </div>
-              </li>
-
-              <li>
-                <div class="popular-card">
-                  <figure class="card-img">
-                    <a class="popular-link" href="#">
-                      <img
-                        src="./assets/images/popular-3.jpg"
-                        alt="Kyoto temple, japan"
-                        loading="lazy"
-                      />
-                    </a>
-                  </figure>
-
-                  <div class="card-content">
-                    <div class="card-rating">
-                      <p>Rp 2.700.000 / orang</p>
-                    </div>
-                    <p class="card-subtitle">
-                      <a href="#">05/11/2024 ~ 06/11/2024</a>
-                    </p>
-                    <h3 class="h3 card-title">
-                      <a href="#">SPECIAL TRIP GENTING KL</a>
-                    </h3>
-                    <p class="card-text">
-                      GENTING + KUALA LUMPUR
-                    </p>
-                    <button class="btn-mini">Book now</button>
-                  </div>
-                </div>
-              </li>
-            </ul> -->
 
             <a href="trip.php" style="width: fit-content;" class="btn btn-light">More Trip</a>
           </div>
@@ -338,7 +270,7 @@
         <section class="gallery" id="gallery">
           <div class="container">
 
-            <h2 class="h2 section-title">Photo's Gallery</h2>
+            <h2 class="h2 section-title">Traveller's Photos</h2>
 
             <ul class="gallery-list">
               <?php
@@ -357,7 +289,7 @@
               ?>
             </ul>
             <br>
-            <button class="btn btn-light" style="margin: auto;">View More Image</button>
+            <!-- <button class="btn btn-light" style="margin: auto;">View More Image</button> -->
           </div>
         </section>
 
@@ -398,8 +330,39 @@
           </div>
         </section>
 
-        <section class="maps" id="maps">
-          <iframe class="maps-loc" src="<?=$dataProfile['maps']?>" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <section class="review" id="review">
+          <div class="container">
+            <h2 class="h2 section-title">REVIEW</h2>
+            <ion-icon class="prev" name="chevron-back"></ion-icon>
+            <ion-icon class="next" name="chevron-forward"></ion-icon>
+            <div class="evaluate_wrapper">
+              <?php
+                if (mysqli_num_rows($resultReview) > 0) {
+                  while ($dataReview = mysqli_fetch_array($resultReview)) {
+              ?>
+                    <div class="evaluate">
+                      <ion-icon name="person" style="margin: auto;"></ion-icon>
+                      <h4><?=$dataReview['name']?></h4>
+                      <hr>
+                      <div class="evaluate-rating">
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                      </div>
+                      <hr>
+                      <p><?=$dataReview['message']?></p>
+                    </div>
+              <?php
+                  }
+                } else {
+                  echo "No Data Available";
+                }
+              ?>
+            </div>
+          </div>
+          <br>
         </section>
       </article>
     </main>
@@ -408,7 +371,7 @@
       <div class="footer-top">
         <div class="container">
           <div class="footer-brand">
-            <a href="#" class="logo">
+            <a href="about.php" class="logo">
               <img src="./assets/images/doctrip-white.png" alt="DocTrip logo" />
             </a>
 
@@ -441,7 +404,7 @@
 
           <div class="footer-form">
             <h4 class="contact-title">Alamat Kami</h4>
-            <a href="<?=$dataProfile['location']?>" target="_blank"><?=$dataProfile['address']?></a>
+            <a href="<?=$dataProfile['location']?>" class="contact-link" target="_blank"><?=$dataProfile['address']?></a>
           </div>
         </div>
       </div>
@@ -475,6 +438,8 @@
 
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/script.js"></script>
     <script

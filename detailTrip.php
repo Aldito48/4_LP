@@ -114,14 +114,14 @@
 
         <section class="package" id="detail">
           <div class="container">
-            <p class="section-subtitle">Detail Paket Tour</p>
+            <p class="section-subtitle">Detail Paket</p>
             <?php
               if (mysqli_num_rows($resultDetailTrip) > 0) {
             ?>
                 <h2 class="h2 section-title"><?=$dataDetailTrip['name']?></h2>
 
                 <p class="section-text">
-                <?=$dataDetailTrip['keterangan']?>
+                <?=$dataDetailTrip['sub']?>
                 </p>
 
                 <img
@@ -197,7 +197,17 @@
                 <div class="box">
                     <p>HARGA</p>
                     <hr>
-                    <h4>Rp <?=number_format($dataDetailTrip['price'], 0, ',', '.')?> / Orang</h4>
+                    <?php
+                      if ($dataDetailTrip['aft_price'] !== null && !empty($dataDetailTrip['aft_price']) && $dataDetailTrip['aft_price'] > 0) {
+                    ?>
+                        <h4>Rp <?=number_format($dataDetailTrip['aft_price'], 0, ',', '.')?> / Orang</h4>
+                    <?php
+                      } else {
+                    ?>
+                        <h4>Rp <?=number_format($dataDetailTrip['price'], 0, ',', '.')?> / Orang</h4>
+                    <?php
+                      }
+                    ?>
                 </div>
 
                 <h3>MEETING POINT</h3>
@@ -212,12 +222,47 @@
                 <p><?=$dataDetailTrip['exclude']?></p>
                 <br>
 
-                <h3>ITENARY</h3>
-                <p><?=$dataDetailTrip['itenary']?></p>
+                <h3><u>ITINERARY</u></h3>
+                <?php
+                  $itineraries = [];
+                  if (mysqli_num_rows($resultItinerary) > 0) {
+                    while ($row = mysqli_fetch_array($resultItinerary)) {
+                      $itineraries[] = $row;
+                    }
+                  }
+                ?>
+
+                <table class="itinerary">
+                  <thead>
+                    <tr>
+                      <?php
+                        foreach ($itineraries as $headItinerary) {
+                          echo "<th>" . htmlspecialchars($headItinerary['day']) . "</th>";
+                        }
+                      ?>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <?php
+                        foreach ($itineraries as $dataItinerary) {
+                          echo "<td>" . htmlspecialchars($dataItinerary['to_do']) . "</td>";
+                        }
+                      ?>
+                    </tr>
+                  </tbody>
+                </table>
                 <br>
 
-                <h3>S&K</h3>
-                <p><?=$dataDetailTrip['s_k']?></p>
+                <button class="popup-button" onclick="openPopup()">Tampilkan S&K</button>
+                <div id="sKPopup" class="popup">
+                  <div class="popup-content">
+                    <span class="close" onclick="closePopup()">&times;</span>
+                    <h3>Syarat & Ketentuan</h3>
+                    <br>
+                    <p><?=$dataDetailTrip['s_k']?></p>
+                  </div>
+                </div>
                 <br>
 
                 <a href="https://wa.me/<?=waFormat($wa)?>" target="_blank" style="width: fit-content;" class="btn btn-light">BOOK NOW</a>
@@ -236,7 +281,7 @@
       <div class="footer-top">
         <div class="container">
           <div class="footer-brand">
-            <a href="#" class="logo">
+            <a href="about.php" class="logo">
               <img src="./assets/images/doctrip-white.png" alt="DocTrip logo" />
             </a>
 
@@ -269,7 +314,7 @@
 
           <div class="footer-form">
             <h4 class="contact-title">Alamat Kami</h4>
-            <a href="<?=$dataProfile['location']?>" target="_blank"><?=$dataProfile['address']?></a>
+            <a href="<?=$dataProfile['location']?>" target="_blank" class="contact-link"><?=$dataProfile['address']?></a>
           </div>
         </div>
       </div>

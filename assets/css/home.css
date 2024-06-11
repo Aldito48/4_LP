@@ -475,6 +475,12 @@ body { background: var(--white); }
 
 .popular { padding-block: var(--section-padding); }
 
+.popular-list {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
 .popular-list,
 .popular-list > li:not(:last-child) { margin-bottom: 30px; }
 
@@ -491,10 +497,10 @@ body { background: var(--white); }
   height: auto;
   border-radius: var(--radius-25);
   background: var(--white);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
-.popular-card .card-img { height: 100%; }
+.popular-card .card-img { height: 350px; }
 
 .popular-card .card-img img {
   width: 100%;
@@ -508,8 +514,7 @@ body { background: var(--white); }
 
 
 .popular-card .card-rating {
-  background: var(--onyx);
-  color: var(--white);
+  color: var(--black);
   display: flex;
   align-items: center;
   gap: 1px;
@@ -517,7 +522,7 @@ body { background: var(--white); }
   padding: 6px 10px;
   border-radius: 20px;
   font-size: 14px;
-  border: 2px solid var(--light-blue);
+  font-weight: bold;
 }
 
 .popular-card .harga{
@@ -841,6 +846,85 @@ body { background: var(--white); }
 
 
 /*-----------------------------------*\
+ * #REVIEW
+\*-----------------------------------*/
+.review {
+  display: grid;
+  place-items: center;
+  padding-block: var(--section-padding);
+}
+
+.review .container {
+  position: relative;
+}
+
+.review .container .next {
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  font-size: 4em;
+  color: var(--light-blue);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.review .container .prev {
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  font-size: 4em;
+  color: var(--light-blue);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.review .container .evaluate_wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  height: auto;
+  margin: 0px auto;
+  overflow: hidden;
+  padding: 10px 0px 10px 0px;
+}
+
+.review .container .evaluate_wrapper .evaluate {
+  width: 100%;
+  height: fit-content;
+  display: inline-block;
+  background: var(--onyx);
+  color: var(--white);
+  border: 2px solid var(--light-blue);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.review .container .evaluate_wrapper .evaluate h4 {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.review .container .evaluate_wrapper .evaluate .evaluate-rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.review .container .evaluate_wrapper .evaluate p {
+  margin-top: 10px;
+}
+
+
+
+
+
+/*-----------------------------------*\
  * #MAPS
 \*-----------------------------------*/
 .maps {
@@ -938,10 +1022,6 @@ address {
 
 .footer-form .btn { width: 100%; }
 
-.footer-form a {
-  color: var(--white);
-  text-decoration: none;
-}
 
 .footer-bottom {
   --gunmetal: hsl(205, 36%, 17%);
@@ -1031,6 +1111,9 @@ address {
 @media (min-width: 350px) and (max-width: 580px) {
   .header-top .logo img { width: 70%; }
   .tour-search .container {
+    flex-direction: column;
+  }
+  .popular-list {
     flex-direction: column;
   }
   .maps .maps-loc {

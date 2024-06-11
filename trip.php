@@ -113,19 +113,20 @@
       <article>
         <section class="popular" id="trip">
           <div class="container">
+            <h2 class="h2 section-title">OPEN TRIP</h2>
             <?php
-              if (mysqli_num_rows($resultSpecialTrip) > 0) {
+              if (mysqli_num_rows($resultAllTrip) > 0) {
             ?>
                 <ul class="popular-list">
                   <?php
-                    while ($dataSpecialTrip = mysqli_fetch_array($resultSpecialTrip)) {
+                    while ($dataAllTrip = mysqli_fetch_array($resultAllTrip)) {
                   ?>
                       <li>
                         <div class="popular-card">
                           <figure class="card-img">
-                            <a class="popular-link" href="detailTrip.php?id=<?=$dataSpecialTrip['id']?>">
+                            <a class="popular-link" href="detailTrip.php?id=<?=$dataAllTrip['id']?>">
                               <img
-                                src="./storage/trip/<?=$dataSpecialTrip['file']?>"
+                                src="./storage/trip/<?=$dataAllTrip['file']?>"
                                 alt="gambar"
                                 loading="lazy"
                               />
@@ -133,18 +134,32 @@
                           </figure>
                           <div class="card-content">
                             <div class="harga">
-                              <div class="card-rating">
-                                <p>Rp <?=number_format($dataSpecialTrip['price'], 0, ',', '.')?> / orang</p>
-                              </div>
+                              <?php
+                                if ($dataAllTrip['aft_price'] !== null && !empty($dataAllTrip['aft_price']) && $dataAllTrip['aft_price'] > 0) {
+                              ?>
+                                  <p><del>Rp <?=number_format($dataAllTrip['price'])?></del></p>
+                                  <div class="card-rating">
+                                    <h3>Rp <?=number_format($dataAllTrip['aft_price'], 0, ',', '.')?> / orang</h3>
+                                  </div>
+                              <?php
+                                } else {
+                              ?>
+                                  <div class="card-rating">
+                                    <h3>Rp <?=number_format($dataAllTrip['price'], 0, ',', '.')?> / orang</h3>
+                                  </div>
+                              <?php
+                                }
+                              ?>
                             </div>
+                            <hr><br>
                             <p class="card-subtitle">
-                              <a>sisa seat : <b><?=$dataSpecialTrip['seat']?></b></a>
+                              <a>sisa seat : <b><?=$dataAllTrip['seat']?></b> (<?=$dataAllTrip['from_date']?> ~ <?=$dataAllTrip['to_date']?>)</a>
                             </p>
                             <h3 class="h3 card-title">
-                              <a><?=$dataSpecialTrip['name']?></a>
+                              <a><?=$dataAllTrip['name']?></a>
                             </h3>
                             <p class="card-text">
-                              <?=$dataSpecialTrip['keterangan']?>
+                              <?=$dataAllTrip['sub']?>
                             </p>
                             <a href="https://wa.me/<?=waFormat($wa)?>" target="_blank" class="btn-mini">Book now</a>
                           </div>
@@ -156,60 +171,23 @@
                 </ul>
             <?php
               }
-              if (mysqli_num_rows($resultOpenTrip) > 0) {
             ?>
-                <ul class="popular-list">
-                  <?php
-                    while ($dataOpenTrip = mysqli_fetch_array($resultOpenTrip)) {
-                  ?>
-                      <li>
-                        <div class="popular-card">
-                          <figure class="card-img">
-                            <a class="popular-link" href="detailTrip.php?id=<?=$dataOpenTrip['id']?>">
-                              <img
-                                src="./storage/trip/<?=$dataOpenTrip['file']?>"
-                                alt="gambar"
-                                loading="lazy"
-                              />
-                            </a>
-                          </figure>
-                          <div class="card-content">
-                            <div class="harga">
-                              <div class="card-rating">
-                                <p>Rp <?=number_format($dataOpenTrip['price'], 0, ',', '.')?> / orang</p>
-                              </div>
-                            </div>
-                            <p class="card-subtitle">
-                              <a>sisa seat : <b><?=$dataOpenTrip['seat']?></b></a>
-                            </p>
-                            <h3 class="h3 card-title">
-                              <a><?=$dataOpenTrip['name']?></a>
-                            </h3>
-                            <p class="card-text">
-                              <?=$dataOpenTrip['keterangan']?>
-                            </p>
-                            <a href="https://wa.me/<?=waFormat($wa)?>" target="_blank" class="btn-mini">Book now</a>
-                          </div>
-                        </div>
-                      </li>
-                  <?php
-                    }
-                  ?>
-                </ul>
+          </div>
+          <div class="container">
+            <h2 class="h2 section-title">OPEN TRIP ASIA</h2>
             <?php
-              }
-              if (mysqli_num_rows($resultPromoTrip) > 0) {
+              if (mysqli_num_rows($resultAsiaTrip) > 0) {
             ?>
                 <ul class="popular-list">
                   <?php
-                    while ($dataPromoTrip = mysqli_fetch_array($resultPromoTrip)) {
+                    while ($dataAsiaTrip = mysqli_fetch_array($resultAsiaTrip)) {
                   ?>
                       <li>
                         <div class="popular-card">
                           <figure class="card-img">
-                            <a class="popular-link" href="detailTrip.php?id=<?=$dataPromoTrip['id']?>">
+                            <a class="popular-link" href="detailTrip.php?id=<?=$dataAsiaTrip['id']?>">
                               <img
-                                src="./storage/trip/<?=$dataPromoTrip['file']?>"
+                                src="./storage/trip/<?=$dataAsiaTrip['file']?>"
                                 alt="gambar"
                                 loading="lazy"
                               />
@@ -217,19 +195,32 @@
                           </figure>
                           <div class="card-content">
                             <div class="harga">
-                              <small><del>Rp <?=$dataPromoTrip['aft_price']?></del></small>
-                              <div class="card-rating">
-                                <p>Rp <?=number_format($dataPromoTrip['price'], 0, ',', '.')?> / orang</p>
-                              </div>
+                              <?php
+                                if ($dataAsiaTrip['aft_price'] !== null && !empty($dataAsiaTrip['aft_price']) && $dataAsiaTrip['aft_price'] > 0) {
+                              ?>
+                                  <p><del>Rp <?=number_format($dataAsiaTrip['price'])?></del></p>
+                                  <div class="card-rating">
+                                    <h3>Rp <?=number_format($dataAsiaTrip['aft_price'], 0, ',', '.')?> / orang</h3>
+                                  </div>
+                              <?php
+                                } else {
+                              ?>
+                                  <div class="card-rating">
+                                    <h3>Rp <?=number_format($dataAsiaTrip['price'], 0, ',', '.')?> / orang</h3>
+                                  </div>
+                              <?php
+                                }
+                              ?>
                             </div>
+                            <hr><br>
                             <p class="card-subtitle">
-                              <a>sisa seat : <b><?=$dataPromoTrip['seat']?></b></a>
+                              <a>sisa seat : <b><?=$dataAsiaTrip['seat']?></b> (<?=$dataAsiaTrip['from_date']?> ~ <?=$dataAsiaTrip['to_date']?>)</a>
                             </p>
                             <h3 class="h3 card-title">
-                              <a><?=$dataPromoTrip['name']?></a>
+                              <a><?=$dataAsiaTrip['name']?></a>
                             </h3>
                             <p class="card-text">
-                              <?=$dataPromoTrip['keterangan']?>
+                              <?=$dataAsiaTrip['sub']?>
                             </p>
                             <a href="https://wa.me/<?=waFormat($wa)?>" target="_blank" class="btn-mini">Book now</a>
                           </div>
@@ -251,7 +242,7 @@
       <div class="footer-top">
         <div class="container">
           <div class="footer-brand">
-            <a href="#" class="logo">
+            <a href="about.php" class="logo">
               <img src="./assets/images/doctrip-white.png" alt="DocTrip logo" />
             </a>
 
@@ -284,7 +275,7 @@
 
           <div class="footer-form">
             <h4 class="contact-title">Alamat Kami</h4>
-            <a href="<?=$dataProfile['location']?>" target="_blank"><?=$dataProfile['address']?></a>
+            <a href="<?=$dataProfile['location']?>" target="_blank" class="contact-link"><?=$dataProfile['address']?></a>
           </div>
         </div>
       </div>

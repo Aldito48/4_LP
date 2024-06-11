@@ -10,13 +10,17 @@
   $queryOpenTrip = "SELECT * FROM tbl_trip WHERE type = 'OPEN'";
   $querySosmed = "SELECT * FROM tbl_sosmed";
   $queryGalery = "SELECT * FROM tbl_galery LIMIT 5";
+  $queryAllTrip = "SELECT * FROM tbl_trip WHERE is_asia = 'Tidak'";
   $queryAsiaTrip = "SELECT * FROM tbl_trip WHERE is_asia = 'Ya'";
+  $queryReview = "SELECT * FROM tbl_review";
 
-  if ($id !== null && !empty($id) && $id !== 0) {
+  if ($id !== null && !empty($id) && $id > 0) {
     $queryDetailTrip = "SELECT * FROM tbl_trip WHERE id = $id LIMIT 1";
     $querySchedule = "SELECT * FROM tbl_schedule WHERE id_trip = $id LIMIT 1";
+    $queryItinerary = "SELECT * FROM tbl_itinerary WHERE id_trip = $id";
     $resultDetailTrip = mysqli_query($con, $queryDetailTrip) or die (mysqli_error($con));
     $resultSchedule = mysqli_query($con, $querySchedule) or die (mysqli_error($con));
+    $resultItinerary = mysqli_query($con, $queryItinerary) or die (mysqli_error($con));
     $dataDetailTrip = mysqli_fetch_array($resultDetailTrip);
     $dataSchedule = mysqli_fetch_array($resultSchedule);
   }
@@ -28,7 +32,9 @@
   $resultOpenTrip = mysqli_query($con, $queryOpenTrip) or die (mysqli_error($con));
   $resultSosmed = mysqli_query($con, $querySosmed) or die (mysqli_error($con));
   $resultGalery = mysqli_query($con, $queryGalery) or die (mysqli_error($con));
+  $resultAllTrip = mysqli_query($con, $queryAllTrip) or die (mysqli_error($con));
   $resultAsiaTrip = mysqli_query($con, $queryAsiaTrip) or die (mysqli_error($con));
+  $resultReview = mysqli_query($con, $queryReview) or die (mysqli_error($con));
 
   $dataProfile = mysqli_fetch_array($resultProfile);
   while ($dataSosmed = mysqli_fetch_array($resultSosmed)) {
@@ -44,6 +50,12 @@
     } else if ($dataSosmed['id'] == 4) {
       $wa_private = $dataSosmed['account'];
       $name4 = $dataSosmed['name'];
+    } else if ($dataSosmed['id'] == 5) {
+      $instagram_asia = $dataSosmed['account'];
+      $name5 = $dataSosmed['name'];
+    } else if ($dataSosmed['id'] == 6) {
+      $instagram_trans = $dataSosmed['account'];
+      $name6 = $dataSosmed['name'];
     }
   }
 
