@@ -169,7 +169,7 @@
                           </div>
                           <hr><br>
                           <p class="card-subtitle">
-                            <a>sisa seat : <b><?=$dataSpecialTrip['seat']?></b> (<?=$dataSpecialTrip['from_date']?> ~ <?=$dataSpecialTrip['to_date']?>)</a>
+                            <a>sisa seat : <b><?=$dataSpecialTrip['seat']?></b> (<?=dateFormat($dataSpecialTrip['from_date'])?> ~ <?=dateFormat($dataSpecialTrip['to_date'])?>)</a>
                           </p>
                           <h3 class="h3 card-title">
                             <a><?=$dataSpecialTrip['name']?></a>
@@ -223,7 +223,7 @@
                             ?>
                           </div>
                           <p class="card-subtitle">
-                            <a>sisa seat : <b><?=$dataPromoTrip['seat']?></b> (<?=$dataPromoTrip['from_date']?> ~ <?=$dataPromoTrip['to_date']?>)</a>
+                            <a>sisa seat : <b><?=$dataPromoTrip['seat']?></b> (<?=dateFormat($dataPromoTrip['from_date'])?> ~ <?=dateFormat($dataPromoTrip['to_date'])?>)</a>
                           </p>
                           <h3 class="h3 card-title">
                             <a><?=$dataPromoTrip['name']?></a>
@@ -341,9 +341,10 @@
                   while ($dataReview = mysqli_fetch_array($resultReview)) {
               ?>
                     <div class="evaluate">
-                      <ion-icon name="person" style="margin: auto;"></ion-icon>
-                      <h4><?=$dataReview['name']?></h4>
-                      <hr>
+                      <div class="cust">
+                        <div class="pp"><?=substr($dataReview['name'], 0, 1)?></div>
+                        <h4><?=$dataReview['name']?></h4>
+                      </div>
                       <div class="evaluate-rating">
                         <ion-icon name="star"></ion-icon>
                         <ion-icon name="star"></ion-icon>

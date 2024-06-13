@@ -153,7 +153,7 @@
                             </div>
                             <hr><br>
                             <p class="card-subtitle">
-                              <a>sisa seat : <b><?=$dataAllTrip['seat']?></b> (<?=$dataAllTrip['from_date']?> ~ <?=$dataAllTrip['to_date']?>)</a>
+                              <a>sisa seat : <b><?=$dataAllTrip['seat']?></b> (<?=dateFormat($dataAllTrip['from_date'])?> ~ <?=dateFormat($dataAllTrip['to_date'])?>)</a>
                             </p>
                             <h3 class="h3 card-title">
                               <a><?=$dataAllTrip['name']?></a>
@@ -214,7 +214,7 @@
                             </div>
                             <hr><br>
                             <p class="card-subtitle">
-                              <a>sisa seat : <b><?=$dataAsiaTrip['seat']?></b> (<?=$dataAsiaTrip['from_date']?> ~ <?=$dataAsiaTrip['to_date']?>)</a>
+                              <a>sisa seat : <b><?=$dataAsiaTrip['seat']?></b> (<?=dateFormat($dataAsiaTrip['from_date'])?> ~ <?=dateFormat($dataAsiaTrip['to_date'])?>)</a>
                             </p>
                             <h3 class="h3 card-title">
                               <a><?=$dataAsiaTrip['name']?></a>

@@ -137,9 +137,9 @@
                             <?php
                               if ($dataAsiaTrip['aft_price'] !== null && !empty($dataAsiaTrip['aft_price']) && $dataAsiaTrip['aft_price'] > 0) {
                             ?>
-                                <h4><del>Rp <?=number_format($dataAsiaTrip['price'])?></del></h4>
+                                <p><del>Rp <?=number_format($dataAsiaTrip['price'])?></del></p>
                                 <div class="card-rating">
-                                  <h4>Rp <?=number_format($dataAsiaTrip['aft_price'], 0, ',', '.')?> / orang</h4>
+                                  <h3>Rp <?=number_format($dataAsiaTrip['aft_price'], 0, ',', '.')?> / orang</h3>
                                 </div>
                             <?php
                               } else {
@@ -153,7 +153,7 @@
                           </div>
                           <hr><br>
                           <p class="card-subtitle">
-                            <a>sisa seat : <b><?=$dataAsiaTrip['seat']?></b> (<?=$dataAsiaTrip['from_date']?> ~ <?=$dataAsiaTrip['to_date']?>)</a>
+                            <a>sisa seat : <b><?=$dataAsiaTrip['seat']?></b> (<?=dateFormat($dataAsiaTrip['from_date'])?> ~ <?=dateFormat($dataAsiaTrip['to_date'])?>)</a>
                           </p>
                           <h3 class="h3 card-title">
                             <a><?=$dataAsiaTrip['name']?></a>

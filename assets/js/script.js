@@ -68,5 +68,13 @@ $(document).ready(function() {
     autoplaySpeed: 2000,
     nextArrow: $('.next'),
     prevArrow: $('.prev'),
+    responsive: [
+      {
+        breakpoint: 580,
+        settings: {
+          slidesToShow: 1
+        }
+      }
+    ]
   });
 });

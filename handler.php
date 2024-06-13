@@ -87,4 +87,11 @@
 
     return $a;
   }
+
+  function dateFormat($a) {
+    $b = new DateTime($a);
+    $c = $b->format('d M Y');
+
+    return $c;
+  }
 ?>

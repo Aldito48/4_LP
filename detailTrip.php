@@ -235,21 +235,19 @@
                 <table class="itinerary">
                   <thead>
                     <tr>
-                      <?php
-                        foreach ($itineraries as $headItinerary) {
-                          echo "<th>" . htmlspecialchars($headItinerary['day']) . "</th>";
-                        }
-                      ?>
+                      <th>Day</th>
+                      <th>To Do</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <?php
-                        foreach ($itineraries as $dataItinerary) {
-                          echo "<td>" . htmlspecialchars($dataItinerary['to_do']) . "</td>";
-                        }
-                      ?>
-                    </tr>
+                    <?php
+                      foreach ($itineraries as $dataItinerary) {
+                        echo "<tr>";
+                        echo "<td>" . htmlspecialchars($dataItinerary['day']) . "</td>";
+                        echo "<td>" . htmlspecialchars($dataItinerary['to_do']) . "</td>";
+                        echo "</tr>";
+                      }
+                    ?>
                   </tbody>
                 </table>
                 <br>

@@ -790,7 +790,7 @@ body { background: var(--white); }
 \*-----------------------------------*/
 
 .private {
-  background-image: url("../images/toba.jpg");
+  background-image: url("../images/km0.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -856,6 +856,7 @@ body { background: var(--white); }
 
 .review .container {
   position: relative;
+  width: 100vw;
 }
 
 .review .container .next {
@@ -891,10 +892,13 @@ body { background: var(--white); }
 .review .container .evaluate_wrapper .evaluate {
   width: 100%;
   height: fit-content;
-  display: inline-block;
-  background: var(--onyx);
-  color: var(--white);
-  border: 2px solid var(--light-blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: var(--white);
+  color: var(--onyx);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 10px;
   margin: 10px;
@@ -909,11 +913,32 @@ body { background: var(--white); }
   text-align: center;
 }
 
+.review .container .evaluate_wrapper .evaluate .cust {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.review .container .evaluate_wrapper .evaluate .pp {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background: var(--onyx);
+  color: var(--white);
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -8px;
+}
+
 .review .container .evaluate_wrapper .evaluate .evaluate-rating {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
+  color: var(--light-blue);
 }
 
 .review .container .evaluate_wrapper .evaluate p {

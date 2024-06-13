@@ -484,10 +484,10 @@
   height: auto;
   border-radius: var(--radius-25);
   background: var(--white);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
-.popular-card .card-img { height: 100%; }
+.popular-card .card-img { height: 350px; }
 
 .popular-card .card-img img {
   width: 100%;
