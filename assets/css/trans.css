@@ -296,7 +296,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 12px;
+    margin-top: 20px;
+    margin-bottom: 10px;
   }
   
   .social-list {
@@ -468,6 +469,12 @@
   
   .popular { padding-top: 180px; }
   
+  .popular-list {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
   .popular-list,
   .popular-list > li:not(:last-child) { margin-bottom: 30px; }
   
@@ -942,9 +949,21 @@
     .tour-search .container {
       flex-direction: column;
     }
+    .popular-list {
+      flex-direction: column;
+    }
+    .popular-list li {
+      width: 100%;
+    }
     .maps .maps-loc {
       width: 320px;
       height: 300px;
+    }
+    .review .container .next {
+      right: 5px;
+    }
+    .review .container .prev {
+      left: 5px;
     }
   }
   

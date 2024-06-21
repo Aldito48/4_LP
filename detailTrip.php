@@ -124,11 +124,13 @@
                 <?=$dataDetailTrip['sub']?>
                 </p>
 
-                <img
+                <div class="img-tour">
+                  <img
                     src="./storage/trip/<?=$dataDetailTrip['file']?>"
                     alt="Gambar"
                     loading="lazy"
-                />
+                  />
+                </div>
 
                 <p class="detail-text">
                 <?=$dataDetailTrip['detail']?>

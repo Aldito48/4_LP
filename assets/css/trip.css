@@ -296,7 +296,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 12px;
+    margin-top: 20px;
+    margin-bottom: 10px;
   }
   
   .social-list {
@@ -467,6 +468,12 @@
 \*-----------------------------------*/
 
 .popular { padding-block: var(--section-padding); margin-top: 100px; }
+
+.popular-list {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
 
 .popular-list,
 .popular-list > li:not(:last-child) { margin-bottom: 30px; }
@@ -919,9 +926,33 @@
     .tour-search .container {
       flex-direction: column;
     }
+    .popular-list {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .popular-list li {
+      width: 45%;
+      flex-basis: 45%;
+    }
+    .popular-card {
+      font-size: 50%; /* Mengurangi ukuran font sebesar 50% */
+    }
+    
+    .popular-card * {
+      font-size: inherit; /* Menerapkan ukuran font yang diwariskan dari .popular-card */
+    }
+    .popular-card .card-img {
+      height: 175px;
+    }
     .maps .maps-loc {
       width: 320px;
       height: 300px;
+    }
+    .review .container .next {
+      right: 5px;
+    }
+    .review .container .prev {
+      left: 5px;
     }
   }
   
