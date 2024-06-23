@@ -532,6 +532,10 @@ body { background: var(--white); }
   margin-bottom: 10px;
 }
 
+.popular-card .harga del {
+  text-decoration-color: red;
+}
+
 .popular-card .card-subtitle {
   color: var(--blue-ncs);
   font-size: var(--fs-6);

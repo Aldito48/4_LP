@@ -526,6 +526,10 @@ align-items: center;
 margin-bottom: 10px;
 }
 
+.popular-card .harga del {
+text-decoration-color: red;
+}
+
 .popular-card .card-subtitle {
 color: var(--blue-ncs);
 font-size: var(--fs-6);
@@ -931,15 +935,23 @@ address {
     gap: 10px;
   }
   .popular-list li {
-    width: 45%;
-    flex-basis: 45%;
+    width: 48%;
+    flex-basis: 48%;
   }
   .popular-card {
-    font-size: 50%; /* Mengurangi ukuran font sebesar 50% */
+    font-size: 50%;
   }
-  
   .popular-card * {
-    font-size: inherit; /* Menerapkan ukuran font yang diwariskan dari .popular-card */
+    font-size: inherit;
+  }
+  .card-rating h3 {
+    font-size: calc(8px + 0.45vw);
+  }
+  .popular-card .harga {
+    flex-direction: column;
+  }
+  .popular-card .card-subtitle {
+    font-size: 6.5px;
   }
   .popular-card .card-img {
     height: 175px;

@@ -25,6 +25,22 @@ navToggleEvent(navElemArr);
 navToggleEvent(navLinks);
 
 
+const footerTextElement = document.querySelector('.footer-text');
+const originalContent = footerTextElement.textContent;
+
+function checkWindowSize() {
+  if (window.innerWidth >= 350 && window.innerWidth <= 580) {
+    footerTextElement.textContent = '';
+  } else {
+    footerTextElement.textContent = originalContent;
+  }
+}
+
+checkWindowSize();
+
+window.addEventListener('resize', checkWindowSize)
+
+
 
 /**
  * header sticky & go to top

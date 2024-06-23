@@ -238,7 +238,7 @@
                   <thead>
                     <tr>
                       <th>Day</th>
-                      <th>To Do</th>
+                      <th>Activity</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -254,7 +254,7 @@
                 </table>
                 <br>
 
-                <button class="popup-button" onclick="openPopup()">Tampilkan S&K</button>
+                <button class="popup-button" onclick="openPopup()">Syarat & Ketentuan</button>
                 <div id="sKPopup" class="popup">
                   <div class="popup-content">
                     <span class="close" onclick="closePopup()">&times;</span>
@@ -263,9 +263,8 @@
                     <p><?=$dataDetailTrip['s_k']?></p>
                   </div>
                 </div>
-                <br>
 
-                <a href="https://wa.me/<?=waFormat($wa)?>" target="_blank" style="width: fit-content;" class="btn btn-light">BOOK NOW</a>
+                <a href="https://wa.me/<?=waFormat($wa)?>" target="_blank" style="width: 100%; text-align: center; margin-top: 20px;" class="btn btn-light">BOOK NOW</a>
                 <br>
             <?php
               } else {
