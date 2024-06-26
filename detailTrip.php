@@ -121,16 +121,42 @@
                 <h2 class="h2 section-title"><?=$dataDetailTrip['name']?></h2>
 
                 <p class="section-text">
-                <?=$dataDetailTrip['sub']?>
+                  <?=$dataDetailTrip['sub']?>
                 </p>
 
-                <div class="img-tour">
-                  <img
-                    src="./storage/trip/<?=$dataDetailTrip['file']?>"
-                    alt="Gambar"
-                    loading="lazy"
-                  />
-                </div>
+                <?php
+                  if (mysqli_num_rows($resultSlider) > 1) {
+                ?>
+                    <div class="slider">
+                      <div class="slides">
+                        <?php
+                          while ($dataSlider = mysqli_fetch_array($resultSlider)) {
+                        ?>
+                            <img
+                              src="./storage/slider/<?=$dataSlider['photo']?>"
+                              alt="Gambar"
+                              loading="lazy"
+                              class="slide"
+                            />
+                        <?php
+                          }
+                        ?>
+                      </div>
+                    </div>
+                <?php
+                  } else {
+                ?>
+                    <div class="img-tour">
+                      <img
+                        src="./storage/trip/<?=$dataDetailTrip['file']?>"
+                        alt="Gambar"
+                        loading="lazy"
+                      />
+                    </div>
+                <?php
+                  }
+                ?>
+                <br>
 
                 <p class="detail-text">
                 <?=$dataDetailTrip['detail']?>

@@ -585,6 +585,40 @@ body { background: var(--white); }
 
 .package .btn { margin-inline: auto; }
 
+.package .slider {
+  width: 400px;
+  height: 400px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.package .slides {
+  display: flex;
+  width: 100%;
+  animation: slide 15s infinite;
+}
+
+.package .slides img {
+  width: 100%;
+  transition: transform 1s;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0%);
+  }
+  33.33% {
+    transform: translateX(-100%);
+  }
+  66.66% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
 
 
 
@@ -1012,6 +1046,10 @@ address {
     left: 5px;
   }
   .package .img-tour {
+    width: 100%;
+    overflow: hidden;
+  }
+  .package .slider {
     width: 100%;
     overflow: hidden;
   }
