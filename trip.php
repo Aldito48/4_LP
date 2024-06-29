@@ -137,7 +137,7 @@
                               <?php
                                 if ($dataAllTrip['aft_price'] !== null && !empty($dataAllTrip['aft_price']) && $dataAllTrip['aft_price'] > 0) {
                               ?>
-                                  <p><del>Rp <?=number_format($dataAllTrip['price'])?></del></p>
+                                  <p><del>Rp <?=number_format($dataAllTrip['price'], 0, ',', '.')?></del></p>
                                   <div class="card-rating">
                                     <h3>Rp <?=number_format($dataAllTrip['aft_price'], 0, ',', '.')?> / orang</h3>
                                   </div>
@@ -198,7 +198,7 @@
                               <?php
                                 if ($dataAsiaTrip['aft_price'] !== null && !empty($dataAsiaTrip['aft_price']) && $dataAsiaTrip['aft_price'] > 0) {
                               ?>
-                                  <p><del>Rp <?=number_format($dataAsiaTrip['price'])?></del></p>
+                                  <p><del>Rp <?=number_format($dataAsiaTrip['price'], 0, ',', '.')?></del></p>
                                   <div class="card-rating">
                                     <h3>Rp <?=number_format($dataAsiaTrip['aft_price'], 0, ',', '.')?> / orang</h3>
                                   </div>
