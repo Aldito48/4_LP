@@ -1,4 +1,7 @@
+AddDefaultCharset UTF-8
+
 RewriteEngine on
+RewriteRule ^sitemap\.xml/?$ sitemap.php
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.php -f
 RewriteRule ^([^/]+)$ $1.php [L]

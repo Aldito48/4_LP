@@ -271,8 +271,8 @@
                     <?php
                       foreach ($itineraries as $dataItinerary) {
                         echo "<tr>";
-                        echo "<td>" . htmlspecialchars($dataItinerary['day']) . "</td>";
-                        echo "<td>" . htmlspecialchars($dataItinerary['to_do']) . "</td>";
+                        echo "<td>" . $dataItinerary['day'] . "</td>";
+                        echo "<td>" . $dataItinerary['to_do'] . "</td>";
                         echo "</tr>";
                       }
                     ?>
