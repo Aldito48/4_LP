@@ -8,9 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Doctor Trip Indonesia - Travel Agency</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
     <link rel="manifest" href="./site.webmanifest">
     <link rel="stylesheet" href="./assets/css/detailTrip.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -231,11 +231,11 @@
                     <?php
                       if ($dataDetailTrip['aft_price'] != null && !empty($dataDetailTrip['aft_price']) && $dataDetailTrip['aft_price'] > 0) {
                     ?>
-                        <h4>Rp <?=number_format($dataDetailTrip['aft_price'], 0, ',', '.')?> / Orang</h4>
+                        <h4>Rp <?=priceFormat($dataDetailTrip['aft_price'])?> / Orang</h4>
                     <?php
                       } else {
                     ?>
-                        <h4>Rp <?=number_format($dataDetailTrip['price'], 0, ',', '.')?> / Orang</h4>
+                        <h4>Rp <?=priceFormat($dataDetailTrip['price'])?> / Orang</h4>
                     <?php
                       }
                     ?>
@@ -297,7 +297,7 @@
                 <br>
             <?php
               } else {
-                  echo "No Data Available";
+                  echo "<script>window.location='home.php';</script>";
               }
             ?>
           </div>

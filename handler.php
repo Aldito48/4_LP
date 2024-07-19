@@ -1,21 +1,25 @@
 <?php
   require "./config.php";
 
-  $id = @$_GET['id'];
+  if (isset($_GET['id'])) {
+    $id = @$_GET['id'];
 
-  if ($id != null && !empty($id) && $id > 0) {
-    $queryDetailTrip = "SELECT * FROM tbl_trip WHERE id = $id LIMIT 1";
-    $querySchedule = "SELECT * FROM tbl_schedule WHERE id_trip = $id LIMIT 1";
-    $queryItinerary = "SELECT * FROM tbl_itinerary WHERE id_trip = $id";
-    $querySlider = "SELECT * FROM tbl_slider WHERE id_trip = $id";
+    if ($id != null && !empty($id) && is_numeric($id) && $id > 0) {
+      $queryDetailTrip = "SELECT * FROM tbl_trip WHERE id = $id LIMIT 1";
+      $querySchedule = "SELECT * FROM tbl_schedule WHERE id_trip = $id LIMIT 1";
+      $queryItinerary = "SELECT * FROM tbl_itinerary WHERE id_trip = $id";
+      $querySlider = "SELECT * FROM tbl_slider WHERE id_trip = $id";
 
-    $resultDetailTrip = mysqli_query($con, $queryDetailTrip) or die (mysqli_error($con));
-    $resultSchedule = mysqli_query($con, $querySchedule) or die (mysqli_error($con));
-    $resultItinerary = mysqli_query($con, $queryItinerary) or die (mysqli_error($con));
-    $resultSlider = mysqli_query($con, $querySlider) or die (mysqli_error($con));
+      $resultDetailTrip = mysqli_query($con, $queryDetailTrip) or die (mysqli_error($con));
+      $resultSchedule = mysqli_query($con, $querySchedule) or die (mysqli_error($con));
+      $resultItinerary = mysqli_query($con, $queryItinerary) or die (mysqli_error($con));
+      $resultSlider = mysqli_query($con, $querySlider) or die (mysqli_error($con));
 
-    $dataDetailTrip = mysqli_fetch_array($resultDetailTrip);
-    $dataSchedule = mysqli_fetch_array($resultSchedule);
+      $dataDetailTrip = mysqli_fetch_array($resultDetailTrip);
+      $dataSchedule = mysqli_fetch_array($resultSchedule);
+    } else if ($id == null || empty($id) || !is_numeric($id) || $id <= 0) {
+      echo "<script>window.location='home.php';</script>";
+    }
   }
 
   $queryProfile = "SELECT * FROM tbl_profile WHERE id = 1 LIMIT 1";
@@ -97,5 +101,11 @@
     $c = $b->format('d M Y');
 
     return $c;
+  }
+
+  function priceFormat($a) {
+    $b = number_format($a, 0, ',', '.');
+
+    return $b;
   }
 ?>

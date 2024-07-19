@@ -8,9 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Doctor Trip Indonesia - Travel Agency</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
     <link rel="manifest" href="./site.webmanifest">
     <link rel="stylesheet" href="./assets/css/home.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,22 +31,11 @@
       <div class="overlay" data-overlay></div>
       <div class="header-top">
         <div class="container">
-          <a href="" class="helpline-box">
-            <!-- <div class="icon-box">
-              <ion-icon name="call-outline"></ion-icon>
-            </div>
-            <div class="wrapper">
-              <p class="helpline-title">For Further Inquires :</p>
-              <p class="helpline-number">+</p>
-            </div> -->
-          </a>
+          <a href="" class="helpline-box"></a>
           <a href="about.php" class="logo">
             <img src="./assets/images/doctrip-white.png" alt="DocTrip logo"/>
           </a>
           <div class="header-btn-group">
-            <!-- <button class="search-btn" aria-label="Search">
-              <ion-icon name="search"></ion-icon>
-            </button> -->
             <button
               class="nav-open-btn"
               aria-label="Open Menu"
@@ -156,15 +145,15 @@
                             <?php
                               if ($dataSpecialTrip['aft_price'] != null && !empty($dataSpecialTrip['aft_price']) && $dataSpecialTrip['aft_price'] > 0) {
                             ?>
-                                <p><del>Rp <?=number_format($dataSpecialTrip['price'], 0, ',', '.')?></del></p>
+                                <p><del>Rp <?=priceFormat($dataSpecialTrip['price'])?></del></p>
                                 <div class="card-rating">
-                                  <h3>Rp <?=number_format($dataSpecialTrip['aft_price'], 0, ',', '.')?> / orang</h3>
+                                  <h3>Rp <?=priceFormat($dataSpecialTrip['aft_price'])?> / orang</h3>
                                 </div>
                             <?php
                               } else {
                             ?>
                                 <div class="card-rating">
-                                  <h3>Rp <?=number_format($dataSpecialTrip['price'], 0, ',', '.')?> / orang</h3>
+                                  <h3>Rp <?=priceFormat($dataSpecialTrip['price'])?> / orang</h3>
                                 </div>
                             <?php
                               }
@@ -211,15 +200,15 @@
                             <?php
                               if ($dataPromoTrip['aft_price'] != null && !empty($dataPromoTrip['aft_price']) && $dataPromoTrip['aft_price'] > 0) {
                             ?>
-                                <p><del>Rp <?=number_format($dataPromoTrip['price'], 0, ',', '.')?></del></p>
+                                <p><del>Rp <?=priceFormat($dataPromoTrip['price'])?></del></p>
                                 <div class="card-rating">
-                                  <h3>Rp <?=number_format($dataPromoTrip['aft_price'], 0, ',', '.')?> / orang</h3>
+                                  <h3>Rp <?=priceFormat($dataPromoTrip['aft_price'])?> / orang</h3>
                                 </div>
                             <?php
                               } else {
                             ?>
                                 <div class="card-rating">
-                                  <h3>Rp <?=number_format($dataPromoTrip['price'], 0, ',', '.')?> / orang</h3>
+                                  <h3>Rp <?=priceFormat($dataPromoTrip['price'])?> / orang</h3>
                                 </div>
                             <?php
                               }
