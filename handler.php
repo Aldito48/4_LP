@@ -3,6 +3,21 @@
 
   $id = @$_GET['id'];
 
+  if ($id != null && !empty($id) && $id > 0) {
+    $queryDetailTrip = "SELECT * FROM tbl_trip WHERE id = $id LIMIT 1";
+    $querySchedule = "SELECT * FROM tbl_schedule WHERE id_trip = $id LIMIT 1";
+    $queryItinerary = "SELECT * FROM tbl_itinerary WHERE id_trip = $id";
+    $querySlider = "SELECT * FROM tbl_slider WHERE id_trip = $id";
+
+    $resultDetailTrip = mysqli_query($con, $queryDetailTrip) or die (mysqli_error($con));
+    $resultSchedule = mysqli_query($con, $querySchedule) or die (mysqli_error($con));
+    $resultItinerary = mysqli_query($con, $queryItinerary) or die (mysqli_error($con));
+    $resultSlider = mysqli_query($con, $querySlider) or die (mysqli_error($con));
+
+    $dataDetailTrip = mysqli_fetch_array($resultDetailTrip);
+    $dataSchedule = mysqli_fetch_array($resultSchedule);
+  }
+
   $queryProfile = "SELECT * FROM tbl_profile WHERE id = 1 LIMIT 1";
   $queryMitra = "SELECT * FROM tbl_mitra";
   $querySpecialTrip = "SELECT * FROM tbl_trip WHERE type = 'SPECIAL' LIMIT 3";
@@ -13,19 +28,6 @@
   $queryAllTrip = "SELECT * FROM tbl_trip WHERE is_asia = 'Tidak'";
   $queryAsiaTrip = "SELECT * FROM tbl_trip WHERE is_asia = 'Ya'";
   $queryReview = "SELECT * FROM tbl_review";
-
-  if ($id !== null && !empty($id) && $id > 0) {
-    $queryDetailTrip = "SELECT * FROM tbl_trip WHERE id = $id LIMIT 1";
-    $querySchedule = "SELECT * FROM tbl_schedule WHERE id_trip = $id LIMIT 1";
-    $queryItinerary = "SELECT * FROM tbl_itinerary WHERE id_trip = $id";
-    $querySlider = "SELECT * FROM tbl_slider WHERE id_trip = $id";
-    $resultDetailTrip = mysqli_query($con, $queryDetailTrip) or die (mysqli_error($con));
-    $resultSchedule = mysqli_query($con, $querySchedule) or die (mysqli_error($con));
-    $resultItinerary = mysqli_query($con, $queryItinerary) or die (mysqli_error($con));
-    $resultSlider = mysqli_query($con, $querySlider) or die (mysqli_error($con));
-    $dataDetailTrip = mysqli_fetch_array($resultDetailTrip);
-    $dataSchedule = mysqli_fetch_array($resultSchedule);
-  }
 
   $resultProfile = mysqli_query($con, $queryProfile) or die (mysqli_error($con));
   $resultMitra = mysqli_query($con, $queryMitra) or die (mysqli_error($con));
@@ -83,7 +85,7 @@
 
   function footerFormat($a) {
     $b = strpos($a, '.');
-    if ($b !== false) {
+    if ($b != false) {
       $a = substr($a, 0, $b + 1);
     }
 

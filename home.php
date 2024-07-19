@@ -2,13 +2,16 @@
   require "./handler.php";
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Doctor Trip Indonesia - Travel Agency</title>
-    <link rel="shortcut icon" href="./favicon.png" type="image/svg+xml" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
     <link rel="stylesheet" href="./assets/css/home.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -151,7 +154,7 @@
                         <div class="card-content">
                           <div class="harga">
                             <?php
-                              if ($dataSpecialTrip['aft_price'] !== null && !empty($dataSpecialTrip['aft_price']) && $dataSpecialTrip['aft_price'] > 0) {
+                              if ($dataSpecialTrip['aft_price'] != null && !empty($dataSpecialTrip['aft_price']) && $dataSpecialTrip['aft_price'] > 0) {
                             ?>
                                 <p><del>Rp <?=number_format($dataSpecialTrip['price'], 0, ',', '.')?></del></p>
                                 <div class="card-rating">
@@ -172,7 +175,7 @@
                             <a>sisa seat : <b><?=$dataSpecialTrip['seat']?></b> (<?=dateFormat($dataSpecialTrip['from_date'])?> ~ <?=dateFormat($dataSpecialTrip['to_date'])?>)</a>
                           </p>
                           <h3 class="h3 card-title">
-                            <a><?=$dataSpecialTrip['name']?></a>
+                            <a href="detailTrip.php?id=<?=$dataSpecialTrip['id']?>"><?=$dataSpecialTrip['name']?></a>
                           </h3>
                           <p class="card-text">
                             <?=$dataSpecialTrip['sub']?>
@@ -206,7 +209,7 @@
                         <div class="card-content">
                           <div class="harga">
                             <?php
-                              if ($dataPromoTrip['aft_price'] !== null && !empty($dataPromoTrip['aft_price']) && $dataPromoTrip['aft_price'] > 0) {
+                              if ($dataPromoTrip['aft_price'] != null && !empty($dataPromoTrip['aft_price']) && $dataPromoTrip['aft_price'] > 0) {
                             ?>
                                 <p><del>Rp <?=number_format($dataPromoTrip['price'], 0, ',', '.')?></del></p>
                                 <div class="card-rating">
@@ -226,7 +229,7 @@
                             <a>sisa seat : <b><?=$dataPromoTrip['seat']?></b> (<?=dateFormat($dataPromoTrip['from_date'])?> ~ <?=dateFormat($dataPromoTrip['to_date'])?>)</a>
                           </p>
                           <h3 class="h3 card-title">
-                            <a><?=$dataPromoTrip['name']?></a>
+                            <a href="detailTrip.php?id=<?=$dataPromoTrip['id']?>"><?=$dataPromoTrip['name']?></a>
                           </h3>
                           <p class="card-text">
                             <?=$dataPromoTrip['sub']?>

@@ -2,13 +2,16 @@
   require "./handler.php";
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Doctor Trip Indonesia - Travel Agency</title>
-    <link rel="shortcut icon" href="./favicon.png" type="image/svg+xml" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
     <link rel="stylesheet" href="./assets/css/asia.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -135,7 +138,7 @@
                         <div class="card-content">
                           <div class="harga">
                             <?php
-                              if ($dataAsiaTrip['aft_price'] !== null && !empty($dataAsiaTrip['aft_price']) && $dataAsiaTrip['aft_price'] > 0) {
+                              if ($dataAsiaTrip['aft_price'] != null && !empty($dataAsiaTrip['aft_price']) && $dataAsiaTrip['aft_price'] > 0) {
                             ?>
                                 <p><del>Rp <?=number_format($dataAsiaTrip['price'], 0, ',', '.')?></del></p>
                                 <div class="card-rating">
@@ -156,7 +159,7 @@
                             <a>sisa seat : <b><?=$dataAsiaTrip['seat']?></b> (<?=dateFormat($dataAsiaTrip['from_date'])?> ~ <?=dateFormat($dataAsiaTrip['to_date'])?>)</a>
                           </p>
                           <h3 class="h3 card-title">
-                            <a><?=$dataAsiaTrip['name']?></a>
+                            <a href="detailTrip.php?id=<?=$dataAsiaTrip['id']?>"><?=$dataAsiaTrip['name']?></a>
                           </h3>
                           <p class="card-text">
                             <?=$dataAsiaTrip['sub']?>
