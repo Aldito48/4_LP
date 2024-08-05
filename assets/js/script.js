@@ -61,18 +61,54 @@ window.addEventListener("scroll", function () {
 
 });
 
-function openPopup() {
+function openSnK() {
   document.getElementById('sKPopup').style.display = "block";
 }
 
-function closePopup() {
+function closeSnK() {
   document.getElementById('sKPopup').style.display = "none";
+}
+
+function openItinerary() {
+  document.getElementById('itinerary').style.display = "block";
+
+  $(document).ready(function() {
+    if ($('.itinerary-wrapper').hasClass('slick-initialized')) {
+      $('.itinerary-wrapper').slick('unslick');
+    }
+
+    $('.itinerary-wrapper').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: false,
+      nextArrow: $('.next'),
+      prevArrow: $('.prev'),
+      responsive: [
+        {
+          breakpoint: 580,
+          settings: {
+            slidesToShow: 1
+          }
+        }
+      ]
+    });
+
+    $('.itinerary-wrapper').slick('slickGoTo', 0);
+  });
+}
+
+function closeItinerary() {
+  document.getElementById('itinerary').style.display = "none";
 }
 
 window.onclick = function(event) {
   var popup = document.getElementById('sKPopup');
+  var itinerary = document.getElementById('itinerary');
   if (event.target == popup) {
-      popup.style.display = "none";
+    popup.style.display = "none";
+  }
+  if (event.target == itinerary) {
+    itinerary.style.display = "none";
   }
 }
 

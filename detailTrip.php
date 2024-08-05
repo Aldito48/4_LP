@@ -4,25 +4,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Doctor Trip Indonesia - Healing With Doctor Trip</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Doctor Trip Indonesia - Travel Agency</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
-    <link rel="manifest" href="./site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png" />
+    <link rel="manifest" href="./site.webmanifest" />
     <link rel="stylesheet" href="./assets/css/detailTrip.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
   </head>
 
   <body id="top">
@@ -114,7 +109,6 @@
 
     <main>
       <article>
-
         <section class="package" id="detail">
           <div class="container">
             <p class="section-subtitle">Detail Paket</p>
@@ -138,7 +132,6 @@
                             <img
                               src="./storage/slider/<?=$dataSlider['photo']?>"
                               alt="Gambar"
-                              loading="lazy"
                               class="slide"
                             />
                         <?php
@@ -153,7 +146,6 @@
                       <img
                         src="./storage/trip/<?=$dataDetailTrip['file']?>"
                         alt="Gambar"
-                        loading="lazy"
                       />
                     </div>
                 <?php
@@ -162,7 +154,7 @@
                 <br>
 
                 <p class="detail-text">
-                <?=$dataDetailTrip['detail']?>
+                  <?=$dataDetailTrip['detail']?>
                 </p>
 
                 <h3>SCHEDULE <?=date("Y")?></h3>
@@ -221,75 +213,111 @@
                     </table>
                 <?php
                   } else {
-                      echo "No Schedule In This Trip Yet";
+                    echo "No Data Available";
                   }
                 ?>
 
                 <div class="box">
-                    <p>HARGA</p>
-                    <hr>
-                    <?php
-                      if ($dataDetailTrip['aft_price'] != null && !empty($dataDetailTrip['aft_price']) && $dataDetailTrip['aft_price'] > 0) {
-                    ?>
-                        <h4>Rp <?=priceFormat($dataDetailTrip['aft_price'])?> / Orang</h4>
-                    <?php
-                      } else {
-                    ?>
-                        <h4>Rp <?=priceFormat($dataDetailTrip['price'])?> / Orang</h4>
-                    <?php
-                      }
-                    ?>
+                  <p>HARGA</p>
+                  <hr>
+                  <?php
+                    if ($dataDetailTrip['aft_price'] != null && !empty($dataDetailTrip['aft_price']) && $dataDetailTrip['aft_price'] > 0) {
+                  ?>
+                      <h4>Rp <?=priceFormat($dataDetailTrip['aft_price'])?> / Orang</h4>
+                  <?php
+                    } else {
+                  ?>
+                      <h4>Rp <?=priceFormat($dataDetailTrip['price'])?> / Orang</h4>
+                  <?php
+                    }
+                  ?>
                 </div>
 
                 <h3>MEETING POINT</h3>
-                <a href="<?=$dataDetailTrip['location']?>" target="_blank"><p><?=$dataDetailTrip['meet']?></p></a>
+                <a href="<?=$dataDetailTrip['location']?>" target="_blank">
+                  <p style="display: flex; justify-content: flex-start; align-items: center;">
+                    <ion-icon name="location"></ion-icon>&nbsp;<i><u><?=$dataDetailTrip['meet']?></u></i>
+                  </p>
+                </a>
                 <br>
 
-                <h3>INCLUDE</h3>
-                <p><?=$dataDetailTrip['include']?></p>
-                <br>
-
-                <h3>EXCLUDE</h3>
-                <p><?=$dataDetailTrip['exclude']?></p>
-                <br>
-
-                <h3><u>ITINERARY</u></h3>
-                <?php
-                  $itineraries = [];
-                  if (mysqli_num_rows($resultItinerary) > 0) {
-                    while ($row = mysqli_fetch_array($resultItinerary)) {
-                      $itineraries[] = $row;
-                    }
-                  }
-                ?>
-
-                <table class="itinerary">
+                <table class="benefit">
                   <thead>
                     <tr>
-                      <th>Day</th>
-                      <th>Activity</th>
+                      <th>INCLUDE</th>
+                      <th>EXCLUDE</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <?php
-                      foreach ($itineraries as $dataItinerary) {
-                        echo "<tr>";
-                        echo "<td>" . $dataItinerary['day'] . "</td>";
-                        echo "<td>" . $dataItinerary['to_do'] . "</td>";
-                        echo "</tr>";
-                      }
-                    ?>
+                    <tr>
+                      <td><ul><?=$dataDetailTrip['include']?></ul></td>
+                      <td><ul><?=$dataDetailTrip['exclude']?></ul></td>
+                    </tr>
                   </tbody>
                 </table>
                 <br>
 
-                <button class="popup-button" onclick="openPopup()">Syarat & Ketentuan</button>
+                <a class="itinerary-show" onclick="openItinerary()">
+                  <h3><u>ITINERARY</u><ion-icon name="create-outline"></ion-icon></h3>
+                  <p>Intip seluruh keseruan yang akan kamu alami di trip ini!</p>
+                  <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+                </a>
+                <div id="itinerary" class="itinerary">
+                  <div class="itinerary-detail">
+                    <div class="itinerary-title">
+                      <h3>Detail Itinerary</h3>
+                      <span class="close" onclick="closeItinerary()">&times;</span>
+                    </div>
+                    <hr>
+                    <ion-icon class="prev" name="chevron-back"></ion-icon>
+                    <ion-icon class="next" name="chevron-forward"></ion-icon>
+                    <?php
+                      if (mysqli_num_rows($resultItinerary) > 0) {
+                    ?>
+                        <div class="itinerary-wrapper">
+                    <?php
+                          while ($dataItinerary = mysqli_fetch_array($resultItinerary)) {
+                    ?>
+                            <div class="itinerary-content">
+                              <h4><?=$dataItinerary['title']?></h4>
+                              <div class="itinerary-card">
+                                <div class="layout-1">
+                                  <p><b>Experiences</b></p>
+                                  <ul><?=$dataItinerary['experience']?></ul>
+                                  <br>
+                                  <p><b>Transportation</b></p>
+                                  <ul><?=$dataItinerary['transportation']?></ul>
+                                </div>
+                                <div class="layout-2">
+                                  <img
+                                    src="./storage/itinerary/<?=$dataItinerary['image']?>"
+                                    alt="Photos"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                    <?php
+                          }
+                    ?>
+                        </div>
+                    <?php
+                      } else {
+                        echo "No Data Available";
+                      }
+                    ?>
+                  </div>
+                </div>
+                <br>
+
+                <button class="popup-button" onclick="openSnK()">Syarat & Ketentuan</button>
                 <div id="sKPopup" class="popup">
                   <div class="popup-content">
-                    <span class="close" onclick="closePopup()">&times;</span>
-                    <h3>Syarat & Ketentuan</h3>
-                    <br>
-                    <p><?=$dataDetailTrip['s_k']?></p>
+                    <div class="popup-title">
+                      <h3>Syarat & Ketentuan</h3>
+                      <span class="close" onclick="closeSnK()">&times;</span>
+                    </div>
+                    <hr>
+                    <ul><?=$dataDetailTrip['s_k']?></ul>
                   </div>
                 </div>
 
@@ -297,7 +325,7 @@
                 <br>
             <?php
               } else {
-                  echo "<script>window.location='home.php';</script>";
+                echo "<script>window.location='home.php';</script>";
               }
             ?>
           </div>
@@ -376,15 +404,11 @@
 
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/script.js"></script>
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   </body>
 </html>

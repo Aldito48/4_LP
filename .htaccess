@@ -1,6 +1,15 @@
 AddDefaultCharset UTF-8
 
 RewriteEngine on
+RewriteRule ^db/ - [F,L]
+<Files "handler.php">
+    Order Allow,Deny
+    Deny from all
+</Files>
+<Files "config.php">
+    Order Allow,Deny
+    Deny from all
+</Files>
 RewriteRule ^sitemap\.xml/?$ sitemap.php
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.php -f

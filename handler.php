@@ -17,7 +17,7 @@
 
       $dataDetailTrip = mysqli_fetch_array($resultDetailTrip);
       $dataSchedule = mysqli_fetch_array($resultSchedule);
-    } else if ($id == null || empty($id) || !is_numeric($id) || $id <= 0) {
+    } else {
       echo "<script>window.location='home.php';</script>";
     }
   }

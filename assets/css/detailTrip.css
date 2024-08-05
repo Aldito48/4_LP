@@ -569,19 +569,191 @@ body { background: var(--white); }
   margin-bottom: 20px;
 }
 
-.package .container .itinerary {
-  border-collapse: collapse;
+
+
+
+
+/*-----------------------------------*\
+ * #BENEFIT
+\*-----------------------------------*/
+
+.benefit {
+  border-collapse: separate;
+  border-spacing: 3px;
+  color: var(--black);
 }
 
-.package .container .itinerary thead {
-  background: lightgrey;
+.benefit th,
+.benefit td {
+  padding: 10px;
 }
 
-.package .container .itinerary th,
-.package .container .itinerary td {
-  border: 2px solid var(--onyx);
-  padding: 5px;
+.benefit th {
+  background: #77bfc3;
 }
+
+.benefit td {
+  background: #C1E2E4;
+  text-align: left;
+  vertical-align: top;
+}
+
+.benefit td ul {
+  padding-left: 20px;
+  margin: 0;
+  list-style-position: inside;
+}
+
+.benefit td ul li {
+  list-style: disc;
+}
+
+
+
+
+
+/*-----------------------------------*\
+ * #ITINERARY
+\*-----------------------------------*/
+
+.itinerary-show {
+  background: #e4e9ea;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.itinerary-show h3 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.itinerary {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+  padding-top: 60px;
+}
+
+.itinerary-detail {
+  background: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80vw;
+  border-radius: 10px;
+  position: relative;
+}
+
+.itinerary-detail .next {
+  position: absolute;
+  top: 50%;
+  right: -70px;
+  font-size: 5em;
+  color: var(--light-blue);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.itinerary-detail .prev {
+  position: absolute;
+  top: 50%;
+  left: -70px;
+  font-size: 5em;
+  color: var(--light-blue);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.itinerary-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.itinerary-title h3 {
+  width: 100%;
+  margin-top: -2px;
+}
+
+.itinerary-detail hr {
+  margin-bottom: 5px;
+}
+
+.itinerary-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  margin: 0px auto;
+  overflow: hidden;
+}
+
+.itinerary-content {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: var(--white);
+  color: var(--black);
+}
+
+.itinerary-content ul {
+  padding-left: 20px;
+  margin: 0;
+  list-style-position: inside;
+}
+
+.itinerary-content ul li {
+  list-style: disc;
+}
+
+.itinerary-content h4 {
+  color: var(--black);
+  background: #C1E2E4;
+  margin-bottom: 10px;
+  padding: 3px;
+}
+
+.itinerary-card {
+  display: flex;
+  flex-direction: row;
+}
+
+.itinerary-card .layout-1 {
+  width: 50%;
+  height: fit-content;
+  padding-right: 100px;
+  padding: 10px;
+}
+
+.itinerary-card .layout-2 {
+  width: 50%;
+  height: fit-content;
+}
+
+.itinerary-card .layout-2 img {
+  height: 100%;
+  width: 100%
+}
+
+
+
+
+
+/*-----------------------------------*\
+ * #PACKAGE
+\*-----------------------------------*/
 
 .package .btn { margin-inline: auto; }
 
@@ -640,37 +812,58 @@ body { background: var(--white); }
   border-radius: 4px;
 }
 
-/* Style for the popup */
 .popup {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none;
+  position: fixed;
+  z-index: 1;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
   padding-top: 60px;
 }
 
-/* Popup content */
 .popup-content {
   background-color: #fefefe;
-  margin: 5% auto; /* 5% from the top and centered */
+  margin: 5% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 80%;
   border-radius: 10px;
 }
 
-/* Close button */
+.popup-content ul {
+  padding-left: 20px;
+  margin: 0;
+  list-style-position: inside;
+}
+
+.popup-content ul li {
+  list-style: disc;
+}
+
+.popup-content hr {
+  margin-bottom: 5px;
+}
+
+.popup-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.popup-title h3 {
+  width: 100%;
+  margin-top: -2px;
+}
+
 .close {
   color: #aaa;
-  float: right;
   font-size: 28px;
   font-weight: bold;
+  margin-top: -10px;
 }
 
 .close:hover,
@@ -1052,6 +1245,24 @@ address {
   .package .slider {
     width: 100%;
     overflow: hidden;
+  }
+  .benefit td {
+    font-size: small;
+  }
+  .itinerary-card .layout-1 {
+    width: 65%;
+  }
+  .itinerary-card .layout-2 {
+    width: 35%;
+  }
+  .itinerary-content ul li {
+    font-size: smaller;
+  }
+  .itinerary-detail .prev {
+    left: -60px;
+  }
+  .itinerary-detail .next {
+    right: -60px;
   }
 }
 

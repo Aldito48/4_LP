@@ -6,6 +6,12 @@
     $lastmod = date('Y-m-d\TH:i:s+00:00');
 
     echo "<url>";
+    echo "<loc>https://doctrip.id/home.php</loc>";
+    echo "<lastmod>$lastmod</lastmod>";
+    echo "<priority>1.00</priority>";
+    echo "</url>";
+
+    echo "<url>";
     echo "<loc>https://doctrip.id/trip.php</loc>";
     echo "<lastmod>$lastmod</lastmod>";
     echo "<priority>1.00</priority>";
