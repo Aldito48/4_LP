@@ -257,12 +257,12 @@
                 </table>
                 <br>
 
-                <a class="itinerary-show" onclick="openItinerary()">
+                <a class="itinerary-show" onclick="openItinerary2()">
                   <h3><u>ITINERARY</u><ion-icon name="create-outline"></ion-icon></h3>
                   <p>Intip seluruh keseruan yang akan kamu alami di trip ini!</p>
                   <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
                 </a>
-                <div id="itinerary" class="itinerary">
+                <!-- <div id="itinerary" class="itinerary">
                   <div class="itinerary-detail">
                     <div class="itinerary-title">
                       <h3>Detail Itinerary</h3>
@@ -272,15 +272,58 @@
                     <ion-icon class="prev" name="chevron-back"></ion-icon>
                     <ion-icon class="next" name="chevron-forward"></ion-icon>
                     <?php
-                      if (mysqli_num_rows($resultItinerary) > 0) {
+                      // if (mysqli_num_rows($resultItinerary) > 0) {
                     ?>
                         <div class="itinerary-wrapper">
                     <?php
-                          while ($dataItinerary = mysqli_fetch_array($resultItinerary)) {
+                          // while ($dataItinerary = mysqli_fetch_array($resultItinerary)) {
                     ?>
                             <div class="itinerary-content">
-                              <h4><?=$dataItinerary['title']?></h4>
+                              <h4><?php // $dataItinerary['title']?></h4>
                               <div class="itinerary-card">
+                                <div class="layout-1">
+                                  <p><b>Experiences</b></p>
+                                  <ul><?php // $dataItinerary['experience']?></ul>
+                                  <br>
+                                  <p><b>Transportation</b></p>
+                                  <ul><?php // $dataItinerary['transportation']?></ul>
+                                </div>
+                                <div class="layout-2">
+                                  <img
+                                    src="./storage/itinerary/<?php // $dataItinerary['image']?>"
+                                    alt="Photos"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                    <?php
+                          // }
+                    ?>
+                        </div>
+                    <?php
+                      // } else {
+                      //   echo "No Data Available";
+                      // }
+                    ?>
+                  </div>
+                </div> -->
+                <div id="itinerary-2" class="itinerary-2">
+                  <div class="itinerary-detail-2">
+                    <div class="itinerary-title-2">
+                      <h3>Detail Itinerary</h3>
+                      <span class="close" onclick="closeItinerary2()">&times;</span>
+                    </div>
+                    <hr>
+                    <?php
+                      if (mysqli_num_rows($resultItinerary) > 0) {
+                    ?>
+                        <div class="itinerary-wrapper-2">
+                    <?php
+                          while ($dataItinerary = mysqli_fetch_array($resultItinerary)) {
+                    ?>
+                            <div class="itinerary-content-2">
+                              <h4><?=$dataItinerary['title']?></h4>
+                              <div class="itinerary-card-2">
                                 <div class="layout-1">
                                   <p><b>Experiences</b></p>
                                   <ul><?=$dataItinerary['experience']?></ul>

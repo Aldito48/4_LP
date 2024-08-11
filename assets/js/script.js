@@ -101,14 +101,26 @@ function closeItinerary() {
   document.getElementById('itinerary').style.display = "none";
 }
 
+function openItinerary2() {
+  document.getElementById('itinerary-2').style.display = "block";
+}
+
+function closeItinerary2() {
+  document.getElementById('itinerary-2').style.display = "none";
+}
+
 window.onclick = function(event) {
   var popup = document.getElementById('sKPopup');
   var itinerary = document.getElementById('itinerary');
+  var itinerary2 = document.getElementById('itinerary-2');
   if (event.target == popup) {
     popup.style.display = "none";
   }
   if (event.target == itinerary) {
     itinerary.style.display = "none";
+  }
+  if(event.target == itinerary2) {
+    itinerary2.style.display = "none";
   }
 }
 

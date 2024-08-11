@@ -723,6 +723,7 @@ body { background: var(--white); }
   background: #C1E2E4;
   margin-bottom: 10px;
   padding: 3px;
+  width: 100%;
 }
 
 .itinerary-card {
@@ -744,7 +745,104 @@ body { background: var(--white); }
 
 .itinerary-card .layout-2 img {
   height: 100%;
-  width: 100%
+  width: 100%;
+}
+
+.itinerary-2 {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+  padding-top: 60px;
+}
+
+.itinerary-detail-2 {
+  background: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80vw;
+  border-radius: 10px;
+}
+
+.itinerary-title-2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.itinerary-title-2 h3 {
+  width: 100%;
+  margin-top: -2px;
+}
+
+.itinerary-detail-2 hr {
+  margin-bottom: 5px;
+}
+
+.itinerary-wrapper-2 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.itinerary-content-2 {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: var(--white);
+  color: var(--black);
+  margin-bottom: 10px;
+}
+
+.itinerary-content-2 ul {
+  padding-left: 20px;
+  margin: 0;
+  list-style-position: inside;
+}
+
+.itinerary-content-2 ul li {
+  list-style: disc;
+}
+
+.itinerary-content-2 h4 {
+  color: var(--black);
+  background: #C1E2E4;
+  margin-bottom: 10px;
+  padding: 3px;
+  width: 100%;
+}
+
+.itinerary-card-2 {
+  display: flex;
+  flex-direction: row;
+}
+
+.itinerary-card-2 .layout-1 {
+  width: 65%;
+  height: fit-content;
+  padding-right: 100px;
+  padding: 10px;
+}
+
+.itinerary-card-2 .layout-2 {
+  width: 35%;
+  height: fit-content;
+}
+
+.itinerary-card-2 .layout-2 img {
+  height: 50%;
+  width: 50%;
+  margin-right: -0%;
 }
 
 
@@ -1249,11 +1347,20 @@ address {
   .benefit td {
     font-size: small;
   }
-  .itinerary-card .layout-1 {
+  .popup-content {
+    width: 90%;
+  }
+  .itinerary-detail-2 {
+    width: 90%;
+  }
+  /* .itinerary-card .layout-1 {
     width: 65%;
   }
   .itinerary-card .layout-2 {
     width: 35%;
+  } */
+  .itinerary-card-2 .layout-2 img {
+    width: 100%;
   }
   .itinerary-content ul li {
     font-size: smaller;
@@ -1263,6 +1370,9 @@ address {
   }
   .itinerary-detail .next {
     right: -60px;
+  }
+  .itinerary-content-2 ul li {
+    font-size: smaller;
   }
 }
 
