@@ -130,6 +130,8 @@ $(document).ready(function() {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
+    pauseOnHover: false,
+    pauseOnFocus: false,
     nextArrow: $('.next'),
     prevArrow: $('.prev'),
     responsive: [

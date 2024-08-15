@@ -7,10 +7,13 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Doctor Trip Indonesia - Healing With Doctor Trip</title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Doctor Trip Indonesia - Healing With Doctor Trip</title>
     <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png" />
@@ -38,7 +41,7 @@
           if (isset($_POST['login'])) {
             $user = trim(mysqli_real_escape_string($con, $_POST['user']));
             $pass = trim(mysqli_real_escape_string($con, $_POST['pass']));
-            $sql_login = mysqli_query($con, "SELECT * FROM tbl_admin WHERE user = '$user' AND pass = '$pass'") or die (mysqli_error($con));
+            $sql_login = mysqli_query($con, "SELECT * FROM tbl_owner WHERE user = '$user' AND pass = '$pass'") or die (mysqli_error($con));
             if (mysqli_num_rows($sql_login) > 0) {
               $_SESSION['user'] = $user;
               echo "<script>window.location='dashboard.php';</script>";
