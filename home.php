@@ -17,7 +17,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png" />
     <link rel="manifest" href="./site.webmanifest" />
-    <link rel="stylesheet" href="./assets/css/home.css" />
+    <link rel="stylesheet" href="./assets/css/home.css?v=<?=time()?>" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -68,7 +68,7 @@
 
           <nav class="navbar" data-navbar>
             <div class="navbar-top">
-              <a href="#" class="logo">
+              <a href="about.php" class="logo">
                 <img src="./assets/images/doctrip-gray.png" alt="DocTrip logo" />
               </a>
               <button
@@ -404,7 +404,7 @@
       <div class="footer-bottom">
         <div class="container">
           <p class="copyright">
-            2022 &copy; <a href=""><?=$dataProfile['name']?></a>. All rights reserved.
+            <?=date('Y')?> &copy; <a href=""><?=$dataProfile['name']?></a>. All rights reserved.
           </p>
 
           <ul class="footer-bottom-list">
@@ -432,8 +432,8 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="./assets/js/main.js"></script>
-    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/main.js?v=<?=time()?>"></script>
+    <script src="./assets/js/script.js?v=<?=time()?>"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   </body>

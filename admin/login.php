@@ -1,5 +1,6 @@
 <?php
   require_once "../config.php";
+
   if (isset($_SESSION['user'])) {
     echo "<script>window.location='dashboard.php';</script>";
   } else {
@@ -18,7 +19,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png" />
     <link rel="manifest" href="../site.webmanifest" />
-    <link rel="stylesheet" href="../assets/css/login.css" />
+    <link rel="stylesheet" href="../assets/css/login.css?v=<?=time()?>" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -41,49 +42,61 @@
           if (isset($_POST['login'])) {
             $user = trim(mysqli_real_escape_string($con, $_POST['user']));
             $pass = trim(mysqli_real_escape_string($con, $_POST['pass']));
-            $sql_login = mysqli_query($con, "SELECT * FROM tbl_owner WHERE user = '$user' AND pass = '$pass'") or die (mysqli_error($con));
+            $sql_login = mysqli_query($con, "SELECT * FROM tbl_admin WHERE user = '$user' AND pass = '$pass'") or die (mysqli_error($con));
             if (mysqli_num_rows($sql_login) > 0) {
               $_SESSION['user'] = $user;
+              $_SESSION['login_time'] = time();
               echo "<script>window.location='dashboard.php';</script>";
             } else {
+              echo "<script>window.loginFailed = true;</script>";
         ?>
-              <div class="login-rejected" id="login-rejected">
-                <button onclick="closeDiv()">X</button>
-                <p class="failed-1"><strong>Login Gagal</strong></p>
-                <p class="failed-2">Email / Password salah</p>
+              <div id="custom-notification" class="notification">
+                <p id="notification-message"></p>
               </div>
         <?php
             }
           }
         ?>
         <form method="POST" id="login-form" class="form" action="">
-          <label for="user" style="padding-top: 13px;">&nbsp;<ion-icon class="next" name="chevron-forward"></ion-icon>
-            <input id="user" class="form-content" type="text" name="user" placeholder=" Masukkan Username" required autofocus/>
+          <label for="user" style="padding-top: 13px;">&nbsp;<ion-icon name="person"></ion-icon>
+            <input id="user" class="form-content" type="text" name="user" placeholder="Masukkan Username" required autofocus/>
             <div class="form-border"></div>
           </label>
 
-          <label for="pass" style="padding-top: 22px;">&nbsp;<ion-icon class="next" name="chevron-forward"></ion-icon>
-            <input id="pass" class="form-content" type="password" placeholder=" Masukkan Password" name="pass" required/>
-            <span class="show-hide">
-              <ion-icon class="next" name="chevron-forward"></ion-icon>
+          <label for="pass" style="padding-top: 22px;">&nbsp;<ion-icon name="key"></ion-icon>
+            <input id="pass" class="form-content" type="password" placeholder="Masukkan Password" name="pass" required/>
+            <span class="show-hide" onclick="togglePassword()">
+              <ion-icon id="toggle-icon" name="eye"></ion-icon>
             </span>
             <div class="form-border"></div>
           </label>
           <input id="submit-btn" type="submit" name="login" value="LOGIN">
+
+          <p class="owner">Doctor Trip Indonesia &copy; <?=date('Y')?></p>
         </form>
-        <script>
-          const password = document.getElementById('pass');
-          const unhideButton = document.getElementById('unhide');
-          unhideButton.addEventListener('click', function(){
-            if(password.type === 'password'){
-              password.type = 'text';
-            } else{
-              password.type = 'password';
-            }
-          });
-        </script>
       </div>
     </div>
+    <script>
+      function togglePassword() {
+        const passwordInput = document.getElementById('pass');
+        const toggleIcon = document.getElementById('toggle-icon');
+
+        if (passwordInput.type === 'password') {
+          passwordInput.type = 'text';
+          toggleIcon.name = 'eye-off';
+        } else {
+          passwordInput.type = 'password';
+          toggleIcon.name = 'eye';
+        }
+      }
+    </script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="../assets/js/login.js?v=<?=time()?>"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   </body>
 </html>
 <?php
