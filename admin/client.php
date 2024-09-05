@@ -44,7 +44,7 @@
                     <li>
                         <i class='bx bxs-calendar-check' ></i>
                         <span class="text">
-                            <h3>Dashboard</h3>
+                            <h3>Client</h3>
                         </span>
                     </li>
                 </ul>

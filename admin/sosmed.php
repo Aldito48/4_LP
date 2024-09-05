@@ -44,7 +44,7 @@
                     <li>
                         <i class='bx bxs-calendar-check' ></i>
                         <span class="text">
-                            <h3>Dashboard</h3>
+                            <h3>Sosial Media</h3>
                         </span>
                     </li>
                 </ul>

@@ -128,19 +128,20 @@
                   if (mysqli_num_rows($resultSlider) > 1) {
                 ?>
                     <div class="slider">
-                      <div class="slides">
-                        <?php
-                          while ($dataSlider = mysqli_fetch_array($resultSlider)) {
-                        ?>
+                      <?php
+                        while ($dataSlider = mysqli_fetch_array($resultSlider)) {
+                      ?>
+                          <div class="item">
                             <img
                               src="./storage/slider/<?=$dataSlider['photo']?>"
                               alt="Gambar"
-                              class="slide"
                             />
-                        <?php
-                          }
-                        ?>
-                      </div>
+                          </div>
+                      <?php
+                        }
+                      ?>
+                      <button id="next">></button>
+                      <button id="prev"><</button>
                     </div>
                 <?php
                   } else {
@@ -454,6 +455,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="./assets/js/main.js?v=<?=time()?>"></script>
     <script src="./assets/js/script.js?v=<?=time()?>"></script>
+    <script src="./assets/js/swiper.js?v=<?=time()?>"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   </body>

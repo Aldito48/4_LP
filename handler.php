@@ -5,7 +5,7 @@
     $id = @$_GET['id'];
 
     if ($id != null && !empty($id) && is_numeric($id) && $id > 0) {
-      $queryDetailTrip = "SELECT * FROM tbl_trip WHERE id = $id LIMIT 1";
+      $queryDetailTrip = "SELECT * FROM tbl_trip WHERE id = $id AND is_active = 'Iya' LIMIT 1";
       $querySchedule = "SELECT * FROM tbl_schedule WHERE id_trip = $id LIMIT 1";
       $queryItinerary = "SELECT * FROM tbl_itinerary WHERE id_trip = $id";
       $querySlider = "SELECT * FROM tbl_slider WHERE id_trip = $id";
@@ -24,13 +24,13 @@
 
   $queryProfile = "SELECT * FROM tbl_profile WHERE id = 1 LIMIT 1";
   $queryMitra = "SELECT * FROM tbl_mitra";
-  $querySpecialTrip = "SELECT * FROM tbl_trip WHERE type = 'SPECIAL' LIMIT 3";
-  $queryPromoTrip = "SELECT * FROM tbl_trip WHERE type = 'PROMO' LIMIT 3";
-  $queryOpenTrip = "SELECT * FROM tbl_trip WHERE type = 'OPEN'";
+  $querySpecialTrip = "SELECT * FROM tbl_trip WHERE type = 'SPECIAL' AND is_active = 'Iya' LIMIT 3";
+  $queryPromoTrip = "SELECT * FROM tbl_trip WHERE type = 'PROMO' AND is_active = 'Iya' LIMIT 3";
+  $queryOpenTrip = "SELECT * FROM tbl_trip WHERE type = 'OPEN' AND is_active = 'Iya'";
   $querySosmed = "SELECT * FROM tbl_sosmed";
   $queryGalery = "SELECT * FROM tbl_galery LIMIT 5";
-  $queryAllTrip = "SELECT * FROM tbl_trip WHERE is_asia = 'Tidak'";
-  $queryAsiaTrip = "SELECT * FROM tbl_trip WHERE is_asia = 'Ya'";
+  $queryAllTrip = "SELECT * FROM tbl_trip WHERE is_asia = 'Tidak' AND is_active = 'Iya'";
+  $queryAsiaTrip = "SELECT * FROM tbl_trip WHERE is_asia = 'Iya' AND is_active = 'Iya'";
   $queryReview = "SELECT * FROM tbl_review";
 
   $resultProfile = mysqli_query($con, $queryProfile) or die (mysqli_error($con));
