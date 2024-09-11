@@ -127,21 +127,30 @@
                 <?php
                   if (mysqli_num_rows($resultSlider) > 1) {
                 ?>
-                    <div class="slider">
-                      <?php
-                        while ($dataSlider = mysqli_fetch_array($resultSlider)) {
-                      ?>
-                          <div class="item">
-                            <img
-                              src="./storage/slider/<?=$dataSlider['photo']?>"
-                              alt="Gambar"
-                            />
-                          </div>
-                      <?php
-                        }
-                      ?>
-                      <button id="next">></button>
-                      <button id="prev"><</button>
+                    <div class="swiper">
+                      <div class="card-wrapper">
+                        <div class="card-list swiper-wrapper">
+                          <?php
+                            while ($dataSlider = mysqli_fetch_array($resultSlider)) {
+                          ?>
+                              <div class="swiper-slide">
+                                <a class="card-link">
+                                  <img
+                                    src="./storage/slider/<?=$dataSlider['photo']?>"
+                                    alt="Gambar"
+                                    class="card-image"
+                                  />
+                                </a>
+                              </div>
+                          <?php
+                            }
+                          ?>
+                        </div>
+
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-slide-button swiper-button-prev"></div>
+                        <div class="swiper-slide-button swiper-button-next"></div>
+                      </div>
                     </div>
                 <?php
                   } else {

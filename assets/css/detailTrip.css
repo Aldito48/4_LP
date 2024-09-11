@@ -542,12 +542,6 @@ body { background: var(--white); }
 
 .package { padding-top: 180px; }
 
-.package .container img {
-  width: 400px;
-  margin: auto;
-  padding-bottom: 20px;
-}
-
 .package .container .detail-text {
   text-align: justify;
   padding-bottom: 20px;
@@ -855,45 +849,60 @@ body { background: var(--white); }
 
 .package .btn { margin-inline: auto; }
 
-.slider{
-  position: relative;
-  margin-top: 40px;
-  width: 100%;
-  height: 370px;
+.card-wrapper {
+  width: 90%;
+  margin: auto;
+  padding-bottom: 40px;
   overflow: hidden;
 }
-.item{
-  position: absolute;
-  width: fit-content;
-  height: 400px;
-  background-color: #fff;
-  transition:  0.5s;
-  left: calc(50% - 200px);
-  top: 0;
-  overflow: hidden;
+
+.card-wrapper .swiper-pagination-bullet {
+  height: 13px;
+  width: 13px;
+  opacity: 0.5;
+  background: var(--light-blue);
 }
-.item img {
+
+.card-wrapper .swiper-pagination-bullet-active {
+  opacity: 1;
+}
+
+.card-wrapper .swiper-slide-button {
+  color: var(--light-blue);
+  margin-top: -35px;
+}
+
+.card-list .card-link {
+  user-select: none;
+  display: block;
+  background: none;
+  padding: 15px;
+  padding-bottom: -20px;
+  height: 450px;
+  margin: auto;
+  border-radius: 12px;
+  text-decoration: none;
+  border: 2px solid transparent;
+  width: 50%;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.05);
+  transition: 0.2s ease;
+}
+
+.card-list .card-link:active {
+  cursor: grabbing;
+}
+
+.card-list .card-link:hover {
+  border-color: var(--light-blue);
+}
+
+.card-list .card-link .card-image {
   width: 100%;
   height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
   object-position: center;
-}
-#next{
-  position: absolute;
-  right: 50px;
-  top: 40%;
-}
-#prev{
-  position: absolute;
-  left: 50px;
-  top: 40%;
-}
-#prev, #next{
-  color: var(--black);
-  background: none;
-  border: none;
-  font-size: xxx-large;
-  font-family: monospace;
-  font-weight: bold;
+  border-radius: 10px;
 }
 
 
@@ -1377,20 +1386,15 @@ address {
   .itinerary-content-2 ul li {
     font-size: smaller;
   }
-  .slider{
-    height: 185px;
-    margin: auto;
+  .card-wrapper {
+    width: 100%;
   }
-  .item {
-    width: 50%;
-    height: 220px;
-    left: calc(50% - 100px);
+  .card-list .card-link {
+    width: 100%;
+    height: 350px;
   }
-  #next {
-    right: 0px;
-  }
-  #prev {
-    left: 0px;
+  .card-wrapper .swiper-slide-button {
+    display: none;
   }
 }
 
