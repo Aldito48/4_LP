@@ -9,7 +9,7 @@
     </a>
     <ul class="side-menu top">
         <?php
-            $queryMenu = "SELECT * FROM tbl_menu WHERE is_active = 'Iya' ORDER BY id ASC";
+            $queryMenu = "SELECT * FROM tbl_menu WHERE is_active = 'Iya' ORDER BY sort ASC";
             $resultMenu = mysqli_query($con, $queryMenu) or die (mysqli_error($con));
             if (mysqli_num_rows($resultMenu) > 0) {
                 while ($dataMenu = mysqli_fetch_array($resultMenu)) {

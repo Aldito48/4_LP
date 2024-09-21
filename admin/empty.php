@@ -21,7 +21,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png" />
         <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
         <link rel="manifest" href="../site.webmanifest" />
-        <link rel="stylesheet" href="../assets/css/dashboard.css?v=<?=time()?>" />
+        <link rel="stylesheet" href="../assets/css/admin.css?v=<?=time()?>" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
