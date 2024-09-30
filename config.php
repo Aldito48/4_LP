@@ -9,4 +9,14 @@
     $con = mysqli_connect($host, $user, $pass, $db);
 
     mysqli_select_db($con, $db);
+
+    function base_url() {
+        $mode = 'dev';
+
+        if ($mode == 'dev') {
+            return 'http://localhost/4_LP/';
+        } else if ($mode == 'prod') {
+            return 'https://doctrip.id/';
+        }
+    }
 ?>

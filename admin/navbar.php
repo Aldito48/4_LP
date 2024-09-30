@@ -15,6 +15,6 @@
         <span class="num">8</span>
     </a>
     <a href="#" class="profile">
-        <img src="../favicon/favicon-32x32.png">
+        <img src="<?=base_url()?>favicon/favicon-32x32.png">
     </a>
 </nav>

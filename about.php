@@ -13,11 +13,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Doctor Trip Indonesia merupakan badan usaha yang bergerak dibidang tour and travel yang menyediakan layanan open trip maupun private trip yang semakin mudah, hemat dan menyenangkan ke berbagai destinasi menarik." />
     <meta name="keywords" content="doctrip, doctor trip, doctor trip indonesia, doctor trip asia, healing, travel, adventure, trip, sumut, medan, family, keluarga, liburan, holiday, vacation, nongkrong, partner, jalan jalan, penghilang stress, samosir, sabang, danau toba" />
-    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png" />
-    <link rel="manifest" href="./site.webmanifest" />
-    <link rel="stylesheet" href="./assets/css/about.css?v=<?=time()?>" />
+    <link rel="apple-touch-icon" sizes="180x180" href="<?=base_url()?>favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="<?=base_url()?>favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="<?=base_url()?>favicon/favicon-16x16.png" />
+    <link rel="manifest" href="<?=base_url()?>site.webmanifest" />
+    <link rel="stylesheet" href="<?=base_url()?>assets/css/about.css?v=<?=time()?>" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -38,8 +38,8 @@
               <p class="helpline-number">+</p>
             </div> -->
           </a>
-          <a href="about.php" class="logo">
-            <img src="./assets/images/doctrip-white.png" alt="DocTrip logo"/>
+          <a href="<?=base_url()?>about.php" class="logo">
+            <img src="<?=base_url()?>assets/images/doctrip-white.png" alt="DocTrip logo"/>
           </a>
           <div class="header-btn-group">
             <!-- <button class="search-btn" aria-label="Search">
@@ -78,8 +78,8 @@
 
           <nav class="navbar" data-navbar>
             <div class="navbar-top">
-              <a href="about.php" class="logo">
-                <img src="./assets/images/doctrip-gray.png" alt="DocTrip logo" />
+              <a href="<?=base_url()?>about.php" class="logo">
+                <img src="<?=base_url()?>assets/images/doctrip-gray.png" alt="DocTrip logo" />
               </a>
               <button
                 class="nav-close-btn"
@@ -92,16 +92,16 @@
 
             <ul class="navbar-list">
               <li>
-                <a href="home.php" class="navbar-link" data-nav-link>home</a>
+                <a href="<?=base_url()?>home.php" class="navbar-link" data-nav-link>home</a>
               </li>
               <li>
-                <a href="trip.php" class="navbar-link" data-nav-link>open trip</a>
+                <a href="<?=base_url()?>trip.php" class="navbar-link" data-nav-link>open trip</a>
               </li>
               <li>
-                <a href="asia.php" class="navbar-link" data-nav-link>@doctrip.asia</a>
+                <a href="<?=base_url()?>asia.php" class="navbar-link" data-nav-link>@doctrip.asia</a>
               </li>
               <li>
-                <a href="trans.php" class="navbar-link" data-nav-link>@doctrans</a>
+                <a href="<?=base_url()?>trans.php" class="navbar-link" data-nav-link>@doctrans</a>
               </li>
             </ul>
           </nav>
@@ -117,7 +117,7 @@
           <div class="container">
             <h2 class="h2 section-title">TENTANG KAMI</h2>
             <div class="desc">
-              <img src="./assets/images/doctrip-white.png">
+              <img src="<?=base_url()?>assets/images/doctrip-white.png">
               <p><?=$dataProfile['about']?></p>
               <iframe class="maps-loc" src="<?=$dataProfile['maps']?>" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
@@ -130,8 +130,8 @@
       <div class="footer-top">
         <div class="container">
           <div class="footer-brand">
-            <a href="about.php" class="logo">
-              <img src="./assets/images/doctrip-white.png" alt="DocTrip logo" />
+            <a href="<?=base_url()?>about.php" class="logo">
+              <img src="<?=base_url()?>assets/images/doctrip-white.png" alt="DocTrip logo" />
             </a>
 
             <p class="footer-text">
@@ -197,8 +197,8 @@
 
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="./assets/js/main.js?v=<?=time()?>"></script>
-    <script src="./assets/js/script.js?v=<?=time()?>"></script>
+    <script src="<?=base_url()?>assets/js/main.js?v=<?=time()?>"></script>
+    <script src="<?=base_url()?>assets/js/script.js?v=<?=time()?>"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   </body>

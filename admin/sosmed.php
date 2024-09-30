@@ -1,10 +1,10 @@
 <?php
-  require "../config.php";
+    require "../config.php";
 
-  if(isset($_SESSION['user'])) {
-    if (time() - $_SESSION['login_time'] > 86400) {
-        echo "<script>window.location='logout.php';</script>";
-    }
+    if (isset($_SESSION['user'])) {
+        if (time() - $_SESSION['login_time'] > 86400) {
+            echo "<script>window.location='" . base_url() . "admin/logout.php';</script>";
+        }
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,12 +16,12 @@
         <meta http-equiv="Pragma" content="no-cache" />
         <meta http-equiv="Expires" content="0" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="<?=base_url()?>favicon/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="<?=base_url()?>favicon/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="<?=base_url()?>favicon/favicon-16x16.png" />
         <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-        <link rel="manifest" href="../site.webmanifest" />
-        <link rel="stylesheet" href="../assets/css/admin.css?v=<?=time()?>" />
+        <link rel="manifest" href="<?=base_url()?>site.webmanifest" />
+        <link rel="stylesheet" href="<?=base_url()?>assets/css/admin.css?v=<?=time()?>" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -142,11 +142,11 @@
             </main>
         </section>
 
-        <script src="../assets/js/admin.js?v=<?=time()?>"></script>
+        <script src="<?=base_url()?>assets/js/admin.js?v=<?=time()?>"></script>
     </body>
 </html>
 <?php
-    } else{
-        echo "<script>window.location='login.php';</script>";
+    } else {
+        echo "<script>window.location='" . base_url() . "admin/login.php';</script>";
     }
 ?>

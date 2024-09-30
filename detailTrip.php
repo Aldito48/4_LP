@@ -11,11 +11,11 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png" />
-    <link rel="manifest" href="./site.webmanifest" />
-    <link rel="stylesheet" href="./assets/css/detailTrip.css?v=<?=time()?>" />
+    <link rel="apple-touch-icon" sizes="180x180" href="<?=base_url()?>favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="<?=base_url()?>favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="<?=base_url()?>favicon/favicon-16x16.png" />
+    <link rel="manifest" href="<?=base_url()?>site.webmanifest" />
+    <link rel="stylesheet" href="<?=base_url()?>assets/css/detailTrip.css?v=<?=time()?>" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -37,8 +37,8 @@
               <p class="helpline-number">+</p>
             </div> -->
           </a>
-          <a href="about.php" class="logo">
-            <img src="./assets/images/doctrip-white.png" alt="DocTrip logo"/>
+          <a href="<?=base_url()?>about.php" class="logo">
+            <img src="<?=base_url()?>assets/images/doctrip-white.png" alt="DocTrip logo"/>
           </a>
           <div class="header-btn-group">
             <!-- <button class="search-btn" aria-label="Search">
@@ -77,8 +77,8 @@
 
           <nav class="navbar" data-navbar>
             <div class="navbar-top">
-              <a href="about.php" class="logo">
-                <img src="./assets/images/doctrip-gray.png" alt="DocTrip logo" />
+              <a href="<?=base_url()?>about.php" class="logo">
+                <img src="<?=base_url()?>assets/images/doctrip-gray.png" alt="DocTrip logo" />
               </a>
               <button
                 class="nav-close-btn"
@@ -91,16 +91,16 @@
 
             <ul class="navbar-list">
               <li>
-                <a href="home.php" class="navbar-link" data-nav-link>home</a>
+                <a href="<?=base_url()?>home.php" class="navbar-link" data-nav-link>home</a>
               </li>
               <li>
-                <a href="trip.php" class="navbar-link" data-nav-link>open trip</a>
+                <a href="<?=base_url()?>trip.php" class="navbar-link" data-nav-link>open trip</a>
               </li>
               <li>
-                <a href="asia.php" class="navbar-link" data-nav-link>@doctrip.asia</a>
+                <a href="<?=base_url()?>asia.php" class="navbar-link" data-nav-link>@doctrip.asia</a>
               </li>
               <li>
-                <a href="trans.php" class="navbar-link" data-nav-link>@doctrans</a>
+                <a href="<?=base_url()?>trans.php" class="navbar-link" data-nav-link>@doctrans</a>
               </li>
             </ul>
           </nav>
@@ -136,7 +136,7 @@
                               <div class="swiper-slide">
                                 <a class="card-link">
                                   <img
-                                    src="./storage/slider/<?=$dataSlider['photo']?>"
+                                    src="<?=base_url()?>storage/slider/<?=$dataSlider['photo']?>"
                                     alt="Gambar"
                                     class="card-image"
                                   />
@@ -157,7 +157,7 @@
                 ?>
                     <div class="img-tour">
                       <img
-                        src="./storage/trip/<?=$dataDetailTrip['file']?>"
+                        src="<?=base_url()?>storage/trip/<?=$dataDetailTrip['file']?>"
                         alt="Gambar"
                       />
                     </div>
@@ -346,7 +346,7 @@
                                 </div>
                                 <div class="layout-2">
                                   <img
-                                    src="./storage/itinerary/<?=$dataItinerary['image']?>"
+                                    src="<?=base_url()?>storage/itinerary/<?=$dataItinerary['image']?>"
                                     alt="Photos"
                                   />
                                 </div>
@@ -393,8 +393,8 @@
       <div class="footer-top">
         <div class="container">
           <div class="footer-brand">
-            <a href="about.php" class="logo">
-              <img src="./assets/images/doctrip-white.png" alt="DocTrip logo" />
+            <a href="<?=base_url()?>about.php" class="logo">
+              <img src="<?=base_url()?>assets/images/doctrip-white.png" alt="DocTrip logo" />
             </a>
 
             <p class="footer-text">
@@ -462,9 +462,9 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script src="./assets/js/main.js?v=<?=time()?>"></script>
-    <script src="./assets/js/script.js?v=<?=time()?>"></script>
-    <script src="./assets/js/swiper.js?v=<?=time()?>"></script>
+    <script src="<?=base_url()?>assets/js/main.js?v=<?=time()?>"></script>
+    <script src="<?=base_url()?>assets/js/script.js?v=<?=time()?>"></script>
+    <script src="<?=base_url()?>assets/js/swiper.js?v=<?=time()?>"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   </body>

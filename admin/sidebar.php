@@ -3,7 +3,7 @@
 ?>
 
 <section id="sidebar">
-    <a href="dashboard.php" class="brand">
+    <a href="<?=base_url()?>admin/dashboard.php" class="brand">
         <i class='bx bxs-smile'></i>
         <span class="text">AdminDoctrip</span>
     </a>
@@ -15,7 +15,7 @@
                 while ($dataMenu = mysqli_fetch_array($resultMenu)) {
         ?>
                     <li class="<?= ($currentPage == $dataMenu['name'].'.php') ? 'active' : '' ?>">
-                        <a href="<?=$dataMenu['name']?>.php">
+                        <a href="<?=base_url()?>admin/<?=$dataMenu['name']?>.php">
                             <i class='<?=$dataMenu['icon']?>' ></i>
                             <span class="text"><?=$dataMenu['title']?></span>
                         </a>
