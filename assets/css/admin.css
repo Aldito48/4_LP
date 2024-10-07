@@ -452,7 +452,8 @@ body {
 	width: 100%;
 	color: var(--dark);
 }
-#content main .table-data > div {
+#content main .table-data .order,
+#content main .table-data #formData {
 	border-radius: 20px;
 	background: var(--light);
 	padding: 30px;
@@ -572,20 +573,22 @@ body.dark td.dtfc-fixed-right {
     display: none;
     position: fixed;
     z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    left: 60%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: fit-content;
 }
 
 .modal-content {
-    background-color: var(--light);
+    background: var(--light);
     padding: 10px;
-    margin: 15% auto;
     width: 300px;
     text-align: left;
     border-radius: 8px;
+	box-shadow: 0 1px 2px var(--blue),
+                0 -1px 2px var(--blue),
+                1px 0 2px var(--blue),
+                -1px 0 2px var(--blue);
 }
 
 .modal-content h4 {
@@ -636,6 +639,15 @@ body.dark td.dtfc-fixed-right {
 	position: relative;
     width: 100%;
 }
+#formData hr {
+	border: 2px solid var(--grey);
+	border-radius: 8px;
+}
+.formHead {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
 .goback {
 	cursor: pointer;
 	background: var(--blue);
@@ -657,7 +669,7 @@ body.dark td.dtfc-fixed-right {
 .title-form::before {
 	content: "";
 	position: absolute;
-	left: 0;
+	right: 0;
 	bottom: -2px;
 	height: 3px;
 	width: 27px;
@@ -667,13 +679,33 @@ body.dark td.dtfc-fixed-right {
 .form-layout {
 	position: relative;
     margin-top: 16px;
-    min-height: 490px;
+    min-height: 550px;
     background-color: var(--light);
-    overflow: hidden;
+    overflow-x: hidden;
+}
+.form-layout .fields-group{
+    position: absolute;
+    transition: 0.3s ease;
+	width: 100%;
+}
+.form-layout .fields-group.second{
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(100%);
+}
+.form-layout.secActive .fields-group.second{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+}
+.form-layout.secActive .fields-group.first{
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
 }
 .form-layout .fields {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
 }
@@ -688,10 +720,41 @@ body.dark td.dtfc-fixed-right {
     font-weight: 500;
     color: var(--dark-grey);
 }
-.input-field input[type="file"]{
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
+.upload {
+	width: 100px;
+	position: relative;
+	margin: auto;
+}
+.upload .preview {
+	width: 100px;
+	height: 100px;
+	background: var(--light);
+	border-radius: 50%;
+	border: 4px solid var(--dark-grey);
+}
+.upload .round{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	background: var(--blue);
+	color: white;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	overflow: hidden;
+	display: grid;
+	place-items: center;
+	border: 0;
+}
+.upload .round:hover {
+	background: var(--dark-grey);
+}
+.upload .round input[type = "file"] {
+	position: absolute;
+	transform: scale(2);
+	opacity: 0;
+	cursor: pointer;
+	border: 0;
 }
 .input-field input, select{
     outline: none;
@@ -704,9 +767,11 @@ body.dark td.dtfc-fixed-right {
     padding: 0 15px;
     height: 42px;
     margin: 8px 0;
+	font-family: var(--poppins);
 }
 .input-field select option {
 	color: var(--dark);
+	font-family: var(--poppins);
 }
 .input-field input :focus,
 .input-field select:focus{
@@ -720,15 +785,51 @@ body.dark td.dtfc-fixed-right {
 .input-field input[type="date"]:valid{
     color: var(--dark);
 }
-.form-layout .fields .submit {
-	background: transparent;
-	width: 100px;
+.input-field textarea {
+	width: 100%;
+	resize: none;
+	outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--dark);
+    border-radius: 5px;
+	background: var(--light);
+    border: 1px solid var(--dark-grey);
+    padding: 10px 15px;
+	min-height: 42px;
+	max-height: 200px;
+    margin: 8px 0;
+	font-family: var(--poppins);
+}
+.input-field input[readonly], textarea[readonly], select[disabled] {
+    background: var(--grey);
+}
+.form-layout .buttons {
+    display: flex;
+    align-items: center;
+	gap: 10px;
+	float: right;
+}
+.form-layout .submit, .backBtn, .nextBtn {
+	background: var(--blue);
+	border: 0;
+	margin-top: 10px;
 	padding: 10px;
+	color: white;
+	width: 100px;
+	font-weight: 500;
 	border-radius: 50px;
-	color: var(--blue);
-	border: 2px solid var(--blue);
-	font-weight: 600;
 	cursor: pointer;
+	font-family: var(--poppins);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+}
+.form-layout .submit:hover,
+.form-layout .backBtn:hover,
+.form-layout .nextBtn:hover {
+	background: var(--dark-grey);
 }
 /* MAIN */
 /* CONTENT */

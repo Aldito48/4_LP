@@ -5,8 +5,8 @@
         <p>Do you want to take this action?</p>
         <hr>
         <div class="confirmButton">
-            <button id="confirmCancelAdd" class="confirm-cancel" onclick="closeModalAdd()">Cancel</button>
-            <button id="confirmAdd" class="confirm-acc" onclick="addData()">Add</button>
+            <button id="confirmCancelAdd" class="confirm-cancel" onclick="closeModal('add')">Cancel</button>
+            <button id="confirmAdd" class="confirm-acc" onclick="onConfirm()">Add</button>
         </div>
     </div>
 </div>
@@ -18,8 +18,8 @@
         <p>Do you want to take this action?</p>
         <hr>
         <div class="confirmButton">
-            <button id="confirmCancelUpdate" class="confirm-cancel" onclick="closeModalUpdate()">Cancel</button>
-            <button id="confirmUpdate" class="confirm-acc" onclick="updateData()">Update</button>
+            <button id="confirmCancelUpdate" class="confirm-cancel" onclick="closeModal('update')">Cancel</button>
+            <button id="confirmUpdate" class="confirm-acc" onclick="onConfirm()">Update</button>
         </div>
     </div>
 </div>
@@ -31,8 +31,8 @@
         <p>Do you want to take this action?</p>
         <hr>
         <div class="confirmButton">
-            <button id="confirmCancelDelete" class="confirm-cancel" onclick="closeModalDelete()">Cancel</button>
-            <button id="confirmDelete" class="confirm-acc" onclick="deleteData()">Delete</button>
+            <button id="confirmCancelDelete" class="confirm-cancel" onclick="closeModal('delete')">Cancel</button>
+            <button id="confirmDelete" class="confirm-acc" onclick="onConfirm()">Delete</button>
         </div>
     </div>
 </div>

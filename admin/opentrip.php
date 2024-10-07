@@ -3,7 +3,7 @@
 
     if (isset($_SESSION['user'])) {
         if (time() - $_SESSION['login_time'] > 86400) {
-            echo "<script>window.location='" . base_url() . "admin/logout.php';</script>";
+            echo "<script>window.location='".base_url()."admin/logout.php';</script>";
         }
 ?>
 <!DOCTYPE html>
@@ -63,7 +63,7 @@
 
                 <div class="table-data">
                     <div class="order">
-                        <a class="addButton" href="javascript:void(0);" onclick="showForm('add')">
+                        <a class="addButton" href="javascript:void(0);" onclick="showForm('add', 'trip')">
                             <i class='bx bx-plus-medical' ></i>
                             Add Data
                         </a>
@@ -83,7 +83,6 @@
                                 </tr>
                             </thead>
                         </table>
-                        <?php include 'modal.php'; ?>
                     </div>
                     <script>
                         $(window).on('load', function() {
@@ -129,7 +128,7 @@
                                         orderable: false,
                                         targets: 9,
                                         render: function(data, type, row) {
-                                            let btn = '<center><a href=\'javascript:void(0);\' onclick=\'showForm("update", '+data+')\'><i class=\'bx bxs-edit\'></i></a> <a href=\'javascript:void(0);\' onclick=\'showDeleteConfirmationModal('+data+')\'><i class=\'bx bxs-trash\'></i></a></center>';
+                                            let btn = '<center><a href=\'javascript:void(0);\' onclick=\'showForm("update", "trip", '+data+')\'><i class=\'bx bxs-edit\'></i></a> <a href=\'javascript:void(0);\' onclick=\'showForm("delete", "trip", '+data+')\'><i class=\'bx bxs-trash\'></i></a> <a href=\'javascript:void(0);\' onclick=\'showForm("view", "trip", '+data+')\'><i class=\'bx bx-target-lock\'></i></a></center>';
                                             return btn;
                                         }
                                     }
@@ -138,80 +137,168 @@
                         });
                     </script>
 
+                    <?php include 'modal.php'; ?>
+
                     <div id="formData">
-                        <a class="goback" onclick="hideForm()"><i class='bx bx-arrow-back'></i></a>
-                        <h3 class="title-form"></h3>
+                        <div class="formHead">
+                            <a class="goback" onclick="hideForm()"><i class='bx bx-arrow-back'></i></a>
+                            <div>
+                                <h3 class="title-form"></h3>
+                            </div>
+                        </div>
+                        <hr>
                         <script>
                             function showImage(event) {
                                 let input = event.target;
                                 let reader = new FileReader();
                                 reader.onload = function() {
-                                    let output = document.getElementById('preview');
-                                    output.style.display = 'block';
+                                    let output = document.querySelector('.preview');
                                     output.src = reader.result;
                                 };
                                 reader.readAsDataURL(input.files[0]);
                             }
                         </script>
-                        <form class="form-layout" id="dataForm" method="POST" action="" enctype="multipart/form-data">
-                            <img id="preview" style="display: none; width: 66.5px; height: 90px;">
-                            <div class="fields">
-                                <div class="input-field">
-                                    <label for="file_trip">Foto Trip (.png, .jpg, .jpeg)</label>
-                                    <input type="file" accept=".png, .jpg, .jpeg" name="file_trip" onchange="showImage(event)" required>
+                        <form class="form-layout" id="dataForm" method="POST" enctype="multipart/form-data">
+                            <div class="upload">
+                                <img class="preview">
+                                <div class="round">
+                                    <input type="file" accept=".png, .jpg, .jpeg" name="file" onchange="showImage(event)">
+                                    <i class='bx bxs-camera'></i>
                                 </div>
+                            </div>
+                            <input type="hidden" name="id" value="">
+                            <input type="hidden" name="source" value="">
+                            <div class="fields-group first">
+                                <div class="fields">
+                                    <div class="input-field">
+                                        <label for="name">Nama Trip</label>
+                                        <input type="text" name="name" placeholder="Masukkan nama" required>
+                                    </div>
 
-                                <div class="input-field">
-                                    <label for="name">Nama Trip</label>
-                                    <input type="text" name="name" placeholder="Masukkan nama" required>
-                                </div>
+                                    <div class="input-field">
+                                        <label for="sub">Sub Nama Trip</label>
+                                        <textarea name="sub" spellcheck="false" placeholder="Masukkan sub" required></textarea>
+                                    </div>
 
-                                <div class="input-field">
-                                    <label for="sub">Sub Nama Trip</label>
-                                    <input type="text" name="sub" placeholder="Masukkan sub" required>
-                                </div>
+                                    <div class="input-field">
+                                        <label for="seat">Seat</label>
+                                        <input type="text" name="seat" value="0" placeholder="Masukkan seat" oninput="typePrice(this)" required>
+                                    </div>
 
-                                <div class="input-field">
-                                    <label for="price">Harga Trip</label>
-                                    <input type="number" min="0" value="0" name="price" placeholder="Masukkan harga" required>
-                                </div>
-
-                                <div class="input-field">
-                                    <label for="aft_price">Harga Discount Trip</label>
-                                    <input type="number" min="0" value="0" name="aft_price" placeholder="Masukkan harga discount">
-                                </div>
-
-                                <div class="input-field">
-                                    <label for="seat">Seat</label>
-                                    <input type="number" min="0" value="0" name="seat" placeholder="Masukkan seat" required>
-                                </div>
-
-                                <div class="input-field">
-                                    <label for="active">Active</label>
-                                    <select class="form-select" name="active" required>
-                                        <option value="" disabled selected style="display:none;">Pilih</option>
-                                        <?php
-                                            $dropdown = mysqli_query($con, "SHOW COLUMNS FROM `tbl_trip` WHERE `field` = 'is_active'");
-                                            while($list = mysqli_fetch_row($dropdown)){
-                                                foreach(explode("','",substr($list[1],6,-2)) as $option){
-                                                    echo "<option>$option</option>";
+                                    <div class="input-field">
+                                        <label for="type">Jenis Trip</label>
+                                        <select class="form-select" name="type" required>
+                                            <option value="" disabled selected style="display:none;">Pilih</option>
+                                            <?php
+                                                $dropdown = mysqli_query($con, "SHOW COLUMNS FROM `tbl_trip` WHERE `field` = 'type'");
+                                                while($list = mysqli_fetch_row($dropdown)){
+                                                    foreach(explode("','",substr($list[1],6,-2)) as $option){
+                                                        echo "<option>$option</option>";
+                                                    }
                                                 }
-                                            }
-                                        ?>
-                                    </select>
-                                </div>
+                                            ?>
+                                        </select>
+                                    </div>
 
-                                <div class="input-field">
-                                    <label for="from_date">Dari Tanggal</label>
-                                    <input type="date" name="from_date" placeholder="YYYY/MM/DD" required>
-                                </div>
+                                    <div class="input-field">
+                                        <label for="price">Harga Trip</label>
+                                        <input type="text" name="price" value="0" placeholder="Masukkan harga" oninput="typePrice(this)" required>
+                                    </div>
 
-                                <div class="input-field">
-                                    <label for="to_date">Sampai Tanggal</label>
-                                    <input type="date" name="to_date" placeholder="YYYY/MM/DD" required>
-                                </div>
+                                    <div class="input-field">
+                                        <label for="aft_price">Harga Discount Trip</label>
+                                        <input type="text" name="aft_price" value="0" placeholder="Masukkan harga diskon" oninput="typePrice(this)" required>
+                                    </div>
 
-                                <input type="submit" class="submit">
+                                    <div class="input-field">
+                                        <label for="active">Active</label>
+                                        <select class="form-select" name="active" required>
+                                            <option value="" disabled selected style="display:none;">Pilih</option>
+                                            <?php
+                                                $dropdown = mysqli_query($con, "SHOW COLUMNS FROM `tbl_trip` WHERE `field` = 'is_active'");
+                                                while($list = mysqli_fetch_row($dropdown)){
+                                                    foreach(explode("','",substr($list[1],6,-2)) as $option){
+                                                        echo "<option>$option</option>";
+                                                    }
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+
+                                    <div class="input-field">
+                                        <label for="meet">Meeting Point</label>
+                                        <input type="text" name="meet" placeholder="Masukkan meeting point" required>
+                                    </div>
+
+                                    <div class="input-field">
+                                        <label for="location">Maps Meeting Point</label>
+                                        <input type="text" name="location" placeholder="Masukkan link maps" required>
+                                    </div>
+
+                                    <div class="input-field">
+                                        <label for="asia">Trip Asia</label>
+                                        <select class="form-select" name="asia" required>
+                                            <option value="" disabled selected style="display:none;">Pilih</option>
+                                            <?php
+                                                $dropdown = mysqli_query($con, "SHOW COLUMNS FROM `tbl_trip` WHERE `field` = 'is_asia'");
+                                                while($list = mysqli_fetch_row($dropdown)){
+                                                    foreach(explode("','",substr($list[1],6,-2)) as $option){
+                                                        echo "<option>$option</option>";
+                                                    }
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+
+                                    <div class="input-field">
+                                        <label for="from_date">Dari Tanggal</label>
+                                        <input type="date" name="from_date" required>
+                                    </div>
+
+                                    <div class="input-field">
+                                        <label for="to_date">Sampai Tanggal</label>
+                                        <input type="date" name="to_date" required>
+                                    </div>
+                                </div>
+                                <div class="buttons">
+                                    <button class="nextBtn" type="button">
+                                        <span class="btnText">Next</span>
+                                        <i class='bx bxs-chevrons-right'></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="fields-group second">
+                                <div class="fields">
+                                    <div class="input-field" style="width: 49%;">
+                                        <label for="include">Include</label>
+                                        <textarea name="include" spellcheck="false" placeholder="Masukkan include" required></textarea>
+                                    </div>
+
+                                    <div class="input-field" style="width: 49%;">
+                                        <label for="exclude">Exclude</label>
+                                        <textarea name="exclude" spellcheck="false" placeholder="Masukkan exclude" required></textarea>
+                                    </div>
+
+                                    <div class="input-field" style="width: 49%;">
+                                        <label for="detail">Detail</label>
+                                        <textarea name="detail" spellcheck="false" placeholder="Masukkan detail" required></textarea>
+                                    </div>
+
+                                    <div class="input-field" style="width: 49%;">
+                                        <label for="s_k">Syarat & Ketentuan</label>
+                                        <textarea name="s_k" spellcheck="false" placeholder="Masukkan syarat dan ketentuan" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="buttons">
+                                    <button class="backBtn" type="button">
+                                        <i class='bx bxs-chevrons-left'></i>
+                                        <span class="btnText">Back</span>
+                                    </button>
+                                    <button class="submit" type="submit">
+                                        <span class="btnText"></span>
+                                        <i class='bx bx-send'></i>
+                                    </button>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -220,10 +307,11 @@
         </section>
 
         <script src="<?=base_url()?>assets/js/admin.js?v=<?=time()?>"></script>
+        <script src="<?=base_url()?>assets/js/request.js?v=<?=time()?>"></script>
     </body>
 </html>
 <?php
     } else {
-        echo "<script>window.location='" . base_url() . "admin/login.php';</script>";
+        echo "<script>window.location='".base_url()."admin/login.php';</script>";
     }
 ?>

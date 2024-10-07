@@ -108,74 +108,6 @@ function displayResults(results) {
 }
 // --------------------------- Search ------------------------------
 
-// --------------------------- Modal ------------------------------
-function showAddConfirmationModal(id) {
-    document.getElementById('addConfirmationModal').style.display = 'block';
-}
-
-function closeModalAdd() {
-    document.getElementById('addConfirmationModal').style.display = 'none';
-}
-
-function addData() {
-    window.location.href = '';
-}
-
-function showUpdateConfirmationModal(id) {
-    document.getElementById('updateConfirmationModal').style.display = 'block';
-}
-
-function closeModalUpdate() {
-    document.getElementById('updateConfirmationModal').style.display = 'none';
-}
-
-function updateData() {
-    window.location.href = '';
-}
-
-let deleteUrl = '';
-
-function showDeleteConfirmationModal(id) {
-    deleteUrl = '../../admin/proccess/delete.php?id=' + id;
-    document.getElementById('deleteConfirmationModal').style.display = 'block';
-}
-
-function closeModalDelete() {
-    document.getElementById('deleteConfirmationModal').style.display = 'none';
-}
-
-function deleteData() {
-    window.location.href = deleteUrl;
-}
-// --------------------------- Modal ------------------------------
-
-// --------------------------- FormData ------------------------------
-function showForm(type, id = null) {
-    document.querySelector('.order').style.display = 'none';
-    document.querySelector('#formData').style.display = 'block';
-    const title = document.querySelector('.title-form');
-    const submit = document.querySelector('.submit');
-
-    const form = document.querySelector('#dataForm');
-    if (type === 'add' && id === null) {
-        form.action = 'proccess/add.php';
-        title.textContent = 'Add';
-        submit.value = 'Add';
-        submit.name = 'add';
-    } else if (type === 'update' && id !== null) {
-        form.action = 'proccess/update.php?id=' + id;
-        title.textContent = 'Update';
-        submit.value = 'Update';
-        submit.name = 'update';
-    }
-}
-
-function hideForm() {
-    document.querySelector('#formData').style.display = 'none';
-    document.querySelector('.order').style.display = 'block';
-}
-// --------------------------- FormData ------------------------------
-
 // --------------------------- Date ------------------------------
 const dateInputs = document.querySelectorAll('input[type="date"]');
 
@@ -189,3 +121,46 @@ dateInputs.forEach(function(input) {
     });
 });
 // --------------------------- Date ------------------------------
+
+// --------------------------- FormField ------------------------------
+const form = document.getElementById("dataForm"),
+        nextBtn = form.querySelector(".nextBtn"),
+        backBtn = form.querySelector(".backBtn"),
+        allRequired = form.querySelectorAll(".first [required]");
+
+nextBtn.addEventListener("click", () => {
+    let allFilled = true;
+    allRequired.forEach(field => {
+        if (!field.validity.valid) {
+            allFilled = false;
+        }
+    });
+
+    if (allFilled) {
+        form.classList.add('secActive');
+    } else {
+        form.reportValidity();
+        form.classList.remove('secActive');
+    }
+})
+
+backBtn.addEventListener("click", () => form.classList.remove('secActive'));
+// --------------------------- FormField ------------------------------
+
+// --------------------------- FormReSize ------------------------------
+document.addEventListener("DOMContentLoaded", function () {
+    const formLayout = document.querySelector('.form-layout');
+    function adjustFormLayoutHeight() {
+        const scrollHeight = formLayout.scrollHeight;
+        formLayout.style.height = scrollHeight + 'px';
+    }
+    adjustFormLayoutHeight();
+    const observer = new MutationObserver(adjustFormLayoutHeight);
+    observer.observe(formLayout, {
+        childList: true,
+        subtree: true,
+        attributes: true
+    });
+    window.addEventListener('resize', adjustFormLayoutHeight);
+});
+// --------------------------- FormReSize ------------------------------
