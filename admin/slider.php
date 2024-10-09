@@ -34,14 +34,14 @@
         />
         <link
         rel="stylesheet"
-        href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css"
+        href="https://cdn.datatables.net/2.1.7/css/dataTables.dataTables.css"
         />
         <link
         rel="stylesheet"
         href="https://cdn.datatables.net/fixedcolumns/5.0.1/css/fixedColumns.dataTables.css"
         />
         <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-        <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+        <script src="https://cdn.datatables.net/2.1.7/js/dataTables.js"></script>
         <script src="https://cdn.datatables.net/fixedcolumns/5.0.1/js/dataTables.fixedColumns.js"></script>
         <script src="https://cdn.datatables.net/fixedcolumns/5.0.1/js/fixedColumns.dataTables.js"></script>
     </head>
@@ -54,39 +54,33 @@
             <main>
                 <ul class="box-info">
                     <li>
-                        <i class='bx bxs-calendar-check' ></i>
+                        <i class='bx bx-slider-alt' ></i>
                         <span class="text">
-                            <h3>Itinerary</h3>
+                            <h3>Slider</h3>
                         </span>
                     </li>
                 </ul>
 
                 <div class="table-data">
                     <div class="order">
-                        <a class="addButton" href="javascript:void(0);" onclick="showForm('add', 'itinerary', null)">
+                        <a class="addButton" href="javascript:void(0);" onclick="showForm('add', 'slider', null)">
                             <i class='bx bx-plus-medical' ></i>
                             Add Data
                         </a>
                         <table id="record" class="display nowrap" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>Image</th>
+                                    <th>Photo</th>
                                     <th>Name</th>
                                     <th>Sub</th>
-                                    <th>Day</th>
-                                    <th>Title</th>
-                                    <th>Experience</th>
-                                    <th>Transportation</th>
+                                    <th>Sort</th>
                                     <th>Action</th>
                                 </tr>
                                 <tr>
                                     <th></th>
                                     <th><input type="text" placeholder="Search Name"></th>
                                     <th><input type="text" placeholder="Search Sub"></th>
-                                    <th><input type="text" placeholder="Search Day"></th>
-                                    <th><input type="text" placeholder="Search Title"></th>
-                                    <th><input type="text" placeholder="Search Experience"></th>
-                                    <th><input type="text" placeholder="Search Transportation"></th>
+                                    <th><input type="text" placeholder="Search Sort"></th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -95,9 +89,9 @@
                     <script>
                         $(window).on('load', function() {
                             new DataTable('#record', {
-                                ajax: 'fetch.php?table=itinerary',
+                                ajax: 'fetch.php?table=slider',
                                 fixedColumns: {
-                                    start: 2,
+                                    start: 1,
                                     end: 1
                                 },
                                 scrollX: true,
@@ -110,7 +104,7 @@
                                         orderable: false,
                                         targets: 0,
                                         render: function(data, type, row) {
-                                            let img = '<center><img src=\'../storage/itinerary/'+data+'\'></center>';
+                                            let img = '<center><img src=\'../storage/slider/'+data+'\'></center>';
                                             return img;
                                         }
                                     },
@@ -123,9 +117,9 @@
                                     {
                                         searchable: false,
                                         orderable: false,
-                                        targets: 7,
+                                        targets: 4,
                                         render: function(data, type, row) {
-                                            let btn = '<center><a href=\'javascript:void(0);\' onclick=\'showForm("update", "itinerary", '+data+')\'><i class=\'bx bxs-edit\'></i></a> <a href=\'javascript:void(0);\' onclick=\'showForm("delete", "itinerary", '+data+')\'><i class=\'bx bxs-trash\'></i></a> <a href=\'javascript:void(0);\' onclick=\'showForm("view", "itinerary", '+data+')\'><i class=\'bx bx-target-lock\'></i></a></center>';
+                                            let btn = '<center><a href=\'javascript:void(0);\' onclick=\'showForm("update", "slider", '+data+')\'><i class=\'bx bxs-edit\'></i></a> <a href=\'javascript:void(0);\' onclick=\'showForm("delete", "slider", '+data+')\'><i class=\'bx bxs-trash\'></i></a> <a href=\'javascript:void(0);\' onclick=\'showForm("view", "slider", '+data+')\'><i class=\'bx bx-target-lock\'></i></a></center>';
                                             return btn;
                                         }
                                     },
@@ -166,7 +160,7 @@
                             <div class="upload">
                                 <img class="preview">
                                 <div class="round">
-                                    <input type="file" accept=".png, .jpg, .jpeg" name="image" onclick="onResetImage(event)" onchange="showImage(event)">
+                                    <input type="file" accept=".png, .jpg, .jpeg" name="photo" onclick="onResetImage(event)" onchange="showImage(event)">
                                     <i class='bx bxs-camera'></i>
                                 </div>
                             </div>
@@ -188,23 +182,8 @@
                                     </div>
 
                                     <div class="input-field">
-                                        <label for="day">Day</label>
-                                        <input type="text" name="day" value="0" placeholder="Masukkan day" oninput="typingNumber(this)" required>
-                                    </div>
-
-                                    <div class="input-field">
-                                        <label for="title">Title</label>
-                                        <input type="text" name="title" placeholder="Masukkan title" required>
-                                    </div>
-
-                                    <div class="input-field">
-                                        <label for="transportation">Transportation</label>
-                                        <input type="text" name="transportation" placeholder="Masukkan transportation" required>
-                                    </div>
-
-                                    <div class="input-field" style="width: 100%;">
-                                        <label for="experience">Experience</label>
-                                        <textarea name="experience" spellcheck="false" placeholder="Masukkan experience" required></textarea>
+                                        <label for="sort">Urutan</label>
+                                        <input type="text" name="sort" value="0" placeholder="Masukkan sort" oninput="typingNumber(this)" required>
                                     </div>
                                 </div>
                                 <div class="buttons">

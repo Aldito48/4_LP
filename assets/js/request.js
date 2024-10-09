@@ -25,11 +25,13 @@ function onConfirm() {
     document.getElementById('dataForm').submit();
 }
 // --------------------------- Modal ------------------------------
-function formatPrice(value) {
+
+// --------------------------- NumberFormat ------------------------------
+function formatingNumber(value) {
     let sanitizedValue = value.replace(/\./g, '').replace(/[^0-9]/g, '');
     return sanitizedValue ? new Intl.NumberFormat('id-ID').format(sanitizedValue) : '0';
 }
-function typePrice(input) {
+function typingNumber(input) {
     let value = input.value.replace(/\./g, '').replace(/[^0-9]/g, '');
     if (value) {
         input.value = new Intl.NumberFormat('id-ID').format(value);
@@ -37,6 +39,8 @@ function typePrice(input) {
         input.value = '0';
     }
 }
+// --------------------------- NumberFormat ------------------------------
+
 // --------------------------- FormData ------------------------------
 function showForm(mode, source, id = null) {
     document.querySelector('.order').style.display = 'none';
@@ -94,9 +98,9 @@ function showForm(mode, source, id = null) {
                         $('input[name="source"]').val(source);
                         $('input[name="name"]').val(data.name);
                         $('textarea[name="sub"]').val(data.sub);
-                        $('input[name="price"]').val(formatPrice(data.price));
-                        $('input[name="aft_price"]').val(formatPrice(data.aft_price));
-                        $('input[name="seat"]').val(formatPrice(data.seat));
+                        $('input[name="price"]').val(formatingNumber(data.price));
+                        $('input[name="aft_price"]').val(formatingNumber(data.aft_price));
+                        $('input[name="seat"]').val(formatingNumber(data.seat));
                         $('input[name="from_date"]').val(data.from_date);
                         $('input[name="to_date"]').val(data.to_date);
                         $('select[name="type"]').val(data.type);
@@ -112,6 +116,63 @@ function showForm(mode, source, id = null) {
                         if (data.file) {
                             $('.preview').attr('src', '../storage/trip/' + data.file).show();
                         }
+                    } else if (source === 'itinerary') {
+                        $('input[name="id"]').val(id);
+                        $('input[name="source"]').val(source);
+                        $('select[name="trip"]').val(data.id_trip);
+                        $('input[name="day"]').val(formatingNumber(data.day));
+                        $('input[name="title"]').val(data.title);
+                        $('textarea[name="experience"]').val(data.experience);
+                        $('input[name="transportation"]').val(data.transportation);
+
+                        if (data.image) {
+                            $('.preview').attr('src', '../storage/itinerary/' + data.image).show();
+                        }
+                    } else if (source === 'schedule') {
+                        $('input[name="id"]').val(id);
+                        $('input[name="source"]').val(source);
+                        $('select[name="trip"]').val(data.id_trip);
+                        $('input[name="january"]').val(data.january);
+                        $('input[name="february"]').val(data.february);
+                        $('input[name="march"]').val(data.march);
+                        $('input[name="april"]').val(data.april);
+                        $('input[name="may"]').val(data.may);
+                        $('input[name="june"]').val(data.june);
+                        $('input[name="july"]').val(data.july);
+                        $('input[name="august"]').val(data.august);
+                        $('input[name="september"]').val(data.september);
+                        $('input[name="october"]').val(data.october);
+                        $('input[name="november"]').val(data.november);
+                        $('input[name="december"]').val(data.december);
+                    } else if (source === 'slider') {
+                        $('input[name="id"]').val(id);
+                        $('input[name="source"]').val(source);
+                        $('select[name="trip"]').val(data.id_trip);
+                        $('input[name="sort"]').val(formatingNumber(data.sort));
+
+                        if (data.photo) {
+                            $('.preview').attr('src', '../storage/slider/' + data.photo).show();
+                        }
+                    }  else if (source === 'galery') {
+                        $('input[name="id"]').val(id);
+                        $('input[name="source"]').val(source);
+
+                        if (data.file) {
+                            $('.preview').attr('src', '../storage/galery/' + data.file).show();
+                        }
+                    } else if (source === 'mitra') {
+                        $('input[name="id"]').val(id);
+                        $('input[name="source"]').val(source);
+                        $('input[name="name"]').val(data.name);
+
+                        if (data.file) {
+                            $('.preview').attr('src', '../storage/mitra/' + data.file).show();
+                        }
+                    } else if (source === 'review') {
+                        $('input[name="id"]').val(id);
+                        $('input[name="source"]').val(source);
+                        $('input[name="name"]').val(data.name);
+                        $('input[name="message"]').val(data.message);
                     } else {
                         alert('Error No Type');
                     }
@@ -126,7 +187,9 @@ function showForm(mode, source, id = null) {
     } else if (mode === 'delete' && id !== null) {
         form.action = 'action/delete';
         title.textContent = 'Delete';
-        round.style.display = 'none';
+        if (round) {
+            round.style.display = 'none';
+        }
         submit.querySelector('.btnText').textContent = 'Delete';
         submit.name = mode;
         submit.onclick = function(event) {
@@ -146,9 +209,9 @@ function showForm(mode, source, id = null) {
                         $('input[name="source"]').val(source);
                         $('input[name="name"]').val(data.name).prop('readonly', true);
                         $('textarea[name="sub"]').val(data.sub).prop('readonly', true);
-                        $('input[name="price"]').val(formatPrice(data.price)).prop('readonly', true);
-                        $('input[name="aft_price"]').val(formatPrice(data.aft_price)).prop('readonly', true);
-                        $('input[name="seat"]').val(formatPrice(data.seat)).prop('readonly', true);
+                        $('input[name="price"]').val(formatingNumber(data.price)).prop('readonly', true);
+                        $('input[name="aft_price"]').val(formatingNumber(data.aft_price)).prop('readonly', true);
+                        $('input[name="seat"]').val(formatingNumber(data.seat)).prop('readonly', true);
                         $('input[name="from_date"]').val(data.from_date).prop('readonly', true);
                         $('input[name="to_date"]').val(data.to_date).prop('readonly', true);
                         $('select[name="type"]').val(data.type).prop('disabled', true);
@@ -164,6 +227,63 @@ function showForm(mode, source, id = null) {
                         if (data.file) {
                             $('.preview').attr('src', '../storage/trip/' + data.file).show();
                         }
+                    } else if (source === 'itinerary') {
+                        $('input[name="id"]').val(id);
+                        $('input[name="source"]').val(source);
+                        $('select[name="trip"]').val(data.id_trip).prop('disabled', true);
+                        $('input[name="day"]').val(formatingNumber(data.day)).prop('readonly', true);
+                        $('input[name="title"]').val(data.title).prop('readonly', true);
+                        $('textarea[name="experience"]').val(data.experience).prop('readonly', true);
+                        $('input[name="transportation"]').val(data.transportation).prop('readonly', true);
+
+                        if (data.image) {
+                            $('.preview').attr('src', '../storage/itinerary/' + data.image).show();
+                        }
+                    } else if (source === 'schedule') {
+                        $('input[name="id"]').val(id);
+                        $('input[name="source"]').val(source);
+                        $('select[name="trip"]').val(data.id_trip).prop('disabled', true);
+                        $('input[name="january"]').val(data.january).prop('readonly', true);
+                        $('input[name="february"]').val(data.february).prop('readonly', true);
+                        $('input[name="march"]').val(data.march).prop('readonly', true);
+                        $('input[name="april"]').val(data.april).prop('readonly', true);
+                        $('input[name="may"]').val(data.may).prop('readonly', true);
+                        $('input[name="june"]').val(data.june).prop('readonly', true);
+                        $('input[name="july"]').val(data.july).prop('readonly', true);
+                        $('input[name="august"]').val(data.august).prop('readonly', true);
+                        $('input[name="september"]').val(data.september).prop('readonly', true);
+                        $('input[name="october"]').val(data.october).prop('readonly', true);
+                        $('input[name="november"]').val(data.november).prop('readonly', true);
+                        $('input[name="december"]').val(data.december).prop('readonly', true);
+                    } else if (source === 'slider') {
+                        $('input[name="id"]').val(id);
+                        $('input[name="source"]').val(source);
+                        $('select[name="trip"]').val(data.id_trip).prop('disabled', true);
+                        $('input[name="sort"]').val(formatingNumber(data.sort)).prop('readonly', true);
+
+                        if (data.photo) {
+                            $('.preview').attr('src', '../storage/slider/' + data.photo).show();
+                        }
+                    } else if (source === 'galery') {
+                        $('input[name="id"]').val(id);
+                        $('input[name="source"]').val(source);
+
+                        if (data.file) {
+                            $('.preview').attr('src', '../storage/galery/' + data.file).show();
+                        }
+                    } else if (source === 'mitra') {
+                        $('input[name="id"]').val(id);
+                        $('input[name="source"]').val(source);
+                        $('input[name="name"]').val(data.name).prop('readonly', true);
+
+                        if (data.file) {
+                            $('.preview').attr('src', '../storage/mitra/' + data.file).show();
+                        }
+                    } else if (source === 'review') {
+                        $('input[name="id"]').val(id);
+                        $('input[name="source"]').val(source);
+                        $('input[name="name"]').val(data.name).prop('readonly', true);
+                        $('input[name="message"]').val(data.message).prop('readonly', true);
                     } else {
                         alert('Error No Type');
                     }
@@ -179,7 +299,9 @@ function showForm(mode, source, id = null) {
         form.removeAttribute('action');
         title.textContent = 'View';
         submit.style.display = 'none';
-        round.style.display = 'none';
+        if (round) {
+            round.style.display = 'none';
+        }
 
         $.ajax({
             url: 'proccess/getData.php',
@@ -193,9 +315,9 @@ function showForm(mode, source, id = null) {
                         $('input[name="source"]').val(source);
                         $('input[name="name"]').val(data.name).prop('readonly', true);
                         $('textarea[name="sub"]').val(data.sub).prop('readonly', true);
-                        $('input[name="price"]').val(formatPrice(data.price)).prop('readonly', true);
-                        $('input[name="aft_price"]').val(formatPrice(data.aft_price)).prop('readonly', true);
-                        $('input[name="seat"]').val(formatPrice(data.seat)).prop('readonly', true);
+                        $('input[name="price"]').val(formatingNumber(data.price)).prop('readonly', true);
+                        $('input[name="aft_price"]').val(formatingNumber(data.aft_price)).prop('readonly', true);
+                        $('input[name="seat"]').val(formatingNumber(data.seat)).prop('readonly', true);
                         $('input[name="from_date"]').val(data.from_date).prop('readonly', true);
                         $('input[name="to_date"]').val(data.to_date).prop('readonly', true);
                         $('select[name="type"]').val(data.type).prop('disabled', true);
@@ -211,6 +333,63 @@ function showForm(mode, source, id = null) {
                         if (data.file) {
                             $('.preview').attr('src', '../storage/trip/' + data.file).show();
                         }
+                    } else if (source === 'itinerary') {
+                        $('input[name="id"]').val(id);
+                        $('input[name="source"]').val(source);
+                        $('select[name="trip"]').val(data.id_trip).prop('disabled', true);
+                        $('input[name="day"]').val(formatingNumber(data.day)).prop('readonly', true);
+                        $('input[name="title"]').val(data.title).prop('readonly', true);
+                        $('textarea[name="experience"]').val(data.experience).prop('readonly', true);
+                        $('input[name="transportation"]').val(data.transportation).prop('readonly', true);
+
+                        if (data.image) {
+                            $('.preview').attr('src', '../storage/itinerary/' + data.image).show();
+                        }
+                    } else if (source === 'schedule') {
+                        $('input[name="id"]').val(id);
+                        $('input[name="source"]').val(source);
+                        $('select[name="trip"]').val(data.id_trip).prop('disabled', true);
+                        $('input[name="january"]').val(data.january).prop('readonly', true);
+                        $('input[name="february"]').val(data.february).prop('readonly', true);
+                        $('input[name="march"]').val(data.march).prop('readonly', true);
+                        $('input[name="april"]').val(data.april).prop('readonly', true);
+                        $('input[name="may"]').val(data.may).prop('readonly', true);
+                        $('input[name="june"]').val(data.june).prop('readonly', true);
+                        $('input[name="july"]').val(data.july).prop('readonly', true);
+                        $('input[name="august"]').val(data.august).prop('readonly', true);
+                        $('input[name="september"]').val(data.september).prop('readonly', true);
+                        $('input[name="october"]').val(data.october).prop('readonly', true);
+                        $('input[name="november"]').val(data.november).prop('readonly', true);
+                        $('input[name="december"]').val(data.december).prop('readonly', true);
+                    } else if (source === 'slider') {
+                        $('input[name="id"]').val(id);
+                        $('input[name="source"]').val(source);
+                        $('select[name="trip"]').val(data.id_trip).prop('disabled', true);
+                        $('input[name="sort"]').val(formatingNumber(data.sort)).prop('readonly', true);
+
+                        if (data.photo) {
+                            $('.preview').attr('src', '../storage/slider/' + data.photo).show();
+                        }
+                    } else if (source === 'galery') {
+                        $('input[name="id"]').val(id);
+                        $('input[name="source"]').val(source);
+
+                        if (data.file) {
+                            $('.preview').attr('src', '../storage/galery/' + data.file).show();
+                        }
+                    } else if (source === 'mitra') {
+                        $('input[name="id"]').val(id);
+                        $('input[name="source"]').val(source);
+                        $('input[name="name"]').val(data.name).prop('readonly', true);
+
+                        if (data.file) {
+                            $('.preview').attr('src', '../storage/mitra/' + data.file).show();
+                        }
+                    } else if (source === 'review') {
+                        $('input[name="id"]').val(id);
+                        $('input[name="source"]').val(source);
+                        $('input[name="name"]').val(data.name).prop('readonly', true);
+                        $('input[name="message"]').val(data.message).prop('readonly', true);
                     } else {
                         alert('Error No Type');
                     }
@@ -233,8 +412,12 @@ function hideForm() {
     const round = document.querySelector('.round');
     const preview = document.querySelector('.preview');
     submit.style.display = 'block';
-    round.style.display = 'grid';
-    preview.removeAttribute('src');
+    if (round) {
+        round.style.display = 'grid';
+    }
+    if (preview) {
+        preview.removeAttribute('src');
+    }
     document.querySelectorAll('input[readonly], textarea[readonly]').forEach(function(element) {
         element.removeAttribute('readonly');
     });

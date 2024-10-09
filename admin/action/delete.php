@@ -36,6 +36,100 @@
                             });
                         });
                     </script>";
+            } else if ($source == 'itinerary') {
+                deleteImgFile($con, $source, 'image', 'tbl_itinerary', $id);
+                mysqli_query($con, "DELETE FROM tbl_itinerary WHERE id = $id") or die (mysqli_error($con));
+                echo "<script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Succesfully Deleted!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location='".base_url()."admin/itinerary.php';
+                                }
+                            });
+                        });
+                    </script>";
+            } else if ($source == 'schedule') {
+                mysqli_query($con, "DELETE FROM tbl_schedule WHERE id = $id") or die (mysqli_error($con));
+                echo "<script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Succesfully Deleted!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location='".base_url()."admin/schedule.php';
+                                }
+                            });
+                        });
+                    </script>";
+            } else if ($source == 'slider') {
+                deleteImgFile($con, $source, 'photo', 'tbl_slider', $id);
+                mysqli_query($con, "DELETE FROM tbl_slider WHERE id = $id") or die (mysqli_error($con));
+                echo "<script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Succesfully Deleted!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location='".base_url()."admin/slider.php';
+                                }
+                            });
+                        });
+                    </script>";
+            }  else if ($source == 'galery') {
+                deleteImgFile($con, $source, 'file', 'tbl_galery', $id);
+                mysqli_query($con, "DELETE FROM tbl_galery WHERE id = $id") or die (mysqli_error($con));
+                echo "<script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Succesfully Deleted!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location='".base_url()."admin/gallery.php';
+                                }
+                            });
+                        });
+                    </script>";
+            }  else if ($source == 'mitra') {
+                deleteImgFile($con, $source, 'file', 'tbl_mitra', $id);
+                mysqli_query($con, "DELETE FROM tbl_mitra WHERE id = $id") or die (mysqli_error($con));
+                echo "<script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Succesfully Deleted!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location='".base_url()."admin/client.php';
+                                }
+                            });
+                        });
+                    </script>";
+            } else if ($source == 'review') {
+                mysqli_query($con, "DELETE FROM tbl_review WHERE id = $id") or die (mysqli_error($con));
+                echo "<script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Succesfully Deleted!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location='".base_url()."admin/review.php';
+                                }
+                            });
+                        });
+                    </script>";
             } else {
                 echo "<script>
                         document.addEventListener('DOMContentLoaded', function() {

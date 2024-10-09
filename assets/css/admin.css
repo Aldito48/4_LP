@@ -65,7 +65,7 @@ body {
 	overflow-x: hidden;
 	scrollbar-width: none;
 }
-#sidebar::--webkit-scrollbar {
+#sidebar::state(webkit-scrollbar) {
 	display: none;
 }
 #sidebar.hide {
@@ -566,6 +566,18 @@ body.dark td.dtfc-fixed-right {
 }
 #content main .table-data .todo .todo-list li:last-child {
 	margin-bottom: 0;
+}
+thead input {
+	min-width: 100px;
+    width: 100%;
+    box-sizing: border-box;
+	outline: none;
+    color: var(--dark);
+    border-radius: 5px;
+	background: var(--light);
+	padding: 3px;
+    border: 1px solid var(--dark-grey);
+	font-family: var(--poppins);
 }
 
 

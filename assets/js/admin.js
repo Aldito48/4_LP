@@ -124,27 +124,29 @@ dateInputs.forEach(function(input) {
 
 // --------------------------- FormField ------------------------------
 const form = document.getElementById("dataForm"),
-        nextBtn = form.querySelector(".nextBtn"),
-        backBtn = form.querySelector(".backBtn"),
-        allRequired = form.querySelectorAll(".first [required]");
+    nextBtn = form.querySelector(".nextBtn"),
+    backBtn = form.querySelector(".backBtn"),
+    allRequired = form.querySelectorAll(".first [required]");
 
-nextBtn.addEventListener("click", () => {
-    let allFilled = true;
-    allRequired.forEach(field => {
-        if (!field.validity.valid) {
-            allFilled = false;
-        }
-    });
-
-    if (allFilled) {
-        form.classList.add('secActive');
-    } else {
-        form.reportValidity();
-        form.classList.remove('secActive');
+    if (nextBtn && backBtn) {
+        nextBtn.addEventListener("click", () => {
+            let allFilled = true;
+            allRequired.forEach(field => {
+                if (!field.validity.valid) {
+                    allFilled = false;
+                }
+            });
+        
+            if (allFilled) {
+                form.classList.add('secActive');
+            } else {
+                form.reportValidity();
+                form.classList.remove('secActive');
+            }
+        })
+        
+        backBtn.addEventListener("click", () => form.classList.remove('secActive'));
     }
-})
-
-backBtn.addEventListener("click", () => form.classList.remove('secActive'));
 // --------------------------- FormField ------------------------------
 
 // --------------------------- FormReSize ------------------------------
@@ -164,3 +166,19 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener('resize', adjustFormLayoutHeight);
 });
 // --------------------------- FormReSize ------------------------------
+
+// --------------------------- Preview ------------------------------
+function onResetImage(event) {
+    let input = event.target;
+    input.value = '';
+}
+function showImage(event) {
+    let input = event.target;
+    let reader = new FileReader();
+    reader.onload = function() {
+        let output = document.querySelector('.preview');
+        output.src = reader.result;
+    };
+    reader.readAsDataURL(input.files[0]);
+}
+// --------------------------- Preview ------------------------------

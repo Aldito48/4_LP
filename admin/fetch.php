@@ -63,11 +63,12 @@ switch ($table) {
         $columns = array(
             array( 'db' => 'image', 'dt' => 0 ),
             array( 'db' => 'name', 'dt' => 1 ),
-            array( 'db' => 'day', 'dt' => 2 ),
-            array( 'db' => 'title', 'dt' => 3 ),
-            array( 'db' => 'experience', 'dt' => 4 ),
-            array( 'db' => 'transportation', 'dt' => 5 ),
-            array( 'db' => 'id', 'dt' => 6 )
+            array( 'db' => 'sub', 'dt' => 2 ),
+            array( 'db' => 'day', 'dt' => 3 ),
+            array( 'db' => 'title', 'dt' => 4 ),
+            array( 'db' => 'experience', 'dt' => 5 ),
+            array( 'db' => 'transportation', 'dt' => 6 ),
+            array( 'db' => 'id', 'dt' => 7 )
         );
         $where = null;
         break;
@@ -75,19 +76,20 @@ switch ($table) {
     case 'vw_schedule_trip':
         $columns = array(
             array( 'db' => 'name', 'dt' => 0 ),
-            array( 'db' => 'january', 'dt' => 1 ),
-            array( 'db' => 'february', 'dt' => 2 ),
-            array( 'db' => 'march', 'dt' => 3 ),
-            array( 'db' => 'april', 'dt' => 4 ),
-            array( 'db' => 'may', 'dt' => 5 ),
-            array( 'db' => 'june', 'dt' => 6 ),
-            array( 'db' => 'july', 'dt' => 7 ),
-            array( 'db' => 'august', 'dt' => 8 ),
-            array( 'db' => 'september', 'dt' => 9 ),
-            array( 'db' => 'october', 'dt' => 10 ),
-            array( 'db' => 'november', 'dt' => 11 ),
-            array( 'db' => 'december', 'dt' => 12 ),
-            array( 'db' => 'id', 'dt' => 13 )
+            array( 'db' => 'sub', 'dt' => 1 ),
+            array( 'db' => 'january', 'dt' => 2 ),
+            array( 'db' => 'february', 'dt' => 3 ),
+            array( 'db' => 'march', 'dt' => 4 ),
+            array( 'db' => 'april', 'dt' => 5 ),
+            array( 'db' => 'may', 'dt' => 6 ),
+            array( 'db' => 'june', 'dt' => 7 ),
+            array( 'db' => 'july', 'dt' => 8 ),
+            array( 'db' => 'august', 'dt' => 9 ),
+            array( 'db' => 'september', 'dt' => 10 ),
+            array( 'db' => 'october', 'dt' => 11 ),
+            array( 'db' => 'november', 'dt' => 12 ),
+            array( 'db' => 'december', 'dt' => 13 ),
+            array( 'db' => 'id', 'dt' => 14 )
         );
         $where = null;
         break;
@@ -122,7 +124,9 @@ switch ($table) {
         $columns = array(
             array( 'db' => 'photo', 'dt' => 0 ),
             array( 'db' => 'name', 'dt' => 1 ),
-            array( 'db' => 'id', 'dt' => 2 )
+            array( 'db' => 'sub', 'dt' => 2 ),
+            array( 'db' => 'sort', 'dt' => 3 ),
+            array( 'db' => 'id', 'dt' => 4 )
         );
         $where = null;
         break;

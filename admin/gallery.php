@@ -32,6 +32,18 @@
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
         />
+        <link
+        rel="stylesheet"
+        href="https://cdn.datatables.net/2.1.7/css/dataTables.dataTables.css"
+        />
+        <link
+        rel="stylesheet"
+        href="https://cdn.datatables.net/fixedcolumns/5.0.1/css/fixedColumns.dataTables.css"
+        />
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+        <script src="https://cdn.datatables.net/2.1.7/js/dataTables.js"></script>
+        <script src="https://cdn.datatables.net/fixedcolumns/5.0.1/js/dataTables.fixedColumns.js"></script>
+        <script src="https://cdn.datatables.net/fixedcolumns/5.0.1/js/fixedColumns.dataTables.js"></script>
     </head>
     <body>
         <?php include 'sidebar.php'; ?>
@@ -42,7 +54,7 @@
             <main>
                 <ul class="box-info">
                     <li>
-                        <i class='bx bxs-calendar-check' ></i>
+                        <i class='bx bxs-grid-alt' ></i>
                         <span class="text">
                             <h3>Gallery</h3>
                         </span>
@@ -51,91 +63,80 @@
 
                 <div class="table-data">
                     <div class="order">
-                        <div class="head">
-                            <h3>Recent Orders</h3>
-                            <i class='bx bx-search' ></i>
-                            <i class='bx bx-filter' ></i>
-                        </div>
-                        <table>
+                        <a class="addButton" href="javascript:void(0);" onclick="showForm('add', 'galery', null)">
+                            <i class='bx bx-plus-medical' ></i>
+                            Add Data
+                        </a>
+                        <table id="record" class="display nowrap" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>User</th>
-                                    <th>Date Order</th>
-                                    <th>Status</th>
+                                    <th>Photo</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <img src="img/people.png">
-                                        <p>John Doe</p>
-                                    </td>
-                                    <td>01-10-2021</td>
-                                    <td><span class="status completed">Completed</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img src="img/people.png">
-                                        <p>John Doe</p>
-                                    </td>
-                                    <td>01-10-2021</td>
-                                    <td><span class="status pending">Pending</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img src="img/people.png">
-                                        <p>John Doe</p>
-                                    </td>
-                                    <td>01-10-2021</td>
-                                    <td><span class="status process">Process</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img src="img/people.png">
-                                        <p>John Doe</p>
-                                    </td>
-                                    <td>01-10-2021</td>
-                                    <td><span class="status pending">Pending</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img src="img/people.png">
-                                        <p>John Doe</p>
-                                    </td>
-                                    <td>01-10-2021</td>
-                                    <td><span class="status completed">Completed</span></td>
-                                </tr>
-                            </tbody>
                         </table>
                     </div>
-                    <div class="todo">
-                        <div class="head">
-                            <h3>Todos</h3>
-                            <i class='bx bx-plus' ></i>
-                            <i class='bx bx-filter' ></i>
+                    <script>
+                        $(window).on('load', function() {
+                            new DataTable('#record', {
+                                ajax: 'fetch.php?table=galery',
+                                scrollX: true,
+                                scrollCollapse: true,
+                                serverSide: true,
+                                order: [],
+                                columnDefs: [
+                                    {
+                                        searchable: false,
+                                        orderable: false,
+                                        targets: 0,
+                                        render: function(data, type, row) {
+                                            let img = '<img src=\'../storage/galery/'+data+'\'>';
+                                            return img;
+                                        }
+                                    },
+                                    {
+                                        searchable: false,
+                                        orderable: false,
+                                        targets: 1,
+                                        render: function(data, type, row) {
+                                            let btn = '<a href=\'javascript:void(0);\' onclick=\'showForm("update", "galery", '+data+')\'><i class=\'bx bxs-edit\'></i></a> <a href=\'javascript:void(0);\' onclick=\'showForm("delete", "galery", '+data+')\'><i class=\'bx bxs-trash\'></i></a> <a href=\'javascript:void(0);\' onclick=\'showForm("view", "galery", '+data+')\'><i class=\'bx bx-target-lock\'></i></a>';
+                                            return btn;
+                                        }
+                                    }
+                                ]
+                            });
+                        });
+                    </script>
+
+                    <?php include 'modal.php'; ?>
+
+                    <div id="formData">
+                        <div class="formHead">
+                            <a class="goback" onclick="hideForm()"><i class='bx bx-arrow-back'></i></a>
+                            <div>
+                                <h3 class="title-form"></h3>
+                            </div>
                         </div>
-                        <ul class="todo-list">
-                            <li class="completed">
-                                <p>Todo List</p>
-                                <i class='bx bx-dots-vertical-rounded' ></i>
-                            </li>
-                            <li class="completed">
-                                <p>Todo List</p>
-                                <i class='bx bx-dots-vertical-rounded' ></i>
-                            </li>
-                            <li class="not-completed">
-                                <p>Todo List</p>
-                                <i class='bx bx-dots-vertical-rounded' ></i>
-                            </li>
-                            <li class="completed">
-                                <p>Todo List</p>
-                                <i class='bx bx-dots-vertical-rounded' ></i>
-                            </li>
-                            <li class="not-completed">
-                                <p>Todo List</p>
-                                <i class='bx bx-dots-vertical-rounded' ></i>
-                            </li>
-                        </ul>
+                        <hr>
+                        <form class="form-layout" id="dataForm" method="POST" enctype="multipart/form-data">
+                            <div class="upload">
+                                <img class="preview">
+                                <div class="round">
+                                    <input type="file" accept=".png, .jpg, .jpeg" name="file" onclick="onResetImage(event)" onchange="showImage(event)">
+                                    <i class='bx bxs-camera'></i>
+                                </div>
+                            </div>
+                            <input type="hidden" name="id" value="">
+                            <input type="hidden" name="source" value="">
+                            <div class="fields-group first">
+                                <div class="buttons">
+                                    <button class="submit" type="submit">
+                                        <span class="btnText"></span>
+                                        <i class='bx bx-send'></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </main>

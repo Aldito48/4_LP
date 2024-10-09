@@ -61,6 +61,135 @@
                             });
                         });
                     </script>";
+            } else if ($source == 'itinerary') {
+                $trip = $_POST['trip'];
+                $day = str_replace('.', '', $_POST['day']);
+                $title = $_POST['title'];
+                $experience = $_POST['experience'];
+                $transportation = $_POST['transportation'];
+                $image = uploadImgFile($source, 'image');
+
+                mysqli_query($con, "INSERT INTO tbl_itinerary (image, id_trip, day, title, experience, transportation)
+                VALUES ('$image', $trip, $day, '$title', '$experience', '$transportation')") or die(mysqli_error($con));
+                echo "<script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Succesfully Added!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location='".base_url()."admin/itinerary.php';
+                                }
+                            });
+                        });
+                    </script>";
+            } else if ($source == 'schedule') {
+                $trip = $_POST['trip'];
+                $january = $_POST['january'];
+                $february = $_POST['february'];
+                $march = $_POST['march'];
+                $april = $_POST['april'];
+                $may = $_POST['may'];
+                $june = $_POST['june'];
+                $july = $_POST['july'];
+                $august = $_POST['august'];
+                $september = $_POST['september'];
+                $october = $_POST['october'];
+                $november = $_POST['november'];
+                $december = $_POST['december'];
+
+                mysqli_query($con, "INSERT INTO tbl_schedule (id_trip, january, february, march, april, may, june, july, august, september, october, november, december)
+                VALUES ($trip, '$january', '$february', '$march', '$april', '$may', '$june', '$july', '$august', '$september', '$october', '$november', '$december')") or die(mysqli_error($con));
+                echo "<script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Succesfully Added!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location='".base_url()."admin/schedule.php';
+                                }
+                            });
+                        });
+                    </script>";
+            } else if ($source == 'slider') {
+                $trip = $_POST['trip'];
+                $sort = str_replace('.', '', $_POST['sort']);
+                $photo = uploadImgFile($source, 'photo');
+
+                mysqli_query($con, "INSERT INTO tbl_slider (id_trip, photo, sort)
+                VALUES ($trip, '$photo', $sort)") or die(mysqli_error($con));
+                echo "<script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Succesfully Added!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location='".base_url()."admin/slider.php';
+                                }
+                            });
+                        });
+                    </script>";
+            }  else if ($source == 'galery') {
+                $file = uploadImgFile($source, 'file');
+
+                mysqli_query($con, "INSERT INTO tbl_galery (file)
+                VALUES ('$file')") or die(mysqli_error($con));
+                echo "<script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Succesfully Added!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location='".base_url()."admin/gallery.php';
+                                }
+                            });
+                        });
+                    </script>";
+            } else if ($source == 'mitra') {
+                $name = $_POST['name'];
+                $file = uploadImgFile($source, 'file');
+
+                mysqli_query($con, "INSERT INTO tbl_mitra (name, file)
+                VALUES ('$name', '$file')") or die(mysqli_error($con));
+                echo "<script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Succesfully Added!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location='".base_url()."admin/client.php';
+                                }
+                            });
+                        });
+                    </script>";
+            } else if ($source == 'review') {
+                $name = $_POST['name'];
+                $message = $_POST['message'];
+
+                mysqli_query($con, "INSERT INTO tbl_review (name, message)
+                VALUES ('$name', '$message')") or die(mysqli_error($con));
+                echo "<script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Succesfully Added!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location='".base_url()."admin/review.php';
+                                }
+                            });
+                        });
+                    </script>";
             } else {
                 echo "<script>
                         document.addEventListener('DOMContentLoaded', function() {

@@ -34,14 +34,14 @@
         />
         <link
         rel="stylesheet"
-        href="https://cdn.datatables.net/2.1.7/css/dataTables.dataTables.css"
+        href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css"
         />
         <link
         rel="stylesheet"
         href="https://cdn.datatables.net/fixedcolumns/5.0.1/css/fixedColumns.dataTables.css"
         />
         <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-        <script src="https://cdn.datatables.net/2.1.7/js/dataTables.js"></script>
+        <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
         <script src="https://cdn.datatables.net/fixedcolumns/5.0.1/js/dataTables.fixedColumns.js"></script>
         <script src="https://cdn.datatables.net/fixedcolumns/5.0.1/js/fixedColumns.dataTables.js"></script>
     </head>
@@ -63,7 +63,7 @@
 
                 <div class="table-data">
                     <div class="order">
-                        <a class="addButton" href="javascript:void(0);" onclick="showForm('add', 'trip')">
+                        <a class="addButton" href="javascript:void(0);" onclick="showForm('add', 'trip', null)">
                             <i class='bx bx-plus-medical' ></i>
                             Add Data
                         </a>
@@ -81,6 +81,18 @@
                                     <th>To</th>
                                     <th>Action</th>
                                 </tr>
+                                <tr>
+                                    <th></th>
+                                    <th><input type="text" placeholder="Search Name"></th>
+                                    <th><input type="text" placeholder="Search Sub"></th>
+                                    <th><input type="text" placeholder="Search Price"></th>
+                                    <th><input type="text" placeholder="Search Disc"></th>
+                                    <th><input type="text" placeholder="Search Seat"></th>
+                                    <th><input type="text" placeholder="Search Status"></th>
+                                    <th><input type="text" placeholder="Search From"></th>
+                                    <th><input type="text" placeholder="Search To"></th>
+                                    <th></th>
+                                </tr>
                             </thead>
                         </table>
                     </div>
@@ -95,6 +107,7 @@
                                 scrollX: true,
                                 scrollCollapse: true,
                                 serverSide: true,
+                                order: [],
                                 columnDefs: [
                                     {
                                         searchable: false,
@@ -115,6 +128,12 @@
                                         }
                                     },
                                     {
+                                        targets: 5,
+                                        render: function(data, type, row) {
+                                            return '<center>'+data+'</center>';
+                                        }
+                                    },
+                                    {
                                         searchable: false,
                                         orderable: false,
                                         targets: 6,
@@ -131,8 +150,26 @@
                                             let btn = '<center><a href=\'javascript:void(0);\' onclick=\'showForm("update", "trip", '+data+')\'><i class=\'bx bxs-edit\'></i></a> <a href=\'javascript:void(0);\' onclick=\'showForm("delete", "trip", '+data+')\'><i class=\'bx bxs-trash\'></i></a> <a href=\'javascript:void(0);\' onclick=\'showForm("view", "trip", '+data+')\'><i class=\'bx bx-target-lock\'></i></a></center>';
                                             return btn;
                                         }
+                                    },
+                                    {
+                                        targets: '_all',
+                                        orderable: false
                                     }
-                                ]
+                                ],
+                                initComplete: function () {
+                                    this.api()
+                                        .columns()
+                                        .every(function () {
+                                            let column = this;
+                                            $('input', column.header()).on('keyup change clear', function () {
+                                                if (column.search() !== this.value) {
+                                                    column
+                                                        .search(this.value)
+                                                        .draw(false);
+                                                }
+                                            });
+                                        });
+                                }
                             });
                         });
                     </script>
@@ -147,22 +184,11 @@
                             </div>
                         </div>
                         <hr>
-                        <script>
-                            function showImage(event) {
-                                let input = event.target;
-                                let reader = new FileReader();
-                                reader.onload = function() {
-                                    let output = document.querySelector('.preview');
-                                    output.src = reader.result;
-                                };
-                                reader.readAsDataURL(input.files[0]);
-                            }
-                        </script>
                         <form class="form-layout" id="dataForm" method="POST" enctype="multipart/form-data">
                             <div class="upload">
                                 <img class="preview">
                                 <div class="round">
-                                    <input type="file" accept=".png, .jpg, .jpeg" name="file" onchange="showImage(event)">
+                                    <input type="file" accept=".png, .jpg, .jpeg" name="file" onclick="onResetImage(event)" onchange="showImage(event)">
                                     <i class='bx bxs-camera'></i>
                                 </div>
                             </div>
@@ -182,7 +208,7 @@
 
                                     <div class="input-field">
                                         <label for="seat">Seat</label>
-                                        <input type="text" name="seat" value="0" placeholder="Masukkan seat" oninput="typePrice(this)" required>
+                                        <input type="text" name="seat" value="0" placeholder="Masukkan seat" oninput="typingNumber(this)" required>
                                     </div>
 
                                     <div class="input-field">
@@ -202,12 +228,12 @@
 
                                     <div class="input-field">
                                         <label for="price">Harga Trip</label>
-                                        <input type="text" name="price" value="0" placeholder="Masukkan harga" oninput="typePrice(this)" required>
+                                        <input type="text" name="price" value="0" placeholder="Masukkan harga" oninput="typingNumber(this)" required>
                                     </div>
 
                                     <div class="input-field">
                                         <label for="aft_price">Harga Discount Trip</label>
-                                        <input type="text" name="aft_price" value="0" placeholder="Masukkan harga diskon" oninput="typePrice(this)" required>
+                                        <input type="text" name="aft_price" value="0" placeholder="Masukkan harga diskon" oninput="typingNumber(this)" required>
                                     </div>
 
                                     <div class="input-field">

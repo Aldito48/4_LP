@@ -93,6 +93,168 @@
                             });
                         });
                     </script>";
+            } else if ($source == 'itinerary') {
+                $trip = $_POST['trip'];
+                $day = str_replace('.', '', $_POST['day']);
+                $title = $_POST['title'];
+                $experience = $_POST['experience'];
+                $transportation = $_POST['transportation'];
+                $image = updateImgFile($con, $source, 'image', 'tbl_itinerary', $id);
+
+                mysqli_query($con, "UPDATE tbl_itinerary SET
+                    image = '$image',
+                    id_trip = $trip,
+                    day = $day,
+                    title = '$title',
+                    experience = '$experience',
+                    transportation = '$transportation'
+                WHERE id = $id") or die (mysqli_error($con));
+
+                echo "<script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Succesfully Updated!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location='".base_url()."admin/itinerary.php';
+                                }
+                            });
+                        });
+                    </script>";
+            } else if ($source == 'schedule') {
+                $trip = $_POST['trip'];
+                $january = $_POST['january'];
+                $february = $_POST['february'];
+                $march = $_POST['march'];
+                $april = $_POST['april'];
+                $may = $_POST['may'];
+                $june = $_POST['june'];
+                $july = $_POST['july'];
+                $august = $_POST['august'];
+                $september = $_POST['september'];
+                $october = $_POST['october'];
+                $november = $_POST['november'];
+                $december = $_POST['december'];
+
+                mysqli_query($con, "UPDATE tbl_schedule SET
+                    id_trip = $trip,
+                    january = '$january',
+                    february = '$february',
+                    march = '$march',
+                    april = '$april',
+                    may = '$may',
+                    june = '$june',
+                    july = '$july',
+                    august = '$august',
+                    september = '$september',
+                    october = '$october',
+                    november = '$november',
+                    december = '$december'
+                WHERE id = $id") or die (mysqli_error($con));
+
+                echo "<script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Succesfully Updated!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location='".base_url()."admin/schedule.php';
+                                }
+                            });
+                        });
+                    </script>";
+            } else if ($source == 'slider') {
+                $trip = $_POST['trip'];
+                $sort = str_replace('.', '', $_POST['sort']);
+                $photo = updateImgFile($con, $source, 'photo', 'tbl_slider', $id);
+
+                mysqli_query($con, "UPDATE tbl_slider SET
+                    id_trip = $trip,
+                    photo = '$photo',
+                    sort = $sort
+                WHERE id = $id") or die (mysqli_error($con));
+
+                echo "<script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Succesfully Updated!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location='".base_url()."admin/slider.php';
+                                }
+                            });
+                        });
+                    </script>";
+            }  else if ($source == 'galery') {
+                $file = updateImgFile($con, $source, 'file', 'tbl_galery', $id);
+
+                mysqli_query($con, "UPDATE tbl_galery SET
+                    file = '$file'
+                WHERE id = $id") or die (mysqli_error($con));
+
+                echo "<script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Succesfully Updated!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location='".base_url()."admin/gallery.php';
+                                }
+                            });
+                        });
+                    </script>";
+            } else if ($source == 'mitra') {
+                $name = $_POST['name'];
+                $file = updateImgFile($con, $source, 'file', 'tbl_mitra', $id);
+
+                mysqli_query($con, "UPDATE tbl_mitra SET
+                    name = '$name',
+                    file = '$file'
+                WHERE id = $id") or die (mysqli_error($con));
+
+                echo "<script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Succesfully Updated!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location='".base_url()."admin/client.php';
+                                }
+                            });
+                        });
+                    </script>";
+            } else if ($source == 'review') {
+                $name = $_POST['name'];
+                $message = $_POST['message'];
+
+                mysqli_query($con, "UPDATE tbl_review SET
+                    name = '$name',
+                    message = '$message'
+                WHERE id = $id") or die (mysqli_error($con));
+
+                echo "<script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Succesfully Updated!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location='".base_url()."admin/review.php';
+                                }
+                            });
+                        });
+                    </script>";
             } else {
                 echo "<script>
                         document.addEventListener('DOMContentLoaded', function() {

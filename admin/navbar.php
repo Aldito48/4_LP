@@ -12,7 +12,7 @@
     <label for="switch-mode" class="switch-mode"></label>
     <a href="#" class="notification">
         <i class='bx bxs-bell'></i>
-        <span class="num">8</span>
+        <!-- <span class="num">8</span> -->
     </a>
     <a href="#" class="profile">
         <img src="<?=base_url()?>favicon/favicon-32x32.png">
