@@ -10,11 +10,15 @@
     </form>
     <input type="checkbox" id="switch-mode" hidden>
     <label for="switch-mode" class="switch-mode"></label>
-    <a href="#" class="notification">
+    <!-- <a href="javascript:void(0);" class="notification">
         <i class='bx bxs-bell'></i>
-        <!-- <span class="num">8</span> -->
+        <span class="num">8</span>
+    </a> -->
+    <a href="javascript:void(0);" class="guider" onclick="showGuide()">
+        <i class='bx bxs-info-circle'></i>
     </a>
-    <a href="#" class="profile">
+    <a href="<?=base_url()?>admin/dashboard.php" class="profile">
         <img src="<?=base_url()?>favicon/favicon-32x32.png">
     </a>
+    <?php include 'guide.php'; ?>
 </nav>

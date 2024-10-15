@@ -22,7 +22,13 @@ function closeModal(option) {
     }
 }
 function onConfirm() {
-    document.getElementById('dataForm').submit();
+    let form = document.getElementById('dataForm');
+
+    if (form.checkValidity()) {
+        form.submit();
+    } else {
+        form.reportValidity();
+    }
 }
 // --------------------------- Modal ------------------------------
 

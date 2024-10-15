@@ -182,3 +182,24 @@ function showImage(event) {
     reader.readAsDataURL(input.files[0]);
 }
 // --------------------------- Preview ------------------------------
+
+// --------------------------- Guide ------------------------------
+function showGuide() {
+    document.querySelector('.guide-box').style.display = 'block';
+    document.querySelector('.guide-overlay').style.display = 'block';
+}
+
+function closeGuide() {
+    document.querySelector('.guide-box').style.display = 'none';
+    document.querySelector('.guide-overlay').style.display = 'none';
+}
+
+document.addEventListener('click', function(event) {
+    const guideBox = document.querySelector('.guide-box');
+    const overlay = document.querySelector('.guide-overlay');
+    if (event.target === overlay) {
+        guideBox.style.display = 'none';
+        overlay.style.display = 'none';
+    }
+});
+// --------------------------- Guide ------------------------------

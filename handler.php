@@ -8,7 +8,7 @@
       $queryDetailTrip = "SELECT * FROM tbl_trip WHERE id = $id AND is_active = 'Iya' LIMIT 1";
       $querySchedule = "SELECT * FROM tbl_schedule WHERE id_trip = $id LIMIT 1";
       $queryItinerary = "SELECT * FROM tbl_itinerary WHERE id_trip = $id";
-      $querySlider = "SELECT * FROM tbl_slider WHERE id_trip = $id";
+      $querySlider = "SELECT * FROM tbl_slider WHERE id_trip = $id ORDER BY sort ASC";
 
       $resultDetailTrip = mysqli_query($con, $queryDetailTrip) or die (mysqli_error($con));
       $resultSchedule = mysqli_query($con, $querySchedule) or die (mysqli_error($con));

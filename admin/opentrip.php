@@ -134,7 +134,6 @@
                                         }
                                     },
                                     {
-                                        searchable: false,
                                         orderable: false,
                                         targets: 6,
                                         render: function(data, type, row) {

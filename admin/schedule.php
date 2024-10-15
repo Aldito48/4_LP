@@ -54,7 +54,7 @@
             <main>
                 <ul class="box-info">
                     <li>
-                        <i class='bx bxs-calendar-check' ></i>
+                        <i class='bx bxs-notepad' ></i>
                         <span class="text">
                             <h3>Schedule</h3>
                         </span>

@@ -54,7 +54,7 @@
             <main>
                 <ul class="box-info">
                     <li>
-                        <i class='bx bxs-calendar-check' ></i>
+                        <i class='bx bxs-briefcase-alt-2' ></i>
                         <span class="text">
                             <h3>Itinerary</h3>
                         </span>
