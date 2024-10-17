@@ -939,6 +939,7 @@ address {
     flex-basis: 48%;
   }
   .popular-card {
+    border-radius: var(--radius-15);
     font-size: 50%;
   }
   .popular-card * {
@@ -955,6 +956,12 @@ address {
   }
   .popular-card .card-img {
     height: 175px;
+  }
+  .popular-card .card-content {
+    padding: 12px;
+  }
+  .popular-card .harga {
+    margin-bottom: 0;
   }
   .maps .maps-loc {
     width: 320px;

@@ -59,12 +59,12 @@
         ?>
         <form method="POST" id="login-form" class="form" action="" autocomplete="on">
           <label for="user" style="padding-top: 13px;">&nbsp;<ion-icon name="person"></ion-icon>
-            <input id="user" class="form-content" type="text" name="user" placeholder="Masukkan Username" required autofocus autocomplete="username"/>
+            <input id="user" class="form-content" type="text" name="user" placeholder="Masukkan Username" required autofocus autocomplete="on username"/>
             <div class="form-border"></div>
           </label>
 
           <label for="pass" style="padding-top: 22px;">&nbsp;<ion-icon name="key"></ion-icon>
-            <input id="pass" class="form-content" type="password" placeholder="Masukkan Password" name="pass" required autocomplete="current-password"/>
+            <input id="pass" class="form-content" type="password" placeholder="Masukkan Password" name="pass" required autocomplete="on current-password"/>
             <span class="show-hide" onclick="togglePassword()">
               <ion-icon id="toggle-icon" name="eye"></ion-icon>
             </span>

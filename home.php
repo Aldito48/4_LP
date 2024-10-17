@@ -135,7 +135,6 @@
                             <img
                               src="<?=base_url()?>storage/trip/<?=$dataSpecialTrip['file']?>"
                               alt="gambar"
-                              loading="lazy"
                             />
                           </a>
                         </figure>
@@ -190,7 +189,6 @@
                             <img
                               src="<?=base_url()?>storage/trip/<?=$dataPromoTrip['file']?>"
                               alt="gambar"
-                              loading="lazy"
                             />
                           </a>
                         </figure>

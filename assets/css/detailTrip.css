@@ -905,8 +905,17 @@ body { background: var(--white); }
   border-radius: 10px;
 }
 
-
-
+.img-tour {
+  height: 450px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.img-tour img {
+  width: 50%;
+  height: 100%;
+}
 
 /*-----------------------------------*\
  * #POP-UP
@@ -1355,6 +1364,9 @@ address {
   .package .img-tour {
     width: 100%;
     overflow: hidden;
+  }
+  .package .img-tour img {
+    width: 100%;
   }
   .benefit td {
     font-size: small;

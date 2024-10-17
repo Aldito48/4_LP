@@ -119,7 +119,7 @@
             <div class="desc">
               <img src="<?=base_url()?>assets/images/doctrip-white.png">
               <p><?=$dataProfile['about']?></p>
-              <iframe class="maps-loc" src="<?=$dataProfile['maps']?>" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <iframe class="maps-loc" src="<?=$dataProfile['maps']?>" style="border:0;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
           </div>
         </section>

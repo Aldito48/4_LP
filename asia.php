@@ -130,7 +130,6 @@
                               <img
                                 src="<?=base_url()?>storage/trip/<?=$dataAsiaTrip['file']?>"
                                 alt="gambar"
-                                loading="lazy"
                               />
                             </a>
                           </figure>

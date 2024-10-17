@@ -106,7 +106,7 @@
                                 },
                                 scrollX: true,
                                 scrollCollapse: true,
-                                serverSide: true,
+                                serverSide: false,
                                 order: [],
                                 columnDefs: [
                                     {
@@ -165,6 +165,7 @@
                                                     column
                                                         .search(this.value)
                                                         .draw(false);
+                                                    column.table().page('first').draw(false);
                                                 }
                                             });
                                         });

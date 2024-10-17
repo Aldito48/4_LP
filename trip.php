@@ -130,7 +130,6 @@
                               <img
                                 src="<?=base_url()?>storage/trip/<?=$dataAllTrip['file']?>"
                                 alt="gambar"
-                                loading="lazy"
                               />
                             </a>
                           </figure>
@@ -193,7 +192,6 @@
                               <img
                                 src="<?=base_url()?>storage/trip/<?=$dataAsiaTrip['file']?>"
                                 alt="gambar"
-                                loading="lazy"
                               />
                             </a>
                           </figure>
