@@ -283,7 +283,7 @@
 
                                     <div class="input-field">
                                         <label for="to_date">Sampai Tanggal</label>
-                                        <input type="date" name="to_date" required>
+                                        <input type="date" name="to_date">
                                     </div>
                                 </div>
                                 <div class="buttons">

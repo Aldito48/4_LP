@@ -175,59 +175,94 @@
                   if (mysqli_num_rows($resultSchedule) > 0) {
                 ?>
                     <table>
-                        <tr>
-                            <td>JANUARI</td>
-                            <td>: <?=$dataSchedule['january']?></td>
-                        </tr>
-                        <tr>
-                            <td>FEBRUARI</td>
-                            <td>: <?=$dataSchedule['february']?></td>
-                        </tr>
-                        <tr>
-                            <td>MARET</td>
-                            <td>: <?=$dataSchedule['march']?></td>
-                        </tr>
-                        <tr>
-                            <td>APRIL</td>
-                            <td>: <?=$dataSchedule['april']?></td>
-                        </tr>
-                        <tr>
-                            <td>MEI</td>
-                            <td>: <?=$dataSchedule['may']?></td>
-                        </tr>
-                        <tr>
-                            <td>JUNI</td>
-                            <td>: <?=$dataSchedule['june']?></td>
-                        </tr>
-                        <tr>
-                            <td>JULI</td>
-                            <td>: <?=$dataSchedule['july']?></td>
-                        </tr>
-                        <tr>
-                            <td>AGUSTUS</td>
-                            <td>: <?=$dataSchedule['august']?></td>
-                        </tr>
-                        <tr>
-                            <td>SEPTEMBER</td>
-                            <td>: <?=$dataSchedule['september']?></td>
-                        </tr>
-                        <tr>
-                            <td>OKTOBER</td>
-                            <td>: <?=$dataSchedule['october']?></td>
-                        </tr>
-                        <tr>
-                            <td>NOVEMBER</td>
-                            <td>: <?=$dataSchedule['november']?></td>
-                        </tr>
-                        <tr>
-                            <td>DESEMBER</td>
-                            <td>: <?=$dataSchedule['december']?></td>
-                        </tr>
+                        <?php if ($dataSchedule['january'] !== "-") { ?>
+                            <tr>
+                                <td>JANUARI</td>
+                                <td>: <?=$dataSchedule['january']?></td>
+                            </tr>
+                        <?php } ?>
+                        
+                        <?php if ($dataSchedule['february'] !== "-") { ?>
+                            <tr>
+                                <td>FEBRUARI</td>
+                                <td>: <?=$dataSchedule['february']?></td>
+                            </tr>
+                        <?php } ?>
+                        
+                        <?php if ($dataSchedule['march'] !== "-") { ?>
+                            <tr>
+                                <td>MARET</td>
+                                <td>: <?=$dataSchedule['march']?></td>
+                            </tr>
+                        <?php } ?>
+                        
+                        <?php if ($dataSchedule['april'] !== "-") { ?>
+                            <tr>
+                                <td>APRIL</td>
+                                <td>: <?=$dataSchedule['april']?></td>
+                            </tr>
+                        <?php } ?>
+                        
+                        <?php if ($dataSchedule['may'] !== "-") { ?>
+                            <tr>
+                                <td>MEI</td>
+                                <td>: <?=$dataSchedule['may']?></td>
+                            </tr>
+                        <?php } ?>
+                        
+                        <?php if ($dataSchedule['june'] !== "-") { ?>
+                            <tr>
+                                <td>JUNI</td>
+                                <td>: <?=$dataSchedule['june']?></td>
+                            </tr>
+                        <?php } ?>
+                        
+                        <?php if ($dataSchedule['july'] !== "-") { ?>
+                            <tr>
+                                <td>JULI</td>
+                                <td>: <?=$dataSchedule['july']?></td>
+                            </tr>
+                        <?php } ?>
+                        
+                        <?php if ($dataSchedule['august'] !== "-") { ?>
+                            <tr>
+                                <td>AGUSTUS</td>
+                                <td>: <?=$dataSchedule['august']?></td>
+                            </tr>
+                        <?php } ?>
+                        
+                        <?php if ($dataSchedule['september'] !== "-") { ?>
+                            <tr>
+                                <td>SEPTEMBER</td>
+                                <td>: <?=$dataSchedule['september']?></td>
+                            </tr>
+                        <?php } ?>
+                        
+                        <?php if ($dataSchedule['october'] !== "-") { ?>
+                            <tr>
+                                <td>OKTOBER</td>
+                                <td>: <?=$dataSchedule['october']?></td>
+                            </tr>
+                        <?php } ?>
+                        
+                        <?php if ($dataSchedule['november'] !== "-") { ?>
+                            <tr>
+                                <td>NOVEMBER</td>
+                                <td>: <?=$dataSchedule['november']?></td>
+                            </tr>
+                        <?php } ?>
+                        
+                        <?php if ($dataSchedule['december'] !== "-") { ?>
+                            <tr>
+                                <td>DESEMBER</td>
+                                <td>: <?=$dataSchedule['december']?></td>
+                            </tr>
+                        <?php } ?>
                     </table>
                 <?php
-                  } else {
+                } else {
                     echo "No Data Available";
-                  }
+                }
                 ?>
 
                 <div class="box">

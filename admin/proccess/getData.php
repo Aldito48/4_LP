@@ -76,6 +76,16 @@
                 } else {
                     echo json_encode(['error' => 'Data not found']);
                 }
+            } else if ($_GET['source'] == 'medsos') {
+                $id = $_GET['id'];
+                $query = "SELECT * FROM tbl_sosmed WHERE id = '$id' LIMIT 1";
+                $result = mysqli_query($con, $query);
+                if ($result) {
+                    $data = mysqli_fetch_assoc($result);
+                    echo json_encode($data);
+                } else {
+                    echo json_encode(['error' => 'Data not found']);
+                }
             } else {
                 echo "<script>window.location='".base_url()."admin/dashboard.php';</script>";
             }

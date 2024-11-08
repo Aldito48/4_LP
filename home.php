@@ -159,7 +159,13 @@
                           </div>
                           <hr><br>
                           <p class="card-subtitle">
-                            <a>sisa seat : <b><?=$dataSpecialTrip['seat']?></b> (<?=dateFormat($dataSpecialTrip['from_date'])?> ~ <?=dateFormat($dataSpecialTrip['to_date'])?>)</a>
+                          <a>sisa seat : <b><?=$dataSpecialTrip['seat']?></b> 
+                              (<?=dateFormat($dataSpecialTrip['from_date'])?> 
+                              <?php if ($dataSpecialTrip['to_date'] !== null && $dataSpecialTrip['to_date'] !== '0000-00-00') { ?> 
+                                  ~ <?=dateFormat($dataSpecialTrip['to_date'])?> 
+                              <?php } ?>
+                              )
+                          </a>
                           </p>
                           <h3 class="h3 card-title">
                             <a href="detailTrip.php?id=<?=$dataSpecialTrip['id']?>"><?=$dataSpecialTrip['name']?></a>
@@ -168,59 +174,6 @@
                             <?=$dataSpecialTrip['sub']?>
                           </p>
                           <a href="https://wa.me/<?=waFormat($wa)?>?text=Halo%20Admin%20DoctorTrip!%0ASaya%20mau%20pesan%20*<?=$dataSpecialTrip['name']?>*" target="_blank" class="btn-mini">Book now</a>
-                        </div>
-                      </div>
-                    </li>
-                  <?php
-                    }
-                  ?>
-                </ul>
-            <?php
-              } else if (mysqli_num_rows($resultPromoTrip) > 0) {
-            ?>
-                <ul class="popular-list">
-                  <?php
-                    while ($dataPromoTrip = mysqli_fetch_array($resultPromoTrip)) {
-                  ?>
-                    <li>
-                      <div class="popular-card">
-                        <figure class="card-img">
-                          <a class="popular-link" href="<?=base_url()?>detailTrip.php?id=<?=$dataPromoTrip['id']?>">
-                            <img
-                              src="<?=base_url()?>storage/trip/<?=$dataPromoTrip['file']?>"
-                              alt="gambar"
-                            />
-                          </a>
-                        </figure>
-                        <div class="card-content">
-                          <div class="harga">
-                            <?php
-                              if ($dataPromoTrip['aft_price'] != null && !empty($dataPromoTrip['aft_price']) && $dataPromoTrip['aft_price'] > 0) {
-                            ?>
-                                <p><del>Rp <?=priceFormat($dataPromoTrip['price'])?></del></p>
-                                <div class="card-rating">
-                                  <h3>Rp <?=priceFormat($dataPromoTrip['aft_price'])?> / orang</h3>
-                                </div>
-                            <?php
-                              } else {
-                            ?>
-                                <div class="card-rating">
-                                  <h3>Rp <?=priceFormat($dataPromoTrip['price'])?> / orang</h3>
-                                </div>
-                            <?php
-                              }
-                            ?>
-                          </div>
-                          <p class="card-subtitle">
-                            <a>sisa seat : <b><?=$dataPromoTrip['seat']?></b> (<?=dateFormat($dataPromoTrip['from_date'])?> ~ <?=dateFormat($dataPromoTrip['to_date'])?>)</a>
-                          </p>
-                          <h3 class="h3 card-title">
-                            <a href="<?=base_url()?>detailTrip.php?id=<?=$dataPromoTrip['id']?>"><?=$dataPromoTrip['name']?></a>
-                          </h3>
-                          <p class="card-text">
-                            <?=$dataPromoTrip['sub']?>
-                          </p>
-                          <a href="https://wa.me/<?=waFormat($wa)?>" target="_blank" class="btn-mini">Book now</a>
                         </div>
                       </div>
                     </li>
@@ -261,10 +214,16 @@
 
             <h2 class="h2 section-title">Traveller's Photos</h2>
 
-            <ul class="gallery-list">
-              <?php
-                while ($dataGalery = mysqli_fetch_array($resultGalery)) {
-              ?>
+            <?php
+              $counter = 0;
+              while ($dataGalery = mysqli_fetch_array($resultGalery)) {
+                if ($counter % 5 === 0) {
+                    if ($counter > 0) {
+                        echo '</ul><br>';
+                    }
+                    echo '<ul class="gallery-list">';
+                }
+            ?>
                   <li class="gallery-item">
                     <figure class="gallery-image">
                       <img
@@ -273,10 +232,13 @@
                       />
                     </figure>
                   </li>
-              <?php
-                }
-              ?>
-            </ul>
+            <?php
+                $counter++;
+              }
+              if ($counter > 0) {
+                  echo '</ul><br>';
+              }
+            ?>
             <br>
             <!-- <button class="btn btn-light" style="margin: auto;">View More Image</button> -->
           </div>

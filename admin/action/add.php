@@ -19,7 +19,17 @@
                 move_uploaded_file($temp, $dir . $file);
                 return $file;
             } else {
-                echo "<script>alert('Wrong Format File');</script>";
+                echo "<script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Wrong Format File!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        });
+                    </script>";
                 return false;
             }
         }
@@ -53,11 +63,11 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Success',
-                                text: 'Succesfully Added!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location='".base_url()."admin/opentrip.php';
-                                }
+                                text: 'Succesfully Added!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/opentrip.php';
                             });
                         });
                     </script>";
@@ -76,11 +86,11 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Success',
-                                text: 'Succesfully Added!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location='".base_url()."admin/itinerary.php';
-                                }
+                                text: 'Succesfully Added!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/itinerary.php';
                             });
                         });
                     </script>";
@@ -106,11 +116,11 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Success',
-                                text: 'Succesfully Added!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location='".base_url()."admin/schedule.php';
-                                }
+                                text: 'Succesfully Added!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/schedule.php';
                             });
                         });
                     </script>";
@@ -126,11 +136,11 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Success',
-                                text: 'Succesfully Added!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location='".base_url()."admin/slider.php';
-                                }
+                                text: 'Succesfully Added!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/slider.php';
                             });
                         });
                     </script>";
@@ -144,11 +154,11 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Success',
-                                text: 'Succesfully Added!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location='".base_url()."admin/gallery.php';
-                                }
+                                text: 'Succesfully Added!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/gallery.php';
                             });
                         });
                     </script>";
@@ -163,11 +173,11 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Success',
-                                text: 'Succesfully Added!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location='".base_url()."admin/client.php';
-                                }
+                                text: 'Succesfully Added!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/client.php';
                             });
                         });
                     </script>";
@@ -182,11 +192,31 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Success',
-                                text: 'Succesfully Added!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location='".base_url()."admin/review.php';
-                                }
+                                text: 'Succesfully Added!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/review.php';
+                            });
+                        });
+                    </script>";
+            } else if ($source == 'medsos') {
+                $name = $_POST['name'];
+                $type = $_POST['type'];
+                $account = $_POST['account'];
+
+                mysqli_query($con, "INSERT INTO tbl_sosmed (name, type, account)
+                VALUES ($name, '$type', '$account')") or die(mysqli_error($con));
+                echo "<script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Succesfully Added!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/medsos.php';
                             });
                         });
                     </script>";
@@ -196,11 +226,11 @@
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Oops...',
-                                text: 'Unable to add!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location='".base_url()."admin/dashboard.php';
-                                }
+                                text: 'Unable to add!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/dashboard.php';
                             });
                         });
                     </script>";

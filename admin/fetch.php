@@ -35,6 +35,8 @@ if (isset($_GET['table'])) {
         $table = 'tbl_review';
     } else if ($_GET['table'] == 'slider') {
         $table = 'vw_slider_trip';
+    } else if ($_GET['table'] == 'medsos') {
+        $table = 'tbl_sosmed';
     } else {
         die("Invalid table name");
     }
@@ -130,6 +132,16 @@ switch ($table) {
         );
         $where = null;
         break;
+
+    case 'tbl_sosmed':
+            $columns = array(
+                array( 'db' => 'account', 'dt' => 0 ),
+                array( 'db' => 'type', 'dt' => 1 ),
+                array( 'db' => 'name', 'dt' => 2 ),
+                array( 'db' => 'id', 'dt' => 3 )
+            );
+            $where = null;
+            break;
 
     default:
         die("Invalid table configuration");

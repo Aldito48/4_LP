@@ -920,6 +920,31 @@ thead input {
     display: none;
 }
 
+
+
+#sortable-list {
+	list-style-type: none;
+	padding: 0;
+}
+#sortable-list li {
+	padding: 10px;
+	border: 1px solid var(--dark);
+	border-radius: 8px;
+	color: var(--dark);
+	margin-bottom: 5px;
+	cursor: move;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+#sortable-list li img {
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+}
+#sortable-list li i {
+	font-size: 25px;
+}
 /* MAIN */
 /* CONTENT */
 

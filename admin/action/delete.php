@@ -28,11 +28,11 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Success',
-                                text: 'Succesfully Deleted!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location='".base_url()."admin/opentrip.php';
-                                }
+                                text: 'Succesfully Deleted!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/opentrip.php';
                             });
                         });
                     </script>";
@@ -44,11 +44,11 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Success',
-                                text: 'Succesfully Deleted!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location='".base_url()."admin/itinerary.php';
-                                }
+                                text: 'Succesfully Deleted!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/itinerary.php';
                             });
                         });
                     </script>";
@@ -59,11 +59,11 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Success',
-                                text: 'Succesfully Deleted!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location='".base_url()."admin/schedule.php';
-                                }
+                                text: 'Succesfully Deleted!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/schedule.php';
                             });
                         });
                     </script>";
@@ -75,11 +75,11 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Success',
-                                text: 'Succesfully Deleted!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location='".base_url()."admin/slider.php';
-                                }
+                                text: 'Succesfully Deleted!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/slider.php';
                             });
                         });
                     </script>";
@@ -91,11 +91,11 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Success',
-                                text: 'Succesfully Deleted!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location='".base_url()."admin/gallery.php';
-                                }
+                                text: 'Succesfully Deleted!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/gallery.php';
                             });
                         });
                     </script>";
@@ -107,11 +107,11 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Success',
-                                text: 'Succesfully Deleted!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location='".base_url()."admin/client.php';
-                                }
+                                text: 'Succesfully Deleted!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/client.php';
                             });
                         });
                     </script>";
@@ -122,11 +122,26 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Success',
-                                text: 'Succesfully Deleted!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location='".base_url()."admin/review.php';
-                                }
+                                text: 'Succesfully Deleted!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/review.php';
+                            });
+                        });
+                    </script>";
+            } else if ($source == 'medsos') {
+                mysqli_query($con, "DELETE FROM tbl_sosmed WHERE id = $id") or die (mysqli_error($con));
+                echo "<script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Succesfully Deleted!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/medsos.php';
                             });
                         });
                     </script>";
@@ -136,11 +151,11 @@
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Oops...',
-                                text: 'Unable to delete!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location='".base_url()."admin/dashboard.php';
-                                }
+                                text: 'Unable to delete!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/dashboard.php';
                             });
                         });
                     </script>";

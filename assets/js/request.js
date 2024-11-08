@@ -179,6 +179,12 @@ function showForm(mode, source, id = null) {
                         $('input[name="source"]').val(source);
                         $('input[name="name"]').val(data.name);
                         $('input[name="message"]').val(data.message);
+                    } else if (source === 'medsos') {
+                        $('input[name="id"]').val(id);
+                        $('input[name="source"]').val(source);
+                        $('input[name="name"]').val(data.name);
+                        $('select[name="type"]').val(data.type);
+                        $('input[name="account"]').val(data.account);
                     } else {
                         alert('Error No Type');
                     }
@@ -290,6 +296,12 @@ function showForm(mode, source, id = null) {
                         $('input[name="source"]').val(source);
                         $('input[name="name"]').val(data.name).prop('readonly', true);
                         $('input[name="message"]').val(data.message).prop('readonly', true);
+                    } else if (source === 'medsos') {
+                        $('input[name="id"]').val(id);
+                        $('input[name="source"]').val(source);
+                        $('input[name="name"]').val(data.name).prop('readonly', true);
+                        $('select[name="type"]').val(data.type).prop('disabled', true);
+                        $('input[name="account"]').val(data.account).prop('readonly', true);
                     } else {
                         alert('Error No Type');
                     }
@@ -396,6 +408,12 @@ function showForm(mode, source, id = null) {
                         $('input[name="source"]').val(source);
                         $('input[name="name"]').val(data.name).prop('readonly', true);
                         $('input[name="message"]').val(data.message).prop('readonly', true);
+                    } else if (source === 'medsos') {
+                        $('input[name="id"]').val(id);
+                        $('input[name="source"]').val(source);
+                        $('input[name="name"]').val(data.name).prop('readonly', true);
+                        $('select[name="type"]').val(data.type).prop('disabled', true);
+                        $('input[name="account"]').val(data.account).prop('readonly', true);
                     } else {
                         alert('Error No Type');
                     }

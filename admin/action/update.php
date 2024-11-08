@@ -29,7 +29,17 @@
                     move_uploaded_file($temp, $dir . $file);
                 } else {
                     $file = $existing_file;
-                    echo "<script>alert('Wrong format file');</script>";
+                    echo "<script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'Wrong Format File!',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            });
+                        </script>";
                 }
             } else{
                 $file = $existing_file;
@@ -85,11 +95,11 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Success',
-                                text: 'Succesfully Updated!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location='".base_url()."admin/opentrip.php';
-                                }
+                                text: 'Succesfully Updated!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/opentrip.php';
                             });
                         });
                     </script>";
@@ -115,11 +125,11 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Success',
-                                text: 'Succesfully Updated!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location='".base_url()."admin/itinerary.php';
-                                }
+                                text: 'Succesfully Updated!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/itinerary.php';
                             });
                         });
                     </script>";
@@ -159,11 +169,11 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Success',
-                                text: 'Succesfully Updated!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location='".base_url()."admin/schedule.php';
-                                }
+                                text: 'Succesfully Updated!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/schedule.php';
                             });
                         });
                     </script>";
@@ -183,11 +193,11 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Success',
-                                text: 'Succesfully Updated!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location='".base_url()."admin/slider.php';
-                                }
+                                text: 'Succesfully Updated!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/slider.php';
                             });
                         });
                     </script>";
@@ -203,11 +213,11 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Success',
-                                text: 'Succesfully Updated!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location='".base_url()."admin/gallery.php';
-                                }
+                                text: 'Succesfully Updated!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/gallery.php';
                             });
                         });
                     </script>";
@@ -225,11 +235,11 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Success',
-                                text: 'Succesfully Updated!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location='".base_url()."admin/client.php';
-                                }
+                                text: 'Succesfully Updated!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/client.php';
                             });
                         });
                     </script>";
@@ -247,11 +257,35 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Success',
-                                text: 'Succesfully Updated!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location='".base_url()."admin/review.php';
-                                }
+                                text: 'Succesfully Updated!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/review.php';
+                            });
+                        });
+                    </script>";
+            } else if ($source == 'medsos') {
+                $name = $_POST['name'];
+                $type = $_POST['type'];
+                $account = $_POST['account'];
+
+                mysqli_query($con, "UPDATE tbl_schedule SET
+                    name = $name,
+                    type = '$type',
+                    account = '$account'
+                WHERE id = $id") or die (mysqli_error($con));
+
+                echo "<script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Succesfully Updated!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/medsos.php';
                             });
                         });
                     </script>";
@@ -261,11 +295,11 @@
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Oops...',
-                                text: 'Unable to update!'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location='".base_url()."admin/dashboard.php';
-                                }
+                                text: 'Unable to update!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location='".base_url()."admin/dashboard.php';
                             });
                         });
                     </script>";

@@ -154,7 +154,13 @@
                           </div>
                           <hr><br>
                           <p class="card-subtitle">
-                            <a>sisa seat : <b><?=$dataAsiaTrip['seat']?></b> (<?=dateFormat($dataAsiaTrip['from_date'])?> ~ <?=dateFormat($dataAsiaTrip['to_date'])?>)</a>
+                          <a>sisa seat : <b><?=$dataAsiaTrip['seat']?></b> 
+                              (<?=dateFormat($dataAsiaTrip['from_date'])?> 
+                              <?php if ($dataAsiaTrip['to_date'] !== null && $dataAsiaTrip['to_date'] !== '0000-00-00') { ?> 
+                                  ~ <?=dateFormat($dataAsiaTrip['to_date'])?> 
+                              <?php } ?>
+                              )
+                          </a>
                           </p>
                           <h3 class="h3 card-title">
                             <a href="<?=base_url()?>detailTrip.php?id=<?=$dataAsiaTrip['id']?>"><?=$dataAsiaTrip['name']?></a>

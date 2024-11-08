@@ -49,12 +49,41 @@
                     </li>
                 </ul>
 
-                <div class="table-data"></div>
+                <div class="table-data">
+                    <?php
+                        $sql = "SELECT id, name, sub, file, sort FROM tbl_trip ORDER BY sort ASC";
+                        $result = $con->query($sql);
+                    ?>
+                    <div class="order">
+                        <ul id="sortable-list">
+                            <?php
+                                while($row = $result->fetch_assoc()) {
+                            ?>
+                                    <li data-id="<?=$row['id']?>">
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <img src="<?=base_url()?>storage/trip/<?=$row['file']?>">
+                                            <div>
+                                                <b><?=$row['name']?></b>
+                                                <br>
+                                                <?=strip_tags($row['sub'])?>
+                                            </div>
+                                        </div>
+                                        <i class='bx bx-list-ul'></i>
+                                    </li>
+                            <?php
+                                }
+                            ?>
+                        </ul>
+                    </div>
+                </div>
             </main>
         </section>
 
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
         <script src="<?=base_url()?>assets/js/admin.js?v=<?=time()?>"></script>
         <script src="<?=base_url()?>assets/js/request.js?v=<?=time()?>"></script>
+        <script src="<?=base_url()?>assets/js/sort.js?v=<?=time()?>"></script>
     </body>
 </html>
 <?php

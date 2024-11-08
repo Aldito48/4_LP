@@ -23,21 +23,17 @@
   }
 
   $queryProfile = "SELECT * FROM tbl_profile WHERE id = 1 LIMIT 1";
+  $querySpecialTrip = "SELECT * FROM tbl_trip WHERE is_active = 'Iya' ORDER BY sort ASC LIMIT 3";
+  $queryAllTrip = "SELECT * FROM tbl_trip WHERE is_asia = 'Tidak' AND is_active = 'Iya' ORDER BY sort ASC";
+  $queryAsiaTrip = "SELECT * FROM tbl_trip WHERE is_asia = 'Iya' AND is_active = 'Iya' ORDER BY sort ASC";
   $queryMitra = "SELECT * FROM tbl_mitra";
-  $querySpecialTrip = "SELECT * FROM tbl_trip WHERE type = 'SPECIAL' AND is_active = 'Iya' LIMIT 3";
-  $queryPromoTrip = "SELECT * FROM tbl_trip WHERE type = 'PROMO' AND is_active = 'Iya' LIMIT 3";
-  $queryOpenTrip = "SELECT * FROM tbl_trip WHERE type = 'OPEN' AND is_active = 'Iya'";
   $querySosmed = "SELECT * FROM tbl_sosmed";
-  $queryGalery = "SELECT * FROM tbl_galery LIMIT 5";
-  $queryAllTrip = "SELECT * FROM tbl_trip WHERE is_asia = 'Tidak' AND is_active = 'Iya'";
-  $queryAsiaTrip = "SELECT * FROM tbl_trip WHERE is_asia = 'Iya' AND is_active = 'Iya'";
+  $queryGalery = "SELECT * FROM tbl_galery";
   $queryReview = "SELECT * FROM tbl_review";
 
   $resultProfile = mysqli_query($con, $queryProfile) or die (mysqli_error($con));
   $resultMitra = mysqli_query($con, $queryMitra) or die (mysqli_error($con));
   $resultSpecialTrip = mysqli_query($con, $querySpecialTrip) or die (mysqli_error($con));
-  $resultPromoTrip = mysqli_query($con, $queryPromoTrip) or die (mysqli_error($con));
-  $resultOpenTrip = mysqli_query($con, $queryOpenTrip) or die (mysqli_error($con));
   $resultSosmed = mysqli_query($con, $querySosmed) or die (mysqli_error($con));
   $resultGalery = mysqli_query($con, $queryGalery) or die (mysqli_error($con));
   $resultAllTrip = mysqli_query($con, $queryAllTrip) or die (mysqli_error($con));
