@@ -12,7 +12,22 @@
             $query = mysqli_query($con, "SELECT $name FROM $table WHERE id = $id LIMIT 1") or die (mysqli_error($con));
             $row = mysqli_fetch_array($query);
             $dir = "../../storage/".$path."/";
-            unlink($dir.$row[$name]);
+            $filePath = $dir.$row[$name];
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
+            return;
+        }
+
+        function deleteImgChild($con, $path, $name, $table, $id) {
+            $query = mysqli_query($con, "SELECT $name FROM $table WHERE id_trip = $id") or die(mysqli_error($con));
+            $dir = "../../storage/".$path."/";
+            while ($row = mysqli_fetch_array($query)) {
+                $filePath = $dir.$row[$name];
+                if (file_exists($filePath)) {
+                    unlink($filePath);
+                }
+            }
             return;
         }
 
@@ -22,6 +37,8 @@
         if (isset($id) && isset($source)) {
             if ($source == 'trip') {
                 deleteImgFile($con, $source, 'file', 'tbl_trip', $id);
+                deleteImgChild($con, 'itinerary', 'image', 'tbl_itinerary', $id);
+                deleteImgChild($con, 'slider', 'photo', 'tbl_slider', $id);
                 mysqli_query($con, "DELETE FROM tbl_trip WHERE id = $id") or die (mysqli_error($con));
                 echo "<script>
                         document.addEventListener('DOMContentLoaded', function() {
