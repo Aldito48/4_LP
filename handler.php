@@ -30,6 +30,7 @@
   $querySosmed = "SELECT * FROM tbl_sosmed";
   $queryGalery = "SELECT * FROM tbl_galery";
   $queryReview = "SELECT * FROM tbl_review";
+  $queryWA = "SELECT * FROM tbl_sosmed WHERE type = 'WhatsApp'";
 
   $resultProfile = mysqli_query($con, $queryProfile) or die (mysqli_error($con));
   $resultMitra = mysqli_query($con, $queryMitra) or die (mysqli_error($con));
@@ -39,6 +40,7 @@
   $resultAllTrip = mysqli_query($con, $queryAllTrip) or die (mysqli_error($con));
   $resultAsiaTrip = mysqli_query($con, $queryAsiaTrip) or die (mysqli_error($con));
   $resultReview = mysqli_query($con, $queryReview) or die (mysqli_error($con));
+  $resultWA = mysqli_query($con, $queryWA) or die (mysqli_error($con));
 
   $dataProfile = mysqli_fetch_array($resultProfile);
   while ($dataSosmed = mysqli_fetch_array($resultSosmed)) {

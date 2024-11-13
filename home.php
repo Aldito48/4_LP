@@ -26,80 +26,7 @@
   </head>
 
   <body id="top">
-    <header class="header" data-header>
-      <div class="overlay" data-overlay></div>
-      <div class="header-top">
-        <div class="container">
-          <a href="" class="helpline-box"></a>
-          <a href="<?=base_url()?>about.php" class="logo">
-            <img src="<?=base_url()?>assets/images/doctrip-white.png" alt="DocTrip logo"/>
-          </a>
-          <div class="header-btn-group">
-            <button
-              class="nav-open-btn"
-              aria-label="Open Menu"
-              data-nav-open-btn
-            >
-              <ion-icon name="menu-outline"></ion-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="header-bottom">
-        <div class="container">
-          <ul class="social-list">
-            <li>
-              <a href="https://wa.me/<?=waFormat($wa)?>" target="_blank" class="social-link">
-                <ion-icon name="logo-whatsapp"></ion-icon>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.tiktok.com/<?=$tiktok?>" target="_blank" class="social-link">
-                <ion-icon name="logo-tiktok"></ion-icon>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.instagram.com/<?=$instagram?>" target="_blank" class="social-link">
-                <ion-icon name="logo-instagram"></ion-icon>
-              </a>
-            </li>
-          </ul>
-
-          <nav class="navbar" data-navbar>
-            <div class="navbar-top">
-              <a href="<?=base_url()?>about.php" class="logo">
-                <img src="<?=base_url()?>assets/images/doctrip-gray.png" alt="DocTrip logo" />
-              </a>
-              <button
-                class="nav-close-btn"
-                aria-label="Close Menu"
-                data-nav-close-btn
-              >
-                <ion-icon name="close-outline"></ion-icon>
-              </button>
-            </div>
-
-            <ul class="navbar-list">
-              <li>
-                <a href="<?=base_url()?>home.php" class="navbar-link" data-nav-link>home</a>
-              </li>
-              <li>
-                <a href="<?=base_url()?>trip.php" class="navbar-link" data-nav-link>open trip</a>
-              </li>
-              <li>
-                <a href="<?=base_url()?>asia.php" class="navbar-link" data-nav-link>@doctrip.asia</a>
-              </li>
-              <li>
-                <a href="<?=base_url()?>trans.php" class="navbar-link" data-nav-link>@doctrans</a>
-              </li>
-            </ul>
-          </nav>
-
-          <a href="https://wa.me/<?=waFormat($wa)?>" target="_blank" class="btn btn-light">Book Now</a>
-        </div>
-      </div>
-    </header>
+    <?php include 'header.php'; ?>
 
     <main>
       <article>
@@ -160,11 +87,10 @@
                           <hr><br>
                           <p class="card-subtitle">
                           <a>sisa seat : <b><?=$dataSpecialTrip['seat']?></b> 
-                              (<?=dateFormat($dataSpecialTrip['from_date'])?> 
-                              <?php if ($dataSpecialTrip['to_date'] !== null && $dataSpecialTrip['to_date'] !== '0000-00-00') { ?> 
-                                  ~ <?=dateFormat($dataSpecialTrip['to_date'])?> 
-                              <?php } ?>
-                              )
+                            ( <?=dateFormat($dataSpecialTrip['from_date'])?> 
+                            <?php if ($dataSpecialTrip['to_date'] !== null && $dataSpecialTrip['to_date'] !== '0000-00-00') { ?> 
+                                ~ <?=dateFormat($dataSpecialTrip['to_date'])?> 
+                            <?php } ?> )
                           </a>
                           </p>
                           <h3 class="h3 card-title">
@@ -218,25 +144,25 @@
               $counter = 0;
               while ($dataGalery = mysqli_fetch_array($resultGalery)) {
                 if ($counter % 5 === 0) {
-                    if ($counter > 0) {
-                        echo '</ul><br>';
-                    }
-                    echo '<ul class="gallery-list">';
+                  if ($counter > 0) {
+                    echo '</ul><br>';
+                  }
+                  echo '<ul class="gallery-list">';
                 }
             ?>
-                  <li class="gallery-item">
-                    <figure class="gallery-image">
-                      <img
-                        src="<?=base_url()?>storage/galery/<?=$dataGalery['file']?>"
-                        alt="Gallery image"
-                      />
-                    </figure>
-                  </li>
+                <li class="gallery-item">
+                  <figure class="gallery-image">
+                    <img
+                      src="<?=base_url()?>storage/galery/<?=$dataGalery['file']?>"
+                      alt="Gallery image"
+                    />
+                  </figure>
+                </li>
             <?php
                 $counter++;
               }
               if ($counter > 0) {
-                  echo '</ul><br>';
+                echo '</ul><br>';
               }
             ?>
             <br>
@@ -319,70 +245,7 @@
       </article>
     </main>
 
-    <footer class="footer">
-      <div class="footer-top">
-        <div class="container">
-          <div class="footer-brand">
-            <a href="<?=base_url()?>about.php" class="logo">
-              <img src="<?=base_url()?>assets/images/doctrip-white.png" alt="DocTrip logo" />
-            </a>
-
-            <p class="footer-text">
-              <?=footerFormat($dataProfile['about'])?>
-            </p>
-          </div>
-
-          <div class="footer-contact">
-            <h4 class="contact-title">Hubungi Kami</h4>
-
-            <ul>
-              <li class="contact-item">
-                <ion-icon name="logo-whatsapp"></ion-icon>
-
-                <a href="https://wa.me/<?=waFormat($wa)?>" target="_blank" class="contact-link"
-                  ><?=numberFormat($wa)?> (<?=$name3?>)</a
-                >
-              </li>
-
-              <li class="contact-item">
-                <ion-icon name="logo-whatsapp"></ion-icon>
-
-                <a href="https://wa.me/<?=waFormat($wa_private)?>" target="_blank" class="contact-link"
-                  ><?=numberFormat($wa_private)?> (<?=$name4?>)</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <div class="footer-form">
-            <h4 class="contact-title">Alamat Kami</h4>
-            <a href="<?=$dataProfile['location']?>" class="contact-link" target="_blank"><?=$dataProfile['address']?></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <div class="container">
-          <p class="copyright">
-            <?=date('Y')?> &copy; <a href=""><?=$dataProfile['name']?></a>. All rights reserved.
-          </p>
-
-          <ul class="footer-bottom-list">
-            <li>
-              <a href="#" class="footer-bottom-link">Privacy Policy</a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-bottom-link">Term & Condition</a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-bottom-link">FAQ</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </footer>
+    <?php include 'footer.php'; ?>
 
     <a href="#top" class="go-top" data-go-top>
       <ion-icon name="chevron-up-outline"></ion-icon>

@@ -17,6 +17,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Easy set variables
  */
+require "../env.php";
 
 $table = '';
 
@@ -148,10 +149,10 @@ switch ($table) {
 }
 
 $sql_details = array(
-    'user' => 'root',       // dev: root        || prod: dock3244_owner
-    'pass' => '',           // dev:             || prod: @TripWithUs
-    'db'   => 'db_doctrip', // dev: db_doctrip  || prod: dock3244_db_doctrip
-    'host' => 'localhost'
+    'user' => $db_user,
+    'pass' => $db_pass,
+    'db'   => $db_name,
+    'host' => $db_host
 );
 
 require( '../assets/ssp.class.php' );

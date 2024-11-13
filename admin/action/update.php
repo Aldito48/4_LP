@@ -271,7 +271,7 @@
                 $account = $_POST['account'];
 
                 mysqli_query($con, "UPDATE tbl_schedule SET
-                    name = $name,
+                    name = '$name',
                     type = '$type',
                     account = '$account'
                 WHERE id = $id") or die (mysqli_error($con));

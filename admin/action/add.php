@@ -206,7 +206,7 @@
                 $account = $_POST['account'];
 
                 mysqli_query($con, "INSERT INTO tbl_sosmed (name, type, account)
-                VALUES ($name, '$type', '$account')") or die(mysqli_error($con));
+                VALUES ('$name', '$type', '$account')") or die(mysqli_error($con));
                 echo "<script>
                         document.addEventListener('DOMContentLoaded', function() {
                             Swal.fire({
